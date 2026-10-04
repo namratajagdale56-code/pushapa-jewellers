@@ -24046,3 +24046,540 @@ footer {
     }
 
 }
+/* ==========================================
+   MOBILE NAVBAR - COMPACT MENU
+========================================== */
+
+@media (max-width: 768px) {
+
+    .nav-links {
+        padding: 12px 0 !important;
+        gap: 4px !important;
+    }
+
+    .nav-links li {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .nav-links li a {
+        padding: 7px 20px !important;
+        font-size: 14px !important;
+        line-height: 1.2 !important;
+    }
+
+}
+/* ==========================================
+   MOBILE MENU - REDUCE WIDTH
+========================================== */
+
+@media (max-width: 768px) {
+
+    .nav-links {
+        width: 200px !important;
+        max-width: 200px !important;
+        left: auto !important;
+        right: 10px !important;
+        padding: 10px 0 !important;
+        gap: 2px !important;
+    }
+
+    .nav-links li a {
+        display: block !important;
+        width: 100% !important;
+        padding: 7px 15px !important;
+        font-size: 13px !important;
+        box-sizing: border-box !important;
+    }
+
+}
+/* ==========================================
+   MOBILE CART COUNT FIX
+========================================== */
+
+@media (max-width: 768px) {
+
+    #cart-count {
+        position: static !important;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+
+        width: 18px !important;
+        height: 18px !important;
+        min-width: 18px !important;
+
+        margin-left: 6px !important;
+
+        background: #ffd700 !important;
+        color: #111 !important;
+
+        border-radius: 50% !important;
+
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        line-height: 18px !important;
+    }
+
+}
+/* =====================================================
+   GOLD RATE - MOBILE 3 CARDS SIDE BY SIDE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    /* Main section */
+    .gold-rate-section {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .gold-rate-container {
+        width: 100%;
+        padding: 25px 8px !important;
+        box-sizing: border-box;
+    }
+
+    /* Heading */
+    .gold-rate-heading {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px !important;
+    }
+
+    .gold-small-title {
+        font-size: 16px !important;
+        letter-spacing: 3px !important;
+    }
+
+    .gold-rate-heading h2 {
+        font-size: 36px !important;
+        margin: 12px 0 !important;
+    }
+
+    .gold-rate-heading p {
+        font-size: 13px !important;
+        line-height: 1.6 !important;
+        padding: 0 15px !important;
+    }
+
+
+    /* ================================
+       THREE CARDS IN ONE ROW
+    ================================= */
+
+    .gold-rate-cards {
+        width: 100% !important;
+
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+
+        gap: 7px !important;
+
+        align-items: stretch !important;
+    }
+
+
+    /* Individual card */
+    .gold-rate-card {
+        width: 100% !important;
+        min-width: 0 !important;
+
+        height: 220px !important;
+
+        padding: 12px 6px !important;
+
+        box-sizing: border-box !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        text-align: center !important;
+
+        border-radius: 20px !important;
+    }
+
+
+    /* Updated */
+    .rate-status {
+        position: absolute !important;
+
+        top: 10px !important;
+        right: 7px !important;
+
+        font-size: 7px !important;
+        letter-spacing: 1px !important;
+    }
+
+    .rate-status i {
+        font-size: 7px !important;
+    }
+
+
+    /* Gold icon */
+    .gold-icon {
+        width: 48px !important;
+        height: 48px !important;
+
+        min-width: 48px !important;
+        min-height: 48px !important;
+
+        margin: 10px 0 8px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        border-radius: 50% !important;
+    }
+
+    .gold-icon i {
+        font-size: 20px !important;
+    }
+
+
+    /* Information */
+    .gold-info {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+
+    .gold-type {
+        display: block !important;
+
+        font-size: 12px !important;
+        letter-spacing: 1.5px !important;
+
+        white-space: nowrap !important;
+    }
+
+
+    .gold-info h3 {
+        font-size: 16px !important;
+
+        margin: 8px 0 4px !important;
+
+        white-space: nowrap !important;
+    }
+
+
+    .gold-info p {
+        font-size: 9px !important;
+
+        margin: 0 !important;
+
+        line-height: 1.3 !important;
+
+        white-space: normal !important;
+    }
+
+
+    /* Last Updated */
+    .gold-update-info {
+        width: 100% !important;
+
+        margin-top: 22px !important;
+
+        text-align: center !important;
+
+        font-size: 12px !important;
+
+        line-height: 1.5 !important;
+    }
+
+    .gold-update-info .rate-note {
+        display: block !important;
+
+        margin-top: 8px !important;
+
+        font-size: 10px !important;
+    }
+
+}
+/* ==========================================
+   SHOP BY OCCASION - DESKTOP ALIGNMENT
+========================================== */
+
+@media (min-width: 769px) {
+
+    .occasion-container {
+        width: 100% !important;
+        max-width: 1250px !important;
+        margin: 0 auto !important;
+
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+
+        gap: 24px !important;
+
+        padding: 0 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    .occasion-card {
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .occasion-card img {
+        width: 100% !important;
+        display: block !important;
+    }
+
+}
+/* ==========================================
+   CART SUCCESS TOAST - MOBILE
+========================================== */
+
+.cart-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+
+    width: calc(100% - 40px);
+    max-width: 360px;
+
+    background: #111;
+    border: 1px solid #d4af37;
+    border-radius: 14px;
+
+    padding: 15px 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: #fff;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.6),
+        0 0 18px rgba(212,175,55,0.25);
+
+    z-index: 99999;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all 0.35s ease;
+}
+
+.cart-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.cart-toast i {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #d4af37;
+    color: #111;
+
+    border-radius: 50%;
+    font-size: 15px;
+}
+
+.cart-toast-text {
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.cart-toast-text strong {
+    display: block;
+    color: #d4af37;
+    font-size: 15px;
+    margin-bottom: 2px;
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .cart-toast {
+        top: 15px;
+        width: calc(100% - 30px);
+        padding: 13px 15px;
+    }
+
+    .cart-toast-text {
+        font-size: 13px;
+    }
+
+    .cart-toast-text strong {
+        font-size: 14px;
+    }
+
+}
+/* =====================================================
+   PUSHAPA JEWELLERS - PREMIUM ALERT
+===================================================== */
+
+#premiumAlert {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+
+    width: 350px;
+    min-height: 82px;
+
+    background: linear-gradient(135deg, #0d0d0d, #1c1c1c);
+
+    border: 1px solid rgba(255, 215, 0, 0.7);
+    border-left: 4px solid #ffd700;
+
+    border-radius: 14px;
+
+    padding: 15px 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    z-index: 999999;
+
+    box-shadow:
+        0 0 20px rgba(255, 215, 0, 0.25),
+        0 15px 40px rgba(0, 0, 0, 0.7);
+
+    transform: translateX(120%);
+    opacity: 0;
+
+    transition: all 0.45s ease;
+}
+
+#premiumAlert.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+/* ICON */
+
+.premium-alert-icon {
+    width: 48px;
+    height: 48px;
+
+    min-width: 48px;
+
+    border: 2px solid #ffd700;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffd700;
+    font-size: 19px;
+
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.35);
+
+    animation: alertIconPop 0.45s ease;
+}
+
+@keyframes alertIconPop {
+
+    0% {
+        transform: scale(0);
+    }
+
+    70% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* TEXT */
+
+.premium-alert-content {
+    flex: 1;
+}
+
+.premium-alert-content h3 {
+    margin: 0 0 5px;
+
+    color: #ffd700;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 17px;
+}
+
+.premium-alert-content p {
+    margin: 0;
+
+    color: #ddd;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+}
+
+
+/* CLOSE */
+
+#premiumAlert button {
+    background: none;
+    border: none;
+
+    color: #999;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#premiumAlert button:hover {
+    color: #ffd700;
+    transform: rotate(90deg);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    #premiumAlert {
+        top: 15px;
+        left: 15px;
+        right: 15px;
+
+        width: auto;
+
+        min-height: 75px;
+
+        padding: 12px 14px;
+    }
+
+    .premium-alert-icon {
+        width: 42px;
+        height: 42px;
+
+        min-width: 42px;
+
+        font-size: 17px;
+    }
+
+    .premium-alert-content h3 {
+        font-size: 15px;
+    }
+
+    .premium-alert-content p {
+        font-size: 12px;
+    }
+}

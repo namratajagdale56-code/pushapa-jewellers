@@ -54,7 +54,7 @@ function addToCart(product) {
     }
 
     saveCart(cart);
-    alert("Product Added to Cart!");
+   showCartAlert();
 }
 
 
@@ -607,7 +607,7 @@ async function loginUser(event) {
             localStorage.setItem("adminLogin", "true");
             localStorage.setItem("login", "true");
 
-            alert("Admin Login Successful!");
+            showPremiumAlert("Admin Login Successful!");
 
             window.location.href = "admin.html";
 
@@ -627,7 +627,7 @@ async function loginUser(event) {
                 );
             }
 
-            alert("Login Successful!");
+            showPremiumAlert("Login Successful!");
 
             window.location.href = "product.html";
 
@@ -949,7 +949,7 @@ async function placeOrder() {
 
         // ================= SUCCESS =================
 
-        alert("Order Placed Successfully!");
+        showPremiumAlert("Order Placed Successfully!");
 
         window.location.href = "order-success.html";
 
@@ -1038,7 +1038,7 @@ async function handleGoogleLogin(response) {
             localStorage.setItem("userId", data.userId);
         }
 
-        alert("Google Login Successful!");
+        showPremiumAlert("Google Login Successful!");
         window.location.href = "index.html";
 
     } catch (error) {
@@ -1526,3 +1526,80 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
 });
+// =====================================================
+// PUSHAPA JEWELLERS - PREMIUM ALERT SYSTEM
+// =====================================================
+
+function showPremiumAlert(message, type = "success") {
+
+    let alertBox = document.getElementById("premiumAlert");
+
+    if (!alertBox) {
+
+        alertBox = document.createElement("div");
+
+        alertBox.id = "premiumAlert";
+
+        alertBox.innerHTML = `
+            <div class="premium-alert-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <div class="premium-alert-content">
+                <h3 id="premiumAlertTitle">Success</h3>
+                <p id="premiumAlertMessage"></p>
+            </div>
+
+            <button onclick="closePremiumAlert()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        `;
+
+        document.body.appendChild(alertBox);
+    }
+
+    const icon = alertBox.querySelector(".premium-alert-icon i");
+    const title = alertBox.querySelector("#premiumAlertTitle");
+    const msg = alertBox.querySelector("#premiumAlertMessage");
+
+    msg.textContent = message;
+
+    if (type === "error") {
+        title.textContent = "Oops!";
+        icon.className = "fa-solid fa-xmark";
+    }
+    else if (type === "wishlist") {
+        title.textContent = "Wishlist";
+        icon.className = "fa-solid fa-heart";
+    }
+    else if (type === "cart") {
+        title.textContent = "Added to Cart";
+        icon.className = "fa-solid fa-cart-shopping";
+    }
+    else if (type === "order") {
+        title.textContent = "Order Successful";
+        icon.className = "fa-solid fa-check";
+    }
+    else {
+        title.textContent = "Success";
+        icon.className = "fa-solid fa-check";
+    }
+
+    alertBox.classList.add("show");
+
+    clearTimeout(window.premiumAlertTimer);
+
+    window.premiumAlertTimer = setTimeout(() => {
+        closePremiumAlert();
+    }, 3000);
+}
+
+
+function closePremiumAlert() {
+
+    const alertBox = document.getElementById("premiumAlert");
+
+    if (alertBox) {
+        alertBox.classList.remove("show");
+    }
+}

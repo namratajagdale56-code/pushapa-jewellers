@@ -21,6 +21,65 @@
 
 </head>
 
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<nav class="navbar">
+
+    <!-- Logo Left Side -->
+    <div class="logo">
+    <a href="index.html">
+        <div class="logo">
+            <img src="images/logo.png" alt="Pushapa Jewellers">
+            <span>Pushapa Jewellers</span>
+        </div>
+    </a>
+</div>
+
+<div class="menu-btn">
+    ☰
+</div>
+    <!-- Menu Right Side -->
+    <ul class="nav-links">
+
+        <li><a href="index.html" >Home</a></li>
+
+        <li><a href="login.html">Login</a></li>
+
+        <li><a href="product.html">Product</a></li>
+
+
+        <li><a href="about.html">About</a></li>
+
+        <li><a href="contact.html">Contact</a></li>
+       <li>
+    <a href="wishlist.html" title="Wishlist" class="nav-icon">
+        <i class="fa-regular fa-heart"></i>
+    </a>
+</li>
+    
+<!-- My Orders -->
+<li>
+    <a href="my-orders.html" title="My Orders" class="nav-icon">
+        <i class="fa-solid fa-box-open"></i>
+    </a>
+</li>
+
+<li>
+    <a href="cart.html" title="Cart" class="nav-icon cart-icon">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cart-count">0</span>
+    </a>
+</li>
+    </ul>
+
+</nav>
+
+</header>
+
+
+
 <body class="buy-now-page">
 
 
@@ -302,6 +361,11 @@
 
 
 <script>
+    showPremiumAlert(
+        "Your order has been placed successfully!",
+        "order"
+    );
+
 
     /* =================================================
        LOAD ORDER DATA

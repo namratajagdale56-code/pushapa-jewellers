@@ -1012,7 +1012,128 @@ tbody tr:hover{
 ::-webkit-scrollbar-thumb:hover{
     background:#80651b;
 }
+/* =====================================================
+   ADMIN PREMIUM ALERT
+===================================================== */
 
+#premiumAlert {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+
+    width: 350px;
+    min-height: 82px;
+
+    background: linear-gradient(
+        135deg,
+        #0d0d0d,
+        #1c1c1c
+    );
+
+    border: 1px solid rgba(255, 215, 0, 0.7);
+    border-left: 4px solid #ffd700;
+
+    border-radius: 14px;
+
+    padding: 15px 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    z-index: 999999;
+
+    box-shadow:
+        0 0 20px rgba(255, 215, 0, 0.25),
+        0 15px 40px rgba(0, 0, 0, 0.7);
+
+    transform: translateX(120%);
+    opacity: 0;
+
+    transition: all 0.45s ease;
+}
+
+#premiumAlert.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.premium-alert-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+
+    border: 2px solid #ffd700;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffd700;
+    font-size: 19px;
+
+    box-shadow:
+        0 0 15px rgba(255, 215, 0, 0.35);
+}
+
+.premium-alert-content {
+    flex: 1;
+}
+
+.premium-alert-content h3 {
+    margin: 0 0 5px;
+
+    color: #ffd700;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 17px;
+}
+
+.premium-alert-content p {
+    margin: 0;
+
+    color: #ddd;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+}
+
+#premiumAlert button {
+    background: none;
+    border: none;
+
+    color: #999;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+#premiumAlert button:hover {
+    color: #ffd700;
+    transform: rotate(90deg);
+}
+
+@media (max-width: 600px) {
+
+    #premiumAlert {
+        top: 15px;
+        left: 15px;
+        right: 15px;
+
+        width: auto;
+    }
+}
+/* SAVE PRODUCT BUTTON - COMPACT */
+.btn-gold[type="submit"] {
+    height: 55px !important;
+    min-height: 55px !important;
+    padding: 0 22px !important;
+    font-size: 14px !important;
+}
 </style>
 
 </head>
@@ -2134,7 +2255,84 @@ document.getElementById("imageFile").addEventListener("change", function () {
 
 const API = "https://pushapa-jewellers.onrender.com";
 
+// =====================================================
+// ADMIN PREMIUM ALERT
+// =====================================================
 
+function showPremiumAlert(message, type = "success") {
+
+    let alertBox = document.getElementById("premiumAlert");
+
+    if (!alertBox) {
+
+        alertBox = document.createElement("div");
+
+        alertBox.id = "premiumAlert";
+
+        alertBox.innerHTML = `
+            <div class="premium-alert-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <div class="premium-alert-content">
+                <h3 id="premiumAlertTitle">Success</h3>
+                <p id="premiumAlertMessage"></p>
+            </div>
+
+            <button onclick="closePremiumAlert()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        `;
+
+        document.body.appendChild(alertBox);
+    }
+
+    const icon =
+        alertBox.querySelector(".premium-alert-icon i");
+
+    const title =
+        alertBox.querySelector("#premiumAlertTitle");
+
+    const msg =
+        alertBox.querySelector("#premiumAlertMessage");
+
+    msg.textContent = message;
+
+    if (type === "error") {
+
+        title.textContent = "Oops!";
+
+        icon.className =
+            "fa-solid fa-xmark";
+
+    } else {
+
+        title.textContent = "Success";
+
+        icon.className =
+            "fa-solid fa-check";
+    }
+
+    alertBox.classList.add("show");
+
+    clearTimeout(window.premiumAlertTimer);
+
+    window.premiumAlertTimer =
+        setTimeout(() => {
+            closePremiumAlert();
+        }, 3000);
+}
+
+
+function closePremiumAlert() {
+
+    const alertBox =
+        document.getElementById("premiumAlert");
+
+    if (alertBox) {
+        alertBox.classList.remove("show");
+    }
+}
 /* =====================================================
    ADMIN LOGIN
 ===================================================== */
@@ -2728,14 +2926,24 @@ document
 
 
         message.textContent =
-            editProductId
-                ? "Product updated successfully."
-                : "Product added successfully.";
+    editProductId
+        ? "Product updated successfully."
+        : "Product added successfully.";
+        if (editProductId) {
+    showPremiumAlert(
+        "Product updated successfully!",
+        "success"
+    );
+} else {
+    showPremiumAlert(
+        "Product added successfully!",
+        "success"
+    );
+}
 
+resetProductForm();
 
-        resetProductForm();
-
-        await loadProducts();
+await loadProducts();
 
 
     }
@@ -3145,13 +3353,13 @@ async function loadOrders(){
                 order.items?.[0]?.name ||
                 "Jewellery";
 
-
-            const amount =
-                order.total ||
-                order.amount ||
-                order.price ||
-                order.grandTotal ||
-                0;
+                const amount =
+                    order.total ||
+                    order.amount ||
+                    order.price ||
+                    order.grandTotal ||
+                    order.productPrice ||
+                    0;
 
 
             const status =
@@ -4281,22 +4489,16 @@ async function loadCustomDesigns() {
                 let image =
                     item.image || "";
 
-
                 if (
-                    image &&
-                    !image.startsWith("http") &&
-                    !image.startsWith("data:")
-                ) {
-
-                    image =
-                        API +
-                        "/" +
-                        image.replace(
-                            /^\/+/,
-                            ""
-                        );
-
-                }
+    image &&
+    !image.startsWith("http") &&
+    !image.startsWith("data:")
+) {
+    image =
+        API +
+        "/" +
+        image.replace(/^\/+/, "");
+}
 
 
                 return `

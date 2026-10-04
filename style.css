@@ -24583,3 +24583,185 @@ footer {
         font-size: 12px;
     }
 }
+@media (max-width: 768px) {
+
+    .menu-btn {
+        display: block !important;
+        cursor: pointer;
+        color: #ffd700;
+        font-size: 26px;
+        z-index: 1001;
+    }
+
+    .nav-links {
+        display: none !important;
+    }
+
+    .nav-links.active {
+        display: flex !important;
+        flex-direction: column !important;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #111;
+        padding: 15px 0 !important;
+        z-index: 1000;
+    }
+
+    .nav-links.active li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links.active li a {
+        display: block;
+        padding: 10px;
+    }
+}
+/* =========================================
+   MOBILE NAVBAR
+========================================= */
+
+@media (max-width: 768px) {
+
+    .menu-btn {
+        display: block !important;
+        cursor: pointer;
+        color: #ffd700;
+        font-size: 28px;
+        z-index: 1001;
+    }
+
+    .nav-links {
+        display: none !important;
+    }
+
+    .nav-links.active {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+
+        position: absolute !important;
+        top: 100% !important;
+        right: 0 !important;
+        left: auto !important;
+
+        width: 55% !important;
+        min-width: 260px !important;
+
+        background: #090909 !important;
+
+        padding: 22px 20px !important;
+        margin: 0 !important;
+
+        border: 1px solid #5c4815 !important;
+        border-top: none !important;
+        border-radius: 0 0 20px 20px !important;
+
+        box-shadow: 0 10px 30px rgba(0,0,0,.7) !important;
+
+        z-index: 1000 !important;
+    }
+
+    /* ALL MENU ITEMS SAME */
+    .nav-links.active li {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+    }
+
+    .nav-links.active li a {
+        display: flex !important;
+        align-items: center !important;
+
+        width: 100% !important;
+
+        padding: 11px 18px !important;
+        margin: 0 !important;
+
+        color: #ffffff !important;
+
+        font-size: 18px !important;
+        font-weight: 500 !important;
+
+        text-decoration: none !important;
+
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .nav-links.active li a:hover {
+        color: #ffd700 !important;
+        background: rgba(212,175,55,.08) !important;
+    }
+
+
+    /* =====================================
+       WISHLIST / ORDERS / CART
+    ===================================== */
+
+    .nav-links.active li a.nav-icon {
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: flex-start !important;
+
+        width: 100% !important;
+
+        padding: 11px 18px !important;
+        margin: 0 !important;
+
+        color: #ffffff !important;
+
+        border: none !important;
+        border-top: none !important;
+        border-bottom: none !important;
+
+        box-shadow: none !important;
+
+        font-size: 18px !important;
+    }
+
+    .nav-links.active li a.nav-icon i {
+        width: 28px !important;
+        margin-right: 12px !important;
+
+        font-size: 20px !important;
+
+        color: #ffd700 !important;
+    }
+
+
+    /* CART COUNT */
+    .nav-links.active .cart-icon #cart-count {
+        position: static !important;
+
+        display: inline-flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        width: 24px !important;
+        height: 24px !important;
+
+        margin-left: 8px !important;
+
+        background: #ffd700 !important;
+        color: #000 !important;
+
+        border-radius: 50% !important;
+
+        font-size: 12px !important;
+        font-weight: 700 !important;
+    }
+}
+.product-card .price {
+    display: block !important;
+    color: #FFD700 !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}

@@ -317,7 +317,7 @@ card.dataset.category = String(
     product.category || product.type || "jewellery"
 );
 
-card.dataset.price = Number(product.price) || 0;
+card.dataset.price = price;
 
 card.dataset.purity = String(
     product.purity ||
@@ -328,18 +328,18 @@ card.dataset.purity = String(
 
 
         // IMAGE
-        let image = product.image || "";
+     // IMAGE
+let image = product.image || "";
 
-        if (
-            image &&
-            !image.startsWith("http") &&
-            !image.startsWith("/") &&
-            !image.startsWith("data:")
-        ) {
-            image = "https://pushapa-jewellers.onrender.com/" + image;
-        }
-
-
+if (
+    image &&
+    !image.startsWith("http") &&
+    !image.startsWith("/") &&
+    !image.startsWith("data:")
+) {
+    image = "https://pushapa-jewellers.onrender.com/" + image;
+}
+const name = product.name || "Jewellery Product";
         // NAME
         let displayName =
             product.name ||
@@ -365,7 +365,21 @@ card.dataset.purity = String(
 
 
         // PRICE
-        let price = Number(product.price) || 0;
+let rawPrice =
+    product.price ??
+    product.productPrice ??
+    product.sellingPrice ??
+    product.amount ??
+    product.total ??
+    0;
+
+let price = Number(
+    String(rawPrice).replace(/[^\d.]/g, "")
+);
+
+if (!Number.isFinite(price)) {
+    price = 0;
+}
 
 
         let purity =
@@ -429,20 +443,16 @@ if (!weight.toLowerCase().endsWith("g")) {
 
                 </div>
 
+                <p class="price">₹ ${price.toLocaleString("en-IN")}</p>
 
-                
-                    ₹${price.toLocaleString("en-IN")}
-                </p>
+<div class="product-buttons">
 
-
-                <div class="product-buttons">
-
-                    <button
-                        class="view-btn"
-                        type="button"
-                    >
-                        View Details
-                    </button>
+    <button 
+        class="view-btn" 
+        type="button"
+    >
+        View Details
+    </button>
 
 
                     <button
@@ -571,7 +581,7 @@ async function loginUser(event) {
         document.getElementById("password")?.value || "";
 
     if (!email || !password) {
-        alert("Please enter email and password.");
+        showPremiumAlert("Please enter email and password.");
         return;
     }
 
@@ -596,7 +606,7 @@ async function loginUser(event) {
         console.log("LOGIN RESPONSE:", data);
 
         if (!response.ok) {
-            alert(data.message || "Invalid Email or Password");
+            showPremiumAlert(data.message || "Invalid Email or Password");
             return;
         }
 
@@ -634,13 +644,13 @@ async function loginUser(event) {
             return;
         }
 
-        alert("Invalid login response.");
+        showPremiumAlert("Invalid login response.");
 
     } catch (error) {
 
         console.error("LOGIN ERROR:", error);
 
-        alert("Server connection failed");
+        showPremiumAlert("Server connection failed");
     }
 }
 
@@ -652,7 +662,7 @@ function logout() {
     localStorage.removeItem("userId");
     localStorage.removeItem("user");
 
-    alert("Logout Successfully");
+    showPremiumAlert("Logout Successfully");
 
     window.location.href = "login.html";
 }
@@ -668,7 +678,7 @@ function adminLogin() {
         localStorage.setItem("adminLogin", "true");
         window.location.href = "admin.html";
     } else {
-        alert("Invalid Admin Login");
+        showPremiumAlert("Invalid Admin Login");
     }
 }
 
@@ -679,7 +689,7 @@ function buyNow(button) {
     const productCard = button.closest(".card, .product-card");
 
     if (!productCard) {
-        alert("Product not found!");
+        showPremiumAlert("Product not found!");
         return;
     }
 
@@ -756,37 +766,37 @@ async function placeOrder() {
     // ================= VALIDATION =================
 
     if (!name) {
-        alert("Please enter your full name.");
+        showPremiumAlert("Please enter your full name.");
         document.getElementById("name")?.focus();
         return;
     }
 
     if (!/^[6-9][0-9]{9}$/.test(mobile)) {
-        alert("Please enter valid 10 digit mobile number.");
+        showPremiumAlert("Please enter valid 10 digit mobile number.");
         document.getElementById("mobile")?.focus();
         return;
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        alert("Please enter valid email address.");
+        showPremiumAlert("Please enter valid email address.");
         document.getElementById("email")?.focus();
         return;
     }
 
     if (!address) {
-        alert("Please enter your address.");
+        showPremiumAlert("Please enter your address.");
         document.getElementById("address")?.focus();
         return;
     }
 
     if (!city) {
-        alert("Please enter your city.");
+        showPremiumAlert("Please enter your city.");
         document.getElementById("city")?.focus();
         return;
     }
 
     if (!/^[0-9]{6}$/.test(pincode)) {
-        alert("Please enter valid 6 digit PIN code.");
+        showPremiumAlert("Please enter valid 6 digit PIN code.");
         document.getElementById("pincode")?.focus();
         return;
     }
@@ -881,7 +891,7 @@ async function placeOrder() {
 
             console.error("ORDER SAVE ERROR:", data);
 
-            alert(
+            showPremiumAlert(
                 data.message ||
                 "Order could not be placed. Please try again."
             );
@@ -959,7 +969,7 @@ async function placeOrder() {
 
         console.error("PLACE ORDER ERROR:", error);
 
-        alert(
+        showPremiumAlert(
             "Server connection failed. Please make sure your backend server is running."
         );
 
@@ -1002,7 +1012,7 @@ window.addEventListener("load", initializeGoogleLogin);
 
 async function handleGoogleLogin(response) {
     if (!response || !response.credential) {
-        alert("Google login failed. Please try again.");
+        showPremiumAlert("Google login failed. Please try again.");
         return;
     }
 
@@ -1043,7 +1053,7 @@ async function handleGoogleLogin(response) {
 
     } catch (error) {
         console.error("Google Login Error:", error);
-        alert(error.message || "Something went wrong.");
+        showPremiumAlert(error.message || "Something went wrong.");
     }
 }
 
@@ -1496,32 +1506,148 @@ window.applyJewelleryFilters = applyFilters;
     }
 
 });
-
-
 // =====================================================
-// LOAD ALL REAL JEWELLERY IMAGES
+// LOAD ALL PRODUCTS
+// EXISTING PRODUCTS + ADMIN / MONGODB PRODUCTS
 // =====================================================
 
 document.addEventListener("DOMContentLoaded", async function () {
 
+    const container = document.getElementById("product-container");
+
+    if (!container) return;
+
     try {
 
-        const response = await fetch(
-            "https://pushapa-jewellers.onrender.com/api/jewellery-images"
+        // ================= EXISTING PRODUCTS =================
+
+        let oldProducts = [];
+
+        try {
+
+            const oldResponse = await fetch(
+    "https://pushapa-jewellers.onrender.com/api/jewellery-images"
+);
+            if (oldResponse.ok) {
+                oldProducts = await oldResponse.json();
+            }
+
+        } catch (error) {
+
+            console.log("Old products API skipped:", error);
+
+        }
+
+
+        // ================= ADMIN PRODUCTS =================
+
+        let adminProducts = [];
+
+        try {
+
+           const adminResponse = await fetch(
+    "https://pushapa-jewellers.onrender.com/products"
+);
+            if (adminResponse.ok) {
+                adminProducts = await adminResponse.json();
+            }
+
+        } catch (error) {
+
+            console.log("Admin products API skipped:", error);
+
+        }
+
+
+        // ================= COMBINE =================
+
+        const allProducts = [
+            ...oldProducts,
+            ...adminProducts
+        ];
+
+
+        // ================= REMOVE DUPLICATES =================
+
+        const uniqueProducts = [];
+
+        const productKeys = new Set();
+
+        allProducts.forEach(function (product) {
+
+            const name = String(
+                product.name ||
+                product.title ||
+                ""
+            )
+                .trim()
+                .toLowerCase();
+
+            const image = String(
+                product.image || ""
+            )
+                .trim()
+                .toLowerCase();
+
+            const price = Number(
+                product.price || 0
+            );
+
+            const key =
+                name + "|" +
+                image + "|" +
+                price;
+
+
+            if (!productKeys.has(key)) {
+
+                productKeys.add(key);
+
+                uniqueProducts.push(product);
+
+            }
+
+        });
+
+
+        // ================= SAVE =================
+
+        window.allJewelleryProducts =
+            uniqueProducts;
+
+
+        console.log(
+            "OLD PRODUCTS:",
+            oldProducts.length
         );
 
-        const products = await response.json();
+        console.log(
+            "ADMIN PRODUCTS:",
+            adminProducts.length
+        );
 
-        console.log("REAL PRODUCTS:", products.length);
+        console.log(
+            "TOTAL PRODUCTS:",
+            uniqueProducts.length
+        );
 
-        if (products.length > 0) {
-            window.allJewelleryProducts = products;
-            displayProducts(products);
-        }
+
+        // ================= DISPLAY =================
+        console.log("PRODUCT PRICES:", uniqueProducts.map(p => ({
+    name: p.name,
+    price: p.price,
+    productPrice: p.productPrice,
+    amount: p.amount
+})));
+        displayProducts(uniqueProducts);
+
 
     } catch (error) {
 
-        console.error("PRODUCT IMAGE ERROR:", error);
+        console.error(
+            "PRODUCT LOAD ERROR:",
+            error
+        );
 
     }
 

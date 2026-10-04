@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Buy Now | Pushapa Jewellers</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+.gold-options {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+
+    margin-top: 25px;
+
+    padding: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.03);
+
+    border:
+        1px solid rgba(229, 196, 106, 0.25);
+
+    border-radius: 14px;
+
+}
+
+
+.gold-option-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+.gold-option-group label {
+
+    color: #E5C46A;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+.gold-option-group select,
+.gold-option-group input {
+
+    width: 100%;
+
+    padding: 13px 14px;
+
+    background: #111;
+
+    color: #fff;
+
+    border:
+        1px solid rgba(229, 196, 106, 0.35);
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 14px;
+
+}
+
+
+.gold-option-group select:focus,
+.gold-option-group input:focus {
+
+    border-color: #E5C46A;
+
+    box-shadow:
+        0 0 10px
+        rgba(229, 196, 106, 0.15);
+
+}
+
+
+.gold-rate-box {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+
+    margin-top: 15px;
+
+}
+
+
+.gold-rate-box > div {
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(229, 196, 106, 0.07);
+
+    border:
+        1px solid
+        rgba(229, 196, 106, 0.2);
+
+}
+
+
+.gold-rate-box span {
+
+    display: block;
+
+    color: #aaa;
+
+    font-size: 12px;
+
+    margin-bottom: 6px;
+
+}
+
+
+.gold-rate-box strong {
+
+    color: #E5C46A;
+
+    font-size: 16px;
+
+}
+
+
+@media (max-width: 600px) {
+
+    .gold-options {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .gold-rate-box {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+/* =====================================================
+   BUY NOW PAGE - EXACT SPACING FIX
+   ===================================================== */
+
+/* Complete Your Purchase section */
+.buy-now-page .page-title {
+    min-height: auto !important;
+    height: auto !important;
+
+    padding-top: 32px !important;
+    padding-bottom: 28px !important;
+
+    margin: 0 !important;
+}
+
+/* Heading */
+.buy-now-page .page-title h1 {
+    margin-top: 10px !important;
+    margin-bottom: 12px !important;
+}
+
+/* Gold line below heading */
+.buy-now-page .page-title span {
+    margin-top: 10px !important;
+}
+
+/* Main checkout box वरचा extra gap remove */
+.buy-now-page .checkout-container {
+    margin-top: 10px !important;
+    padding-top: 0 !important;
+}
+
+
+/* =====================================================
+   PLACE ORDER BUTTON
+   ===================================================== */
+
+.buy-now-page .place-order {
+    width: 100% !important;
+
+    min-height: 55px !important;
+
+    background: linear-gradient(
+        135deg,
+        #C9A227 0%,
+        #E5C46A 45%,
+        #FFD700 100%
+    ) !important;
+
+    color: #111 !important;
+
+    border: 1px solid #E5C46A !important;
+
+    border-radius: 8px !important;
+
+    font-size: 15px !important;
+
+    font-weight: 800 !important;
+
+    letter-spacing: 1px !important;
+
+    text-shadow: none !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    gap: 10px !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    box-shadow:
+        0 6px 20px rgba(229,196,106,0.25) !important;
+
+    cursor: pointer !important;
+}
+
+/* PLACE ORDER text + lock icon */
+.buy-now-page .place-order,
+.buy-now-page .place-order i {
+    color: #111 !important;
+}
+
+/* Hover */
+.buy-now-page .place-order:hover {
+    background: linear-gradient(
+        135deg,
+        #FFD700 0%,
+        #E5C46A 55%,
+        #C9A227 100%
+    ) !important;
+
+    color: #111 !important;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 28px rgba(229,196,106,0.35) !important;
+}
+</style>
+</head>
+
+<body class="buy-now-page">
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <!-- LOGO -->
+        <div class="logo">
+            <a href="index.html">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Pushapa Jewellers">
+                    <span>Pushapa Jewellers</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div class="menu-btn">
+            ☰
+        </div>
+
+        <!-- NAVIGATION -->
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="login.html">Login</a>
+            </li>
+
+            <li>
+                <a href="product.html">Product</a>
+            </li>
+
+            <li>
+                <a href="about.html">About</a>
+            </li>
+
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+
+            <!-- WISHLIST -->
+            <li>
+                <a href="wishlist.html"
+                    title="Wishlist"
+                    class="nav-icon">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </a>
+            </li>
+<li>
+    <a href="my-orders.html" title="My Orders" class="nav-icon">
+        <i class="fa-solid fa-box-open"></i>
+    </a>
+</li>
+
+            <!-- CART -->
+            <li>
+                <a href="cart.html"
+                    title="Cart"
+                    class="nav-icon cart-icon">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    <span id="cart-count">0</span>
+
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= BACK BUTTON ================= -->
+
+<div class="back-area">
+
+    <a href="product.html"
+        class="back-btn">
+
+        ❮
+
+    </a>
+
+</div>
+
+
+<!-- ================= PAGE TITLE ================= -->
+
+<section class="page-title">
+
+    <p>
+        EXCLUSIVE COLLECTION
+    </p>
+
+    <h1>
+        Complete Your Purchase
+    </h1>
+
+    <span></span>
+
+</section>
+
+
+<!-- ================= MAIN CHECKOUT ================= -->
+
+<main class="checkout-container">
+
+
+    <!-- =====================================================
+         LEFT SIDE
+    ====================================================== -->
+
+    <section class="left-section">
+
+
+        <!-- =================================================
+             SELECTED JEWELLERY
+        ================================================== -->
+
+        <div class="luxury-card product-card">
+
+            <!-- CARD HEADING -->
+
+            <div class="card-heading">
+
+                <i class="fa-regular fa-gem"></i>
+
+                <h2>
+                    Selected Jewellery
+                </h2>
+
+            </div>
+
+
+            <!-- PRODUCT BOX -->
+
+            <div class="product-box">
+
+
+                <!-- ================= IMAGE ================= -->
+
+                <div class="product-image">
+
+                    <img id="product-image"
+                        src="images/ring1.jpg"
+                        alt="Jewellery">
+
+                </div>
+
+
+                <!-- ================= PRODUCT INFO ================= -->
+
+                <div class="product-info">
+
+
+                    <!-- BRAND -->
+
+                    <p class="label">
+                        PUSHAPA JEWELLERS
+                    </p>
+
+
+                    <!-- PRODUCT NAME -->
+
+                    <h3 id="product-name">
+                        Elegant Gold Ring
+                    </h3>
+
+
+                    <!-- CATEGORY -->
+
+                    <p class="category">
+                        Premium Jewellery Collection
+                    </p>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <p class="product-description">
+
+                        A beautifully crafted jewellery designed
+                        with timeless elegance and premium finishing.
+                       
+
+                    </p>
+
+                    <!-- ================= CUSTOM GOLD OPTIONS ================= -->
+
+<div class="gold-options">
+
+    <div class="gold-option-group">
+
+        <label>
+            Gold Purity
+        </label>
+
+        <select id="orderPurity">
+
+            <option value="22K">
+                22K Gold
+            </option>
+
+            <option value="24K">
+                24K Gold
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="gold-option-group">
+
+        <label>
+            Gold Weight (grams)
+        </label>
+
+        <input
+            type="number"
+            id="orderWeight"
+            value="5.20"
+            min="0.1"
+            step="0.1"
+            placeholder="Enter weight in grams"
+        >
+
+    </div>
+
+</div>
+
+
+<!-- ================= GOLD RATE ================= -->
+
+<div class="gold-rate-box">
+
+    <div>
+
+        <span>
+            Current Gold Rate
+        </span>
+
+        <strong id="orderGoldRate">
+            ₹0 / gram
+        </strong>
+
+    </div>
+
+
+    <div>
+
+        <span>
+            Estimated Gold Value
+        </span>
+
+        <strong id="orderGoldValue">
+            ₹0
+        </strong>
+
+    </div>
+
+</div>
+                    <!-- ================= DETAILS ================= -->
+
+                    <div class="details">
+
+
+                        <!-- PURITY -->
+
+                        <div>
+
+                            <span>
+                                Purity
+                            </span>
+
+                            <strong>
+                                22K Gold
+                            </strong>
+
+                        </div>
+
+
+                        <!-- WEIGHT -->
+
+                        <div>
+
+                            <span>
+                                Weight
+                            </span>
+
+                            <strong>
+                                5.20 gm
+                            </strong>
+
+                        </div>
+
+
+                        <!-- METAL -->
+
+                        <div>
+
+                            <span>
+                                Metal
+                            </span>
+
+                            <strong>
+                                Yellow Gold
+                            </strong>
+
+                        </div>
+
+
+                        <!-- CERTIFICATION -->
+
+                        <div>
+
+                            <span>
+                                Certification
+                            </span>
+
+                            <strong>
+                                BIS Hallmarked
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================= AVAILABILITY ================= -->
+
+                    <div class="availability">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <span>
+                            In Stock &nbsp; • &nbsp; Ready to Dispatch
+                        </span>
+
+                    </div>
+
+
+                    <!-- ================= BENEFITS ================= -->
+
+                    <div class="product-benefits">
+
+
+                        <div>
+
+                            <i class="fa-solid fa-shield-halved"></i>
+
+                            <span>
+                                100% Genuine Gold
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <i class="fa-solid fa-truck-fast"></i>
+
+                            <span>
+                                Insured Delivery
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <i class="fa-solid fa-award"></i>
+
+                            <span>
+                                BIS Certified
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================= PRICE ================= -->
+
+                    <div class="price"
+                        id="product-price">
+
+                        ₹45,999
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             DELIVERY ADDRESS
+        ================================================== -->
+
+        <div class="luxury-card">
+
+
+            <!-- HEADING -->
+
+            <div class="card-heading">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <h2>
+                    Delivery Address
+                </h2>
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <div class="form-grid">
+
+
+                <!-- FULL NAME -->
+
+                <div class="input-group">
+
+                    <label>
+                        Full Name
+                    </label>
+
+                    <input type="text"
+                        id="name"
+                        placeholder="Enter your full name">
+
+                </div>
+
+
+                <!-- MOBILE -->
+
+                <div class="input-group">
+
+                    <label>
+                        Mobile Number
+                    </label>
+
+                    <input type="tel"
+                        id="mobile"
+                        placeholder="Enter mobile number">
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="input-group full">
+
+                    <label>
+                        Email Address
+                    </label>
+
+                    <input type="email"
+                        id="email"
+                        placeholder="Enter email address">
+
+                </div>
+
+
+                <!-- ADDRESS -->
+
+                <div class="input-group full">
+
+                    <label>
+                        Address
+                    </label>
+
+                    <textarea id="address"
+                        placeholder="House No, Street, Area"></textarea>
+
+                </div>
+
+
+                <!-- CITY -->
+
+                <div class="input-group">
+
+                    <label>
+                        City
+                    </label>
+
+                    <input type="text"
+                        id="city"
+                        placeholder="City">
+
+                </div>
+
+
+                <!-- PIN CODE -->
+
+                <div class="input-group">
+
+                    <label>
+                        PIN Code
+                    </label>
+
+                    <input type="text"
+                        id="pincode"
+                        placeholder="PIN Code">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PAYMENT METHOD
+        ================================================== -->
+
+        <div class="luxury-card">
+
+
+            <!-- HEADING -->
+
+            <div class="card-heading">
+
+                <i class="fa-regular fa-credit-card"></i>
+
+                <h2>
+                    Payment Method
+                </h2>
+
+            </div>
+
+
+            <!-- CASH ON DELIVERY -->
+
+            <label class="payment-option">
+
+                <input type="radio"
+                    name="payment"
+                    value="cod"
+                    checked>
+
+
+                <div class="payment-icon">
+
+                    <i class="fa-solid fa-money-bill-wave"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Cash on Delivery
+                    </strong>
+
+                    <small>
+                        Pay when your jewellery arrives
+                    </small>
+
+                </div>
+
+            </label>
+
+
+
+            <!-- ONLINE PAYMENT -->
+
+            <label class="payment-option">
+
+                <input type="radio"
+                    name="payment"
+                    value="online">
+
+
+                <div class="payment-icon">
+
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Online Payment
+                    </strong>
+
+                    <small>
+                        UPI / Card / Net Banking
+                    </small>
+
+                </div>
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         RIGHT SIDE - ORDER SUMMARY
+    ====================================================== -->
+
+    <aside class="summary-card">
+
+
+        <!-- SUMMARY TITLE -->
+
+        <div class="summary-title">
+
+            <p>
+                ORDER SUMMARY
+            </p>
+
+            <h2>
+                Your Order
+            </h2>
+
+        </div>
+
+
+
+        <!-- ================= SUMMARY PRODUCT ================= -->
+
+        <div class="summary-product">
+
+
+            <img id="summary-image"
+                src="images/ring1.jpg"
+                alt="Product">
+
+
+            <div>
+
+                <h3 id="summary-name">
+                    Elegant Gold Ring
+                </h3>
+
+                <p>
+                    Qty: 1
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LINE -->
+
+        <div class="line"></div>
+
+
+
+        <!-- PRODUCT PRICE -->
+
+        <div class="summary-row">
+
+            <span>
+                Product Price
+                
+            </span>
+
+            <strong id="summary-price">
+                ₹45,999
+            </strong>
+
+        </div>
+
+
+<div class="summary-row">
+
+    <span>
+        Making Charges
+    </span>
+
+    <strong id="makingCharges">
+        ₹2,500
+    </strong>
+
+</div>
+
+
+
+        <!-- GST -->
+
+        <div class="summary-row">
+
+            <span>
+                GST (3%)
+            </span>
+
+            <strong id="gst">
+                ₹1,455
+            </strong>
+
+        </div>
+
+
+
+        <!-- DELIVERY -->
+
+        <div class="summary-row">
+
+            <span>
+                Delivery
+            </span>
+
+            <strong class="free">
+                FREE
+            </strong>
+
+        </div>
+
+
+
+        <!-- LINE -->
+
+        <div class="line"></div>
+
+
+
+        <!-- TOTAL -->
+
+        <div class="total-row">
+
+            <span>
+                Total Amount
+            </span>
+
+            <strong id="total">
+                ₹49,954
+            </strong>
+
+        </div>
+
+
+        <button class="place-order" onclick="placeOrder()">
+
+    <i class="fa-solid fa-lock"></i>
+    PLACE ORDER
+
+</button>
+
+
+
+        <!-- SECURE CHECKOUT -->
+
+        <div class="secure">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <div>
+
+                <strong>
+                    Secure Checkout
+                </strong>
+
+                <small>
+                    Your information is protected
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TRUST FEATURES -->
+
+        <div class="trust">
+
+
+            <div>
+
+                <i class="fa-solid fa-certificate"></i>
+
+                BIS Hallmarked
+
+            </div>
+
+
+            <div>
+
+                <i class="fa-solid fa-truck"></i>
+
+                Insured Delivery
+
+            </div>
+
+
+        </div>
+
+    </aside>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+
+    <!-- FOOTER LOGO -->
+
+    <div class="footer-logo">
+
+        <span>
+            Pushapa
+        </span>
+
+        <small>
+            JEWELLERS
+        </small>
+
+    </div>
+
+
+    <!-- DESCRIPTION -->
+
+    <p>
+        Timeless elegance crafted for every beautiful moment.
+    </p>
+
+
+    <!-- COPYRIGHT -->
+
+    <div class="footer-bottom">
+
+        © 2026 Pushapa Jewellers.
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+<script src="script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const puritySelect = document.getElementById("orderPurity");
+    const weightInput = document.getElementById("orderWeight");
+
+    const goldRateElement =
+        document.getElementById("orderGoldRate");
+
+    const goldValueElement =
+        document.getElementById("orderGoldValue");
+
+    const summaryPrice =
+        document.getElementById("summary-price");
+
+    const gstElement =
+        document.getElementById("gst");
+
+    const totalElement =
+        document.getElementById("total");
+
+    let gold22Rate = 0;
+    let gold24Rate = 0;
+
+    const MAKING_CHARGES = 2500;
+
+
+    // ================= PRODUCT NAME =================
+
+    const productName =
+        document.getElementById("product-name");
+
+    const summaryName =
+        document.getElementById("summary-name");
+
+
+    function cleanProductName(name) {
+
+        if (!name) return "";
+
+        return name
+            .replace(/\s*\d+\s*$/, "")
+            .trim();
+
+    }
+
+
+    if (productName) {
+
+        productName.textContent =
+            cleanProductName(
+                productName.textContent
+            );
+
+    }
+
+
+    if (summaryName) {
+
+        summaryName.textContent =
+            cleanProductName(
+                summaryName.textContent
+            );
+
+    }
+
+
+    // ================= FORMAT MONEY =================
+
+    function money(amount) {
+
+        return "₹" + Number(amount || 0)
+            .toLocaleString("en-IN", {
+                maximumFractionDigits: 2
+            });
+
+    }
+
+
+    // ================= LOAD GOLD RATES =================
+
+    async function loadGoldRates() {
+
+        try {
+
+            const response =
+                await fetch(
+                    "http://localhost:5000/gold-rates"
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Gold rates could not be loaded."
+                );
+
+            }
+
+
+            const data =
+                await response.json();
+
+
+            gold22Rate =
+                Number(data.gold22k) || 0;
+
+            gold24Rate =
+                Number(data.gold24k) || 0;
+
+
+            console.log(
+                "22K RATE:",
+                gold22Rate
+            );
+
+            console.log(
+                "24K RATE:",
+                gold24Rate
+            );
+
+
+            calculatePrice();
+
+
+        } catch (error) {
+
+            console.error(
+                "GOLD RATE ERROR:",
+                error
+            );
+
+            if (goldRateElement) {
+
+                goldRateElement.textContent =
+                    "Rate unavailable";
+
+            }
+
+        }
+
+    }
+
+
+    // ================= CALCULATE =================
+
+    function calculatePrice() {
+
+        const purity =
+            puritySelect
+                ? puritySelect.value
+                : "22K";
+
+
+        const weight =
+            weightInput
+                ? parseFloat(weightInput.value) || 0
+                : 0;
+
+
+        let selectedRate = 0;
+
+
+        if (purity === "24K") {
+
+            selectedRate =
+                gold24Rate;
+
+        } else {
+
+            selectedRate =
+                gold22Rate;
+
+        }
+
+
+        // GOLD VALUE
+
+        const goldValue =
+            selectedRate * weight;
+
+
+        // GST = 3% ON GOLD + MAKING
+
+        const taxableAmount =
+            goldValue + MAKING_CHARGES;
+
+
+        const gst =
+            taxableAmount * 0.03;
+
+
+        // FINAL TOTAL
+
+        const finalTotal =
+            taxableAmount + gst;
+
+
+        console.log({
+            purity,
+            weight,
+            selectedRate,
+            goldValue,
+            makingCharges: MAKING_CHARGES,
+            gst,
+            finalTotal
+        });
+
+
+        // ================= DISPLAY RATE =================
+
+        if (goldRateElement) {
+
+            goldRateElement.textContent =
+                money(selectedRate) +
+                " / gram";
+
+        }
+
+
+        // ================= DISPLAY GOLD VALUE =================
+
+        if (goldValueElement) {
+
+            goldValueElement.textContent =
+                money(goldValue);
+
+        }
+
+
+        // ================= PRODUCT PRICE =================
+
+        if (summaryPrice) {
+
+            summaryPrice.textContent =
+                money(goldValue);
+
+        }
+
+
+        // ================= GST =================
+
+        if (gstElement) {
+
+            gstElement.textContent =
+                money(gst);
+
+        }
+
+
+        // ================= TOTAL =================
+
+        if (totalElement) {
+
+            totalElement.textContent =
+                money(finalTotal);
+
+        }
+
+    }
+
+
+    // ================= PURITY CHANGE =================
+
+    if (puritySelect) {
+
+        puritySelect.addEventListener(
+            "change",
+            calculatePrice
+        );
+
+    }
+
+
+    // ================= WEIGHT CHANGE =================
+
+    if (weightInput) {
+
+        weightInput.addEventListener(
+            "input",
+            calculatePrice
+        );
+
+    }
+
+
+    // ================= START =================
+
+    loadGoldRates();
+
+});
+</script>
+</body>
+
+</html>

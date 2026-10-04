@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pendants | Pushapa Jewellers</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body class="category-page">
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<nav class="navbar">
+
+    <!-- Logo Left Side -->
+    <div class="logo">
+
+        <a href="index.html">
+
+            <div class="logo">
+                <img src="images/logo.png" alt="Pushapa Jewellers">
+                <span>Pushapa Jewellers</span>
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <!-- Menu Button -->
+    <div class="menu-btn">
+        ☰
+    </div>
+
+
+    <!-- Menu Right Side -->
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="login.html">Login</a>
+        </li>
+
+        <li>
+            <a href="product.html">Product</a>
+        </li>
+
+        <li>
+            <a href="about.html">About</a>
+        </li>
+
+        <li>
+            <a href="contact.html">Contact</a>
+        </li>
+
+        <!-- Wishlist -->
+        <li>
+            <a href="wishlist.html"
+               title="Wishlist"
+               class="nav-icon">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </a>
+        </li>
+
+<li>
+    <a href="my-orders.html" title="My Orders" class="nav-icon">
+        <i class="fa-solid fa-box-open"></i>
+    </a>
+</li>
+
+        <!-- Cart -->
+        <li>
+            <a href="cart.html"
+               title="Cart"
+               class="nav-icon cart-icon">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span id="cart-count">0</span>
+
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+</header>
+
+
+
+<!-- ================= BACK BUTTON ================= -->
+
+<div class="back-area">
+
+    <a href="product.html" class="back-btn">
+        ❮
+    </a>
+
+</div>
+
+
+
+
+<!-- =====================================================
+     PUSHAPA JEWELLERS - PENDANTS LUXURY HERO
+     ===================================================== -->
+
+<section class="rings-luxury-hero pendants-luxury-hero">
+
+    
+    <div class="rings-hero-content">
+
+        <div class="rings-collection-label">
+            <span></span>
+            ✦ EXQUISITE COLLECTION ✦
+            <span></span>
+        </div>
+
+        <h1>
+            <small>OUR</small>
+            PENDANTS
+        </h1>
+
+        <div class="rings-title-decoration">
+            <span></span>
+            ✦
+            <span></span>
+        </div>
+
+        <p class="rings-hero-description">
+            Discover our exquisite collection of pendants,
+            crafted to add timeless elegance to every occasion.
+        </p>
+
+        <div class="rings-hero-buttons">
+
+            <a href="#pendantProducts"
+               class="rings-hero-btn rings-primary-btn">
+                SHOP COLLECTION
+                <span>→</span>
+            </a>
+
+            <a href="product.html"
+               class="rings-hero-btn rings-secondary-btn">
+                VIEW ALL JEWELLERY
+            </a>
+
+        </div>
+
+        <div class="rings-hero-features">
+
+            <div class="rings-feature">
+                <div class="rings-feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <strong>BIS HALLMARKED</strong>
+            </div>
+
+            <div class="rings-feature-divider"></div>
+
+            <div class="rings-feature">
+                <div class="rings-feature-icon">
+                    <i class="fa-regular fa-gem"></i>
+                </div>
+                <strong>CERTIFIED JEWELLERY</strong>
+            </div>
+
+            <div class="rings-feature-divider"></div>
+
+            <div class="rings-feature">
+                <div class="rings-feature-icon">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <strong>PREMIUM CRAFTSMANSHIP</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="hero-bottom-line"></div>
+
+</section>
+
+
+<!-- ================= PENDANT SECTION ================= -->
+
+<section class="products">
+
+    <h2 class="title">
+        Our Pendants
+    </h2>
+
+
+    <div class="product-container category-product-container"
+     id="pendantProducts"
+     data-category="pendants">
+</div>
+
+
+        <!-- Pendant 1 -->
+
+        <div class="card">
+
+            <button class="wishlist-btn"
+                type="button"
+                onclick="toggleWishlist(this, 'Pendant 1', 'images/pendants/pendant1.jpg', 8999)">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+            <img src="images/pendants/pendant1.jpg">
+
+            <p class="price">₹8999</p>
+
+            <button class="view-btn"
+                onclick='viewDetails({
+                    image:"images/pendants/pendant1.jpg",
+                    name:"Pendant 1",
+                    category:"Pendant",
+                    price:8999
+                })'>
+
+                View Details
+
+            </button>
+
+            <button class="cart-btn">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+
+        <!-- Pendant 2 -->
+
+        <div class="card">
+
+            <button class="wishlist-btn"
+                type="button"
+                onclick="toggleWishlist(this, 'Pendant 2', 'images/pendants/pendant2.jpg', 10999)">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+            <img src="images/pendants/pendant2.jpg">
+
+            <p class="price">₹10999</p>
+
+            <button class="view-btn"
+                onclick='viewDetails({
+                    image:"images/pendants/pendant2.jpg",
+                    name:"Pendant 2",
+                    category:"Pendant",
+                    price:10999
+                })'>
+
+                View Details
+
+            </button>
+
+            <button class="cart-btn">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+
+        <!-- Pendant 3 -->
+
+        <div class="card">
+
+            <button class="wishlist-btn"
+                type="button"
+                onclick="toggleWishlist(this, 'Pendant 3', 'images/pendants/pendant3.jpg', 12999)">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+            <img src="images/pendants/pendant3.jpg">
+
+            <p class="price">₹12999</p>
+
+            <button class="view-btn"
+                onclick='viewDetails({
+                    image:"images/pendants/pendant3.jpg",
+                    name:"Pendant 3",
+                    category:"Pendant",
+                    price:12999
+                })'>
+
+                View Details
+
+            </button>
+
+            <button class="cart-btn">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+
+        <!-- Pendant 4 -->
+
+        <div class="card">
+
+            <button class="wishlist-btn"
+                type="button"
+                onclick="toggleWishlist(this, 'Pendant 4', 'images/pendants/pendant4.jpg', 14999)">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+            <img src="images/pendants/pendant4.jpg">
+
+            <p class="price">₹14999</p>
+
+            <button class="view-btn"
+                onclick='viewDetails({
+                    image:"images/pendants/pendant4.jpg",
+                    name:"Pendant 4",
+                    category:"Pendant",
+                    price:14999
+                })'>
+
+                View Details
+
+            </button>
+
+            <button class="cart-btn">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+
+        <!-- Pendant 5 -->
+
+        <div class="card">
+
+            <button class="wishlist-btn"
+                type="button"
+                onclick="toggleWishlist(this, 'Pendant 5', 'images/pendants/pendant5.jpg', 16999)">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+            <img src="images/pendants/pendant5.jpg">
+
+            <p class="price">₹16999</p>
+
+            <button class="view-btn"
+                onclick='viewDetails({
+                    image:"images/pendants/pendant5.jpg",
+                    name:"Pendant 5",
+                    category:"Pendant",
+                    price:16999
+                })'>
+
+                View Details
+
+            </button>
+
+            <button class="cart-btn">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+
+        <!-- Pendant 6 -->
+
+        <div class="card">
+
+            <button class="wishlist-btn"
+                type="button"
+                onclick="toggleWishlist(this, 'Pendant 6', 'images/pendants/pendant6.jpg', 18999)">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+            <img src="images/pendants/pendant6.jpg">
+
+            <p class="price">₹18999</p>
+
+            <button class="view-btn"
+                onclick='viewDetails({
+                    image:"images/pendants/pendant6.jpg",
+                    name:"Pendant 6",
+                    category:"Pendant",
+                    price:18999
+                })'>
+
+                View Details
+
+            </button>
+
+            <button class="cart-btn">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+
+        <!-- Pendant 7 -->
+
+        <div class="card">
+
+            <button class="wishlist-btn"
+                type="button"
+                onclick="toggleWishlist(this, 'Pendant 7', 'images/pendants/pendant7.jpg', 20999)">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+            <img src="images/pendants/pendant7.jpg">
+
+            <p class="price">₹20999</p>
+
+            <button class="view-btn"
+                onclick='viewDetails({
+                    image:"images/pendants/pendant7.jpg",
+                    name:"Pendant 7",
+                    category:"Pendant",
+                    price:20999
+                })'>
+
+                View Details
+
+            </button>
+
+            <button class="cart-btn">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+
+        <!-- Pendant 8 -->
+
+        <div class="card">
+
+            <button class="wishlist-btn"
+                type="button"
+                onclick="toggleWishlist(this, 'Pendant 8', 'images/pendants/pendant8.jpg', 22999)">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+            <img src="images/pendants/pendant8.jpg">
+
+            <p class="price">₹22999</p>
+
+            <button class="view-btn"
+                onclick='viewDetails({
+                    image:"images/pendants/pendant8.jpg",
+                    name:"Pendant 8",
+                    category:"Pendant",
+                    price:22999
+                })'>
+
+                View Details
+
+            </button>
+
+            <button class="cart-btn">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+
+        <!-- Pendant 9 -->
+
+        <div class="card">
+
+            <button class="wishlist-btn"
+                type="button"
+                onclick="toggleWishlist(this, 'Pendant 9', 'images/pendants/pendant9.jpg', 25999)">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+            <img src="images/pendants/pendant9.jpg">
+
+            <p class="price">₹25999</p>
+
+            <button class="view-btn"
+                onclick='viewDetails({
+                    image:"images/pendants/pendant9.jpg",
+                    name:"Pendant 9",
+                    category:"Pendant",
+                    price:25999
+                })'>
+
+                View Details
+
+            </button>
+
+            <button class="cart-btn">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+
+        <!-- Pendant 10 -->
+
+        <div class="card">
+
+            <button class="wishlist-btn"
+                type="button"
+                onclick="toggleWishlist(this, 'Pendant 10', 'images/pendants/pendant10.jpg', 28999)">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+            <img src="images/pendants/pendant10.jpg">
+
+            <p class="price">₹28999</p>
+
+            <button class="view-btn"
+                onclick='viewDetails({
+                    image:"images/pendants/pendant10.jpg",
+                    name:"Pendant 10",
+                    category:"Pendant",
+                    price:28999
+                })'>
+
+                View Details
+
+            </button>
+
+            <button class="cart-btn">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+
+        <!-- Pendant 11 -->
+
+        <div class="card">
+
+            <button class="wishlist-btn"
+                type="button"
+                onclick="toggleWishlist(this, 'Pendant 11', 'images/pendants/pendant11.jpg', 32999)">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+            <img src="images/pendants/pendant11.jpg">
+
+            <p class="price">₹32999</p>
+
+            <button class="view-btn"
+                onclick='viewDetails({
+                    image:"images/pendants/pendant11.jpg",
+                    name:"Pendant 11",
+                    category:"Pendant",
+                    price:32999
+                })'>
+
+                View Details
+
+            </button>
+
+            <button class="cart-btn">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+
+        <!-- Pendant 12 -->
+
+        <div class="card">
+
+            <button class="wishlist-btn"
+                type="button"
+                onclick="toggleWishlist(this, 'Pendant 12', 'images/pendants/pendant12.jpg', 35999)">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+            <img src="images/pendants/pendant12.jpg">
+
+            <p class="price">₹35999</p>
+
+            <button class="view-btn"
+                onclick='viewDetails({
+                    image:"images/pendants/pendant12.jpg",
+                    name:"Pendant 12",
+                    category:"Pendant",
+                    price:35999
+                })'>
+
+                View Details
+
+            </button>
+
+            <button class="cart-btn">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 Pushapa Jewellers. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+
+<!-- ================= SCRIPT ================= -->
+
+<script src="script.js"></script>
+<script src="category-pages.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chains | Pushapa Jewellers</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body class="category-page">
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<nav class="navbar">
+
+    <!-- Logo Left Side -->
+    <div class="logo">
+
+        <a href="index.html">
+
+            <div class="logo">
+                <img src="images/logo.png" alt="Pushapa Jewellers">
+                <span>Pushapa Jewellers</span>
+            </div>
+
+        </a>
+
+    </div>
+
+    <!-- Menu Button -->
+    <div class="menu-btn">
+        ☰
+    </div>
+
+    <!-- Menu Right Side -->
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="login.html">Login</a>
+        </li>
+
+        <li>
+            <a href="product.html">Product</a>
+        </li>
+
+        <li>
+            <a href="about.html">About</a>
+        </li>
+
+        <li>
+            <a href="contact.html">Contact</a>
+        </li>
+
+        <!-- Wishlist -->
+        <li>
+            <a href="wishlist.html"
+               title="Wishlist"
+               class="nav-icon">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </a>
+        </li>
+<li>
+    <a href="my-orders.html" title="My Orders" class="nav-icon">
+        <i class="fa-solid fa-box-open"></i>
+    </a>
+</li>
+
+        <!-- Cart -->
+        <li>
+            <a href="cart.html"
+               title="Cart"
+               class="nav-icon cart-icon">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span id="cart-count">0</span>
+
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+</header>
+
+
+<!-- ================= BACK BUTTON ================= -->
+
+<div class="back-area">
+
+    <a href="product.html" class="back-btn">
+        ❮
+    </a>
+
+</div>
+
+
+<!-- =====================================================
+     PUSHAPA JEWELLERS - CHAINS LUXURY HERO
+     ===================================================== -->
+
+<section class="rings-luxury-hero chains-luxury-hero">
+
+    
+
+    <div class="rings-hero-content">
+
+        <div class="rings-collection-label">
+            <span></span>
+            ✦ EXQUISITE COLLECTION ✦
+            <span></span>
+        </div>
+
+        <h1>
+            <small>OUR</small>
+            CHAINS
+        </h1>
+
+        <div class="rings-title-decoration">
+            <span></span>
+            ✦
+            <span></span>
+        </div>
+
+        <p class="rings-hero-description">
+            Discover our exquisite collection of chains,
+            crafted to add timeless elegance to every occasion.
+        </p>
+
+        <div class="rings-hero-buttons">
+
+            <a href="#chainProducts"
+               class="rings-hero-btn rings-primary-btn">
+                SHOP COLLECTION
+                <span>→</span>
+            </a>
+
+            <a href="product.html"
+               class="rings-hero-btn rings-secondary-btn">
+                VIEW ALL JEWELLERY
+            </a>
+
+        </div>
+
+        <div class="rings-hero-features">
+
+            <div class="rings-feature">
+                <div class="rings-feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <strong>BIS HALLMARKED</strong>
+            </div>
+
+            <div class="rings-feature-divider"></div>
+
+            <div class="rings-feature">
+                <div class="rings-feature-icon">
+                    <i class="fa-regular fa-gem"></i>
+                </div>
+                <strong>CERTIFIED JEWELLERY</strong>
+            </div>
+
+            <div class="rings-feature-divider"></div>
+
+            <div class="rings-feature">
+                <div class="rings-feature-icon">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <strong>PREMIUM CRAFTSMANSHIP</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="hero-bottom-line"></div>
+
+</section>
+
+
+<!-- ================= CHAIN SECTION ================= -->
+
+<section class="products">
+
+<h2 class="title">
+    Our Chains
+</h2>
+
+<div class="product-container category-product-container"
+     id="chainProducts"
+     data-category="chains">
+
+
+
+<!-- ================= CHAIN 1 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Chain 1', 'images/chains/chain1.jpg', 8999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/chains/chain1.jpg">
+
+    <p class="price">₹8999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/chains/chain1.jpg",
+            name:"Chain 1",
+            category:"Chain",
+            price:8999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= CHAIN 2 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Chain 2', 'images/chains/chain2.jpg', 10999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/chains/chain2.jpg">
+
+    <p class="price">₹10999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/chains/chain2.jpg",
+            name:"Chain 2",
+            category:"Chain",
+            price:10999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= CHAIN 3 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Chain 3', 'images/chains/chain3.jpg', 12999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/chains/chain3.jpg">
+
+    <p class="price">₹12999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/chains/chain3.jpg",
+            name:"Chain 3",
+            category:"Chain",
+            price:12999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= CHAIN 4 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Chain 4', 'images/chains/chain4.jpg', 14999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/chains/chain4.jpg">
+
+    <p class="price">₹14999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/chains/chain4.jpg",
+            name:"Chain 4",
+            category:"Chain",
+            price:14999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= CHAIN 5 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Chain 5', 'images/chains/chain5.jpg', 16999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/chains/chain5.jpg">
+
+    <p class="price">₹16999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/chains/chain5.jpg",
+            name:"Chain 5",
+            category:"Chain",
+            price:16999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= CHAIN 6 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Chain 6', 'images/chains/chain6.jpg', 18999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/chains/chain6.jpg">
+
+    <p class="price">₹18999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/chains/chain6.jpg",
+            name:"Chain 6",
+            category:"Chain",
+            price:18999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= CHAIN 7 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Chain 7', 'images/chains/chain7.jpg', 20999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/chains/chain7.jpg">
+
+    <p class="price">₹20999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/chains/chain7.jpg",
+            name:"Chain 7",
+            category:"Chain",
+            price:20999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= CHAIN 8 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Chain 8', 'images/chains/chain8.jpg', 22999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/chains/chain8.jpg">
+
+    <p class="price">₹22999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/chains/chain8.jpg",
+            name:"Chain 8",
+            category:"Chain",
+            price:22999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= CHAIN 9 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Chain 9', 'images/chains/chain9.jpg', 25999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/chains/chain9.jpg">
+
+    <p class="price">₹25999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/chains/chain9.jpg",
+            name:"Chain 9",
+            category:"Chain",
+            price:25999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= CHAIN 10 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Chain 10', 'images/chains/chain10.jpg', 28999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/chains/chain10.jpg">
+
+    <p class="price">₹28999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/chains/chain10.jpg",
+            name:"Chain 10",
+            category:"Chain",
+            price:28999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= CHAIN 11 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Chain 11', 'images/chains/chain11.jpg', 31999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/chains/chain11.jpg">
+
+    <p class="price">₹31999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/chains/chain11.jpg",
+            name:"Chain 11",
+            category:"Chain",
+            price:31999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= CHAIN 12 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Chain 12', 'images/chains/chain12.jpg', 34999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/chains/chain12.jpg">
+
+    <p class="price">₹34999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/chains/chain12.jpg",
+            name:"Chain 12",
+            category:"Chain",
+            price:34999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<p>
+© 2026 Pushapa Jewellers. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="script.js"></script>
+<script src="category-pages.js"></script>
+
+</body>
+
+</html>

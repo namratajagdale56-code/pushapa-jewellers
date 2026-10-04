@@ -1,0 +1,1382 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Details | Pushapa Jewellers</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        /* =====================================================
+           ORDER DETAILS PAGE
+           ===================================================== */
+
+        body.order-details-page {
+            background:
+                radial-gradient(circle at top right, rgba(212,175,55,0.08), transparent 30%),
+                #080808;
+            color: #fff;
+        }
+
+        /* ================= PAGE WRAPPER ================= */
+
+        .order-details-wrapper {
+            width: 92%;
+            max-width: 1150px;
+            margin: auto;
+            padding: 120px 0 70px;
+        }
+
+
+        /* ================= PAGE TITLE ================= */
+
+        .details-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .details-heading .brand-small {
+            color: #D4AF37;
+            letter-spacing: 4px;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .details-heading h1 {
+            font-size: 40px;
+            margin: 8px 0;
+            color: #F5D76E;
+            font-family: Georgia, serif;
+        }
+
+        .details-heading p {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+
+        /* ================= MAIN ORDER BOX ================= */
+
+        .order-main-card {
+            display: grid;
+            grid-template-columns: 330px 1fr;
+            gap: 35px;
+
+            padding: 30px;
+
+            background: linear-gradient(
+                135deg,
+                #0d0d0d,
+                #171717,
+                #0b0b0b
+            );
+
+            border: 1px solid rgba(212,175,55,0.4);
+            border-radius: 18px;
+
+            box-shadow: 0 15px 40px rgba(0,0,0,0.55);
+        }
+
+
+        /* ================= PRODUCT IMAGE ================= */
+
+        .main-product-image {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+
+            border-radius: 14px;
+
+            border: 1px solid rgba(212,175,55,0.5);
+
+            box-shadow:
+                0 0 25px rgba(212,175,55,0.12);
+        }
+
+
+        /* ================= ORDER INFO ================= */
+
+        .order-main-info h2 {
+            color: #F5D76E;
+            font-size: 27px;
+            margin: 5px 0 18px;
+            font-family: Georgia, serif;
+        }
+
+        .order-number {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .order-number span {
+            color: #D4AF37;
+        }
+
+        .order-date {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .confirmed-badge {
+            display: inline-block;
+
+            padding: 7px 15px;
+
+            border: 1px solid #D4AF37;
+            border-radius: 30px;
+
+            color: #F5D76E;
+            font-size: 12px;
+
+            margin-bottom: 22px;
+        }
+
+
+        /* ================= PRICE ================= */
+
+        .price-box {
+            padding: 18px;
+
+            background: rgba(212,175,55,0.05);
+
+            border: 1px solid rgba(212,175,55,0.18);
+
+            border-radius: 12px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 7px 0;
+
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        .price-row strong {
+            color: #eee;
+        }
+
+        .price-row.total {
+            margin-top: 10px;
+            padding-top: 15px;
+
+            border-top: 1px solid rgba(212,175,55,0.25);
+
+            font-size: 18px;
+            color: #F5D76E;
+        }
+
+        .price-row.total strong {
+            color: #F5D76E;
+        }
+
+
+        /* ================= SECTION ================= */
+
+        .details-section {
+            margin-top: 28px;
+
+            padding: 28px;
+
+            background: #0d0d0d;
+
+            border: 1px solid rgba(212,175,55,0.25);
+
+            border-radius: 16px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: #F5D76E;
+
+            font-size: 21px;
+
+            margin-bottom: 25px;
+        }
+
+        .section-title i {
+            color: #D4AF37;
+        }
+
+
+        /* ================= TRACKING ================= */
+
+        .tracking {
+            display: flex;
+            justify-content: space-between;
+
+            position: relative;
+            padding: 0 30px;
+        }
+
+        .tracking::before {
+            content: "";
+
+            position: absolute;
+
+            top: 17px;
+            left: 70px;
+            right: 70px;
+
+            height: 2px;
+
+            background: rgba(212,175,55,0.3);
+        }
+
+        .tracking-step {
+            position: relative;
+            z-index: 2;
+
+            text-align: center;
+
+            width: 25%;
+        }
+
+        .tracking-icon {
+            width: 35px;
+            height: 35px;
+
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #D4AF37;
+            color: #080808;
+
+            font-size: 14px;
+
+            box-shadow: 0 0 15px rgba(212,175,55,0.35);
+        }
+
+        .tracking-step h4 {
+            color: #eee;
+            font-size: 13px;
+            margin: 10px 0 4px;
+        }
+
+        .tracking-step p {
+            color: #777;
+            font-size: 11px;
+        }
+
+
+        /* ================= DELIVERY ================= */
+
+        .delivery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+        .info-box {
+            padding: 18px;
+
+            background: #111;
+
+            border: 1px solid rgba(212,175,55,0.15);
+
+            border-radius: 12px;
+        }
+
+        .info-box label {
+            display: block;
+
+            color: #777;
+
+            font-size: 12px;
+
+            margin-bottom: 7px;
+        }
+
+        .info-box p {
+            margin: 0;
+
+            color: #eee;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+        .full-address {
+            grid-column: 1 / -1;
+        }
+
+
+        /* ================= PAYMENT ================= */
+
+        .payment-info {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 18px;
+        }
+
+
+        /* ================= ACTIONS ================= */
+
+        .order-actions-bottom {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            margin-top: 35px;
+        }
+
+        .order-btn {
+            min-width: 190px;
+
+            padding: 13px 22px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            text-align: center;
+        }
+
+        .reorder-btn {
+            background: #D4AF37;
+            color: #080808;
+
+            border: 1px solid #D4AF37;
+        }
+
+        .reorder-btn:hover {
+            background: #F5D76E;
+            transform: translateY(-2px);
+        }
+
+        .support-btn {
+            background: transparent;
+
+            color: #F5D76E;
+
+            border: 1px solid #D4AF37;
+        }
+
+        .support-btn:hover {
+            background: rgba(212,175,55,0.1);
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px) {
+
+            .order-details-wrapper {
+                width: 92%;
+                padding-top: 105px;
+            }
+
+            .details-heading h1 {
+                font-size: 30px;
+            }
+
+            .order-main-card {
+                grid-template-columns: 1fr;
+
+                padding: 20px;
+
+                gap: 22px;
+            }
+
+            .main-product-image {
+                height: 280px;
+            }
+
+            .order-main-info h2 {
+                font-size: 23px;
+            }
+
+            .tracking {
+                padding: 0;
+            }
+
+            .tracking::before {
+                left: 30px;
+                right: 30px;
+            }
+
+            .tracking-step h4 {
+                font-size: 11px;
+            }
+
+            .tracking-step p {
+                font-size: 9px;
+            }
+
+            .tracking-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .delivery-grid,
+            .payment-info {
+                grid-template-columns: 1fr;
+            }
+
+            .full-address {
+                grid-column: auto;
+            }
+
+            .order-actions-bottom {
+                flex-direction: column;
+            }
+
+            .order-btn {
+                width: 100%;
+            }
+        }
+
+
+        @media (max-width: 420px) {
+
+            .order-main-card {
+                padding: 15px;
+            }
+
+            .main-product-image {
+                height: 230px;
+            }
+
+            .details-section {
+                padding: 20px 15px;
+            }
+
+            .tracking-step h4 {
+                font-size: 9px;
+            }
+
+            .tracking-step p {
+                display: none;
+            }
+        }
+
+/* =====================================================
+   ORDER DETAILS - MOBILE RESPONSIVE FIX
+   ===================================================== */
+
+@media screen and (max-width: 768px) {
+
+    /* PAGE */
+    body.order-details-page {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .order-details-wrapper {
+        width: 92% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 115px 0 50px !important;
+    }
+
+
+    /* HEADING */
+
+    .details-heading {
+        margin-bottom: 25px !important;
+        padding: 0 5px;
+    }
+
+    .details-heading .brand-small {
+        font-size: 10px !important;
+        letter-spacing: 3px !important;
+    }
+
+    .details-heading h1 {
+        font-size: 28px !important;
+        line-height: 1.2;
+        margin: 7px 0 !important;
+    }
+
+    .details-heading p {
+        font-size: 12px !important;
+        line-height: 1.5;
+    }
+
+
+    /* MAIN ORDER CARD */
+
+    .order-main-card {
+        width: 100% !important;
+        box-sizing: border-box !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+
+        gap: 20px !important;
+        padding: 16px !important;
+
+        border-radius: 15px !important;
+    }
+
+
+    /* PRODUCT IMAGE */
+
+    .main-product-image {
+        display: block !important;
+
+        width: 100% !important;
+        height: 260px !important;
+
+        object-fit: cover !important;
+
+        border-radius: 12px !important;
+    }
+
+
+    /* ORDER INFO */
+
+    .order-main-info {
+        width: 100% !important;
+    }
+
+    .order-main-info h2 {
+        font-size: 22px !important;
+        line-height: 1.3;
+        margin-bottom: 12px !important;
+
+        word-break: break-word;
+    }
+
+    .order-number,
+    .order-date {
+        font-size: 12px !important;
+    }
+
+    .confirmed-badge {
+        font-size: 11px !important;
+        padding: 6px 12px !important;
+        margin-bottom: 15px !important;
+    }
+
+
+    /* PRICE BOX */
+
+    .price-box {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 13px !important;
+    }
+
+    .price-row {
+        font-size: 13px !important;
+        gap: 10px;
+    }
+
+    .price-row.total {
+        font-size: 16px !important;
+    }
+
+
+    /* SECTIONS */
+
+    .details-section {
+        width: 100% !important;
+        box-sizing: border-box !important;
+
+        margin-top: 20px !important;
+        padding: 20px 15px !important;
+
+        border-radius: 14px !important;
+    }
+
+    .section-title {
+        font-size: 18px !important;
+        margin-bottom: 20px !important;
+    }
+
+
+    /* TRACKING */
+
+    .tracking {
+        width: 100% !important;
+
+        display: flex !important;
+        justify-content: space-between !important;
+
+        padding: 0 !important;
+    }
+
+    .tracking::before {
+        left: 25px !important;
+        right: 25px !important;
+        top: 16px !important;
+    }
+
+    .tracking-step {
+        width: 25% !important;
+        min-width: 0 !important;
+    }
+
+    .tracking-icon {
+        width: 32px !important;
+        height: 32px !important;
+
+        font-size: 12px !important;
+    }
+
+    .tracking-step h4 {
+        font-size: 9px !important;
+        line-height: 1.3 !important;
+        margin-top: 8px !important;
+    }
+
+    .tracking-step p {
+        display: none !important;
+    }
+
+
+    /* DELIVERY DETAILS */
+
+    .delivery-grid {
+        display: grid !important;
+
+        grid-template-columns: 1fr !important;
+
+        gap: 12px !important;
+    }
+
+    .info-box {
+        width: 100% !important;
+        box-sizing: border-box !important;
+
+        padding: 14px !important;
+    }
+
+    .info-box label {
+        font-size: 11px !important;
+    }
+
+    .info-box p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+
+        word-break: break-word;
+    }
+
+    .full-address {
+        grid-column: auto !important;
+    }
+
+
+    /* PAYMENT */
+
+    .payment-info {
+        display: grid !important;
+
+        grid-template-columns: 1fr !important;
+
+        gap: 12px !important;
+    }
+
+
+    /* BOTTOM BUTTONS */
+
+    .order-actions-bottom {
+        width: 100% !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+
+        gap: 12px !important;
+
+        margin-top: 25px !important;
+    }
+
+    .order-btn {
+        width: 100% !important;
+        min-width: 0 !important;
+
+        box-sizing: border-box !important;
+
+        padding: 13px 15px !important;
+
+        font-size: 13px !important;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL PHONES
+   ===================================================== */
+
+@media screen and (max-width: 420px) {
+
+    .order-details-wrapper {
+        width: 94% !important;
+        padding-top: 105px !important;
+    }
+
+    .details-heading h1 {
+        font-size: 25px !important;
+    }
+
+    .details-heading p {
+        font-size: 11px !important;
+    }
+
+    .order-main-card {
+        padding: 13px !important;
+    }
+
+    .main-product-image {
+        height: 220px !important;
+    }
+
+    .order-main-info h2 {
+        font-size: 20px !important;
+    }
+
+    .price-row {
+        font-size: 12px !important;
+    }
+
+    .price-row.total {
+        font-size: 15px !important;
+    }
+
+    .details-section {
+        padding: 17px 12px !important;
+    }
+
+    .section-title {
+        font-size: 16px !important;
+    }
+
+    .tracking::before {
+        left: 20px !important;
+        right: 20px !important;
+    }
+
+    .tracking-icon {
+        width: 29px !important;
+        height: 29px !important;
+        font-size: 10px !important;
+    }
+
+    .tracking-step h4 {
+        font-size: 8px !important;
+    }
+
+}
+
+
+/* ==========================================
+   FORCE 2 COLUMN DELIVERY DETAILS - MOBILE
+   ========================================== */
+
+@media only screen and (max-width: 768px) {
+
+    body.order-details-page .delivery-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-auto-flow: row !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    body.order-details-page .delivery-grid .info-box {
+        width: auto !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    body.order-details-page .delivery-grid .full-address {
+        grid-column: 1 / 3 !important;
+        width: 100% !important;
+    }
+
+}
+
+
+    </style>
+
+</head>
+
+
+<body class="order-details-page">
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<nav class="navbar">
+
+    <!-- Logo Left Side -->
+    <div class="logo">
+        <a href="index.html">
+            <div class="logo">
+                <img src="images/logo.png" alt="Pushapa Jewellers">
+                <span>Pushapa Jewellers</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="menu-btn">
+        ☰
+    </div>
+
+    <!-- Menu Right Side -->
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="login.html">Login</a>
+        </li>
+
+        <li>
+            <a href="product.html">Product</a>
+        </li>
+
+        <li>
+            <a href="about.html">About</a>
+        </li>
+
+        <li>
+            <a href="contact.html">Contact</a>
+        </li>
+
+        <!-- Wishlist -->
+        <li>
+            <a href="wishlist.html" title="Wishlist" class="nav-icon">
+                <i class="fa-regular fa-heart"></i>
+            </a>
+        </li>
+
+        <!-- My Orders -->
+        <li>
+            <a href="my-orders.html" title="My Orders" class="nav-icon active">
+                <i class="fa-solid fa-box-open"></i>
+            </a>
+        </li>
+
+        <!-- Cart -->
+        <li>
+            <a href="cart.html" title="Cart" class="nav-icon cart-icon">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+</header>
+
+
+<!-- ================= ORDER DETAILS ================= -->
+
+<main class="order-details-wrapper">
+
+    <div class="details-heading">
+
+        <span class="brand-small">
+            Pushapa Jewellers
+        </span>
+
+        <h1>Order Details</h1>
+
+        <p>Your jewellery order information & delivery details</p>
+
+    </div>
+
+
+    <!-- MAIN ORDER CARD -->
+
+    <div class="order-main-card">
+
+        <div>
+            <img
+                id="main-product-image"
+                class="main-product-image"
+                src=""
+                alt="Product">
+        </div>
+
+
+        <div class="order-main-info">
+
+            <h2 id="product-name">
+                Jewellery
+            </h2>
+
+            <div class="order-number">
+                Order ID:
+                <span id="order-id">-</span>
+            </div>
+
+            <div class="order-date">
+                Ordered on:
+                <span id="order-date">-</span>
+            </div>
+
+            <span class="confirmed-badge" id="order-status">
+                Confirmed
+            </span>
+
+
+            <div class="price-box">
+
+                <div class="price-row">
+                    <span>Product Price</span>
+                    <strong id="product-price">₹0</strong>
+                </div>
+
+                <div class="price-row">
+                    <span>Quantity</span>
+                    <strong id="product-quantity">1</strong>
+                </div>
+
+                <div class="price-row">
+                    <span>GST</span>
+                    <strong id="gst-amount">₹0</strong>
+                </div>
+
+                <div class="price-row">
+                    <span>Delivery Charges</span>
+                    <strong id="delivery-charge">Free</strong>
+                </div>
+
+                <div class="price-row total">
+                    <span>Final Total</span>
+                    <strong id="final-total">₹0</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TRACKING ================= -->
+
+    <section class="details-section">
+
+        <div class="section-title">
+            <i class="fa-solid fa-truck-fast"></i>
+            Delivery Tracking
+        </div>
+
+        <div class="tracking">
+
+            <div class="tracking-step">
+
+                <div class="tracking-icon">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <h4>Order Confirmed</h4>
+                <p>Completed</p>
+
+            </div>
+
+
+            <div class="tracking-step">
+
+                <div class="tracking-icon">
+                    <i class="fa-solid fa-box"></i>
+                </div>
+
+                <h4>Processing</h4>
+                <p>In Progress</p>
+
+            </div>
+
+
+            <div class="tracking-step">
+
+                <div class="tracking-icon">
+                    <i class="fa-solid fa-truck"></i>
+                </div>
+
+                <h4>Shipped</h4>
+                <p>Upcoming</p>
+
+            </div>
+
+
+            <div class="tracking-step">
+
+                <div class="tracking-icon">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+
+                <h4>Delivered</h4>
+                <p>Upcoming</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= DELIVERY DETAILS ================= -->
+
+    <section class="details-section">
+
+        <div class="section-title">
+            <i class="fa-solid fa-location-dot"></i>
+            Delivery Details
+        </div>
+
+        <div class="delivery-grid">
+
+            <div class="info-box">
+
+                <label>Customer Name</label>
+
+                <p id="customer-name">-</p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <label>Mobile Number</label>
+
+                <p id="customer-mobile">-</p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <label>Email</label>
+
+                <p id="customer-email">-</p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <label>City</label>
+
+                <p id="customer-city">-</p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <label>Pincode</label>
+
+                <p id="customer-pincode">-</p>
+
+            </div>
+
+
+            <div class="info-box full-address">
+
+                <label>Complete Delivery Address</label>
+
+                <p id="customer-address">-</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PAYMENT ================= -->
+
+    <section class="details-section">
+
+        <div class="section-title">
+            <i class="fa-solid fa-credit-card"></i>
+            Payment Information
+        </div>
+
+        <div class="payment-info">
+
+            <div class="info-box">
+
+                <label>Payment Method</label>
+
+                <p id="payment-method">-</p>
+
+            </div>
+
+            <div class="info-box">
+
+                <label>Payment Status</label>
+
+                <p>Payment Information Saved</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ACTION BUTTONS ================= -->
+
+    <div class="order-actions-bottom">
+
+        <button
+            class="order-btn reorder-btn"
+            onclick="reorderCurrentOrder()">
+
+            <i class="fa-solid fa-rotate-right"></i>
+            Reorder
+
+        </button>
+
+
+        <a
+            href="contact.html"
+            class="order-btn support-btn">
+
+            <i class="fa-solid fa-headset"></i>
+            Need Help / Contact Support
+
+        </a>
+
+    </div>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   LOAD SELECTED ORDER
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const orders =
+        JSON.parse(localStorage.getItem("orders")) || [];
+
+    const selectedOrderId =
+        localStorage.getItem("selectedOrderId");
+
+    if (!selectedOrderId) {
+
+        alert("Order details not found.");
+
+        window.location.href = "my-orders.html";
+
+        return;
+    }
+
+
+    const order = orders.find(
+        item => item.orderId === selectedOrderId
+    );
+
+
+    if (!order) {
+
+        alert("Order details not found.");
+
+        window.location.href = "my-orders.html";
+
+        return;
+    }
+
+
+    /* ================= PRODUCT ================= */
+
+    document.getElementById("main-product-image").src =
+        order.product?.image || "images/logo.png";
+
+    document.getElementById("product-name").textContent =
+        order.product?.name || "Jewellery";
+
+
+    /* ================= ORDER INFO ================= */
+
+    document.getElementById("order-id").textContent =
+        order.orderId || "-";
+
+    document.getElementById("order-date").textContent =
+        order.orderDate || "-";
+
+    document.getElementById("order-status").textContent =
+        order.status || "Confirmed";
+
+
+    /* ================= PRICE ================= */
+
+    const productPrice =
+        Number(order.product?.price) || 0;
+
+    const quantity =
+        Number(order.product?.quantity) || 1;
+
+    const finalTotal =
+        Number(order.total) || productPrice * quantity;
+
+    /*
+       Existing orders may not have GST separately saved.
+       So calculate GST from the final total structure if needed.
+       Default jewellery GST = 3%.
+    */
+
+    const gst =
+        Math.round(productPrice * 0.03);
+
+    document.getElementById("product-price").textContent =
+        "₹" + productPrice.toLocaleString("en-IN");
+
+    document.getElementById("product-quantity").textContent =
+        quantity;
+
+    document.getElementById("gst-amount").textContent =
+        "₹" + gst.toLocaleString("en-IN");
+
+    document.getElementById("delivery-charge").textContent =
+        "Free";
+
+    document.getElementById("final-total").textContent =
+        "₹" + finalTotal.toLocaleString("en-IN");
+
+
+    /* ================= CUSTOMER DETAILS ================= */
+
+    const customer = order.customer || {};
+
+    document.getElementById("customer-name").textContent =
+        customer.name || "-";
+
+    document.getElementById("customer-mobile").textContent =
+        customer.mobile || "-";
+
+    document.getElementById("customer-email").textContent =
+        customer.email || "-";
+
+    document.getElementById("customer-city").textContent =
+        customer.city || "-";
+
+    document.getElementById("customer-pincode").textContent =
+        customer.pincode || "-";
+
+    document.getElementById("customer-address").textContent =
+        customer.address || "-";
+
+
+    /* ================= PAYMENT ================= */
+
+    document.getElementById("payment-method").textContent =
+        order.payment || "Not Available";
+
+
+    /* ================= CART COUNT ================= */
+
+    const cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
+
+    const cartCount =
+        document.getElementById("cart-count");
+
+    if (cartCount) {
+
+        cartCount.textContent =
+            cart.reduce(
+                (total, item) =>
+                    total + (Number(item.quantity) || 1),
+                0
+            );
+
+    }
+
+});
+
+
+/* =====================================================
+   REORDER
+   ===================================================== */
+
+function reorderCurrentOrder() {
+
+    const orders =
+        JSON.parse(localStorage.getItem("orders")) || [];
+
+    const selectedOrderId =
+        localStorage.getItem("selectedOrderId");
+
+    const order =
+        orders.find(
+            item => item.orderId === selectedOrderId
+        );
+
+
+    if (!order || !order.product) {
+
+        alert("Product information not found.");
+
+        return;
+    }
+
+
+    const product = {
+
+        name: order.product.name,
+
+        image: order.product.image,
+
+        price: order.product.price
+
+    };
+
+
+    localStorage.setItem(
+        "selectedProduct",
+        JSON.stringify(product)
+    );
+
+
+    window.location.href = "buy-now.html";
+
+}
+
+</script>
+
+
+</body>
+</html>
+

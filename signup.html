@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Signup | Pushapa Jewellers</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+
+<nav class="navbar">
+
+    <!-- Logo Left Side -->
+    <div class="logo">
+    <a href="index.html">
+        <div class="logo">
+            <img src="images/logo.png" alt="Pushapa Jewellers">
+            <span>Pushapa Jewellers</span>
+        </div>
+    </a>
+</div>
+
+<div class="menu-btn">
+    ☰
+</div>
+    <!-- Menu Right Side -->
+    <ul class="nav-links">
+
+        <li><a href="index.html">Home</a></li>
+
+        <li><a href="login.html">Login</a></li>
+
+        <li><a href="product.html">Product</a></li>
+
+
+        <li><a href="about.html">About</a></li>
+
+        <li><a href="contact.html">Contact</a></li>
+        <li>
+    <a href="wishlist.html" title="Wishlist" class="nav-icon">
+        <i class="fa-regular fa-heart"></i>
+    </a>
+</li>
+<li>
+    <a href="my-orders.html" title="My Orders" class="nav-icon">
+        <i class="fa-solid fa-box-open"></i>
+    </a>
+</li>
+
+<li>
+    <a href="cart.html" title="Cart" class="nav-icon cart-icon">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cart-count">0</span>
+    </a>
+</li>
+
+    </ul>
+
+</nav>
+
+</header>
+    <!-- ===== SIGNUP SECTION ===== -->
+
+    <section class="signup-page">
+
+        <div class="signup-overlay"></div>
+
+        <div class="signup-container">
+
+            <div class="signup-left">
+
+                <h1>JOIN PUSHAPA</h1>
+
+                <div class="signup-line">
+                    <span>❖</span>
+                </div>
+
+                <p>
+                    Create your account and discover timeless jewellery
+                    crafted with elegance, purity and passion.
+                </p>
+
+                <div class="signup-feature">
+                    <i class="fa-solid fa-gem"></i>
+                    <span>Exclusive Jewellery Collections</span>
+                </div>
+
+                <div class="signup-feature">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Easy & Secure Shopping</span>
+                </div>
+
+                <div class="signup-feature">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Save Your Favourite Products</span>
+                </div>
+
+                <div class="signup-feature">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <span>Fast Order Tracking</span>
+                </div>
+
+            </div>
+
+
+            <div class="signup-box">
+
+                <h2>CREATE ACCOUNT</h2>
+
+                <p class="signup-subtitle">
+                    Sign up to continue with Pushapa Jewellers
+                </p>
+
+                <form id="signupForm">
+
+                    <div class="signup-input-group">
+                        <i class="fa-solid fa-user"></i>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Full Name"
+                            required>
+                    </div>
+
+
+                    <div class="signup-input-group">
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Email Address"
+                            required>
+                    </div>
+
+
+                    <div class="signup-input-group">
+                        <i class="fa-solid fa-phone"></i>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Phone Number"
+                            required>
+                    </div>
+
+
+                    <div class="signup-input-group">
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Password"
+                            required>
+
+                        <i
+                            class="fa-solid fa-eye signup-eye"
+                            onclick="toggleSignupPassword()">
+                        </i>
+                    </div>
+
+
+                    <div class="signup-input-group">
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm Password"
+                            required>
+                    </div>
+
+
+                    <div class="signup-options">
+
+                        <label>
+                            <input type="checkbox" required>
+                            I agree to Terms & Conditions
+                        </label>
+
+                    </div>
+
+
+                    <button type="submit" class="signup-btn">
+                        CREATE ACCOUNT
+                    </button>
+
+                </form>
+
+
+                <div class="signup-divider">
+                    <span>OR</span>
+                </div>
+
+
+                <p class="signup-login-text">
+                    Already have an account?
+                    <a href="login.html">Login Here</a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script>
+
+function toggleSignupPassword() {
+
+    const password = document.getElementById("password");
+
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+
+}
+
+
+// ================= REGISTER USER =================
+
+document.getElementById("signupForm").addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+    // Password check
+    if (password !== confirmPassword) {
+
+        alert("Passwords do not match!");
+        return;
+
+    }
+
+    try {
+
+        const response = await fetch("http://localhost:5000/register", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password
+            })
+
+        });
+
+        const data = await response.json();
+
+        console.log("REGISTER RESPONSE:", data);
+
+        if (response.ok) {
+
+            alert("Account Created Successfully!");
+
+            window.location.href = "login.html";
+
+        } else {
+
+            alert(data.message);
+
+        }
+
+    } catch (error) {
+
+        console.error("REGISTER ERROR:", error);
+
+        alert("Server connection failed");
+
+    }
+
+});
+
+</script>

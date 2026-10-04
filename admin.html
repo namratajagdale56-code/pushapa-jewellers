@@ -1,0 +1,4725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | Pushapa Jewellers</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+/* =====================================================
+   ROOT
+===================================================== */
+
+:root{
+    --bg:#090909;
+    --card:#111111;
+    --card2:#151515;
+    --gold:#D4AF37;
+    --gold-light:#E5C46A;
+    --gold-dark:#9D7918;
+    --cream:#f5ecd4;
+    --text:#eeeeee;
+    --muted:#9c9c9c;
+    --border:#29230f;
+    --danger:#e45c5c;
+    --success:#59c47a;
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Poppins",sans-serif;
+    background:
+        radial-gradient(circle at top right,rgba(212,175,55,.07),transparent 30%),
+        radial-gradient(circle at bottom left,rgba(212,175,55,.04),transparent 30%),
+        var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
+
+button,
+input,
+select{
+    font-family:"Poppins",sans-serif;
+}
+
+button{
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   LOGIN CHECK
+===================================================== */
+
+.hidden{
+    display:none !important;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:245px;
+    height:100vh;
+    background:
+        linear-gradient(
+            180deg,
+            #101010,
+            #080808
+        );
+    border-right:1px solid var(--border);
+    padding:25px 16px;
+    z-index:1000;
+    overflow-y:auto;
+}
+
+.brand{
+    text-align:center;
+    padding:5px 0 25px;
+    border-bottom:1px solid #29220f;
+    margin-bottom:25px;
+}
+
+.brand img{
+    width:58px;
+    height:58px;
+    object-fit:contain;
+    border-radius:50%;
+    margin-bottom:8px;
+}
+
+.brand h2{
+    font-family:"Cinzel",serif;
+    color:var(--gold-light);
+    font-size:20px;
+    letter-spacing:1px;
+}
+
+.brand p{
+    color:#888;
+    font-size:9px;
+    letter-spacing:3px;
+    margin-top:3px;
+}
+
+.nav-title{
+    color:#666;
+    font-size:9px;
+    letter-spacing:2px;
+    margin:18px 12px 8px;
+}
+
+.side-link{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 14px;
+    margin-bottom:6px;
+    border-radius:9px;
+    color:#aaa;
+    text-decoration:none;
+    font-size:12px;
+    transition:.25s;
+    border:1px solid transparent;
+}
+
+.side-link i{
+    width:18px;
+    text-align:center;
+    color:var(--gold);
+}
+
+.side-link:hover,
+.side-link.active{
+    background:rgba(212,175,55,.09);
+    color:var(--gold-light);
+    border-color:#493a12;
+}
+
+.logout-link{
+    margin-top:30px;
+    color:#d96a6a;
+}
+
+.logout-link i{
+    color:#d96a6a;
+}
+
+
+/* =====================================================
+   MOBILE SIDEBAR BUTTON
+===================================================== */
+
+.mobile-top{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:65px;
+    background:#0c0c0c;
+    border-bottom:1px solid var(--border);
+    z-index:900;
+    align-items:center;
+    padding:0 15px;
+}
+
+.mobile-menu-btn{
+    width:42px;
+    height:42px;
+    border:1px solid #493a12;
+    background:#111;
+    color:var(--gold-light);
+    border-radius:8px;
+    font-size:17px;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.main{
+    margin-left:245px;
+    padding:30px;
+    min-height:100vh;
+}
+
+.topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.page-title h1{
+    font-family:"Cinzel",serif;
+    color:var(--gold-light);
+    font-size:27px;
+}
+
+.page-title p{
+    color:#777;
+    font-size:11px;
+    margin-top:5px;
+}
+
+.admin-profile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:8px 13px;
+    background:#111;
+    border:1px solid var(--border);
+    border-radius:30px;
+}
+
+.admin-profile i{
+    color:var(--gold);
+}
+
+.admin-profile span{
+    font-size:11px;
+    color:#ccc;
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.section{
+    display:none;
+}
+
+.section.active{
+    display:block;
+}
+
+
+/* =====================================================
+   DASHBOARD CARDS
+===================================================== */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:30px;
+}
+
+.stat-card{
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            145deg,
+            #151515,
+            #0d0d0d
+        );
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:22px;
+    min-height:130px;
+}
+
+.stat-card::after{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    right:-45px;
+    top:-45px;
+    border-radius:50%;
+    background:rgba(212,175,55,.07);
+}
+
+.stat-icon{
+    width:42px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+    background:#17130a;
+    border:1px solid #493a12;
+    color:var(--gold);
+    margin-bottom:14px;
+}
+
+.stat-card h3{
+    color:#888;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.stat-card strong{
+    display:block;
+    margin-top:5px;
+    font-size:27px;
+    color:var(--gold-light);
+}
+
+
+/* =====================================================
+   SECTION HEADER
+===================================================== */
+
+.section-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:18px;
+}
+
+.section-header h2{
+    font-family:"Cinzel",serif;
+    color:var(--gold-light);
+    font-size:19px;
+}
+
+.section-header p{
+    color:#777;
+    font-size:10px;
+}
+
+
+/* =====================================================
+   PANEL
+===================================================== */
+
+.panel{
+    background:
+        linear-gradient(
+            145deg,
+            #121212,
+            #0c0c0c
+        );
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:22px;
+    margin-bottom:25px;
+}
+
+.panel-title{
+    color:var(--gold-light);
+    font-family:"Cinzel",serif;
+    font-size:15px;
+    margin-bottom:18px;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.form-group label{
+    color:#999;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    height:43px;
+    padding:0 13px;
+    background:#090909;
+    border:1px solid #30280f;
+    border-radius:8px;
+    color:#eee;
+    outline:none;
+    font-size:11px;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:var(--gold);
+    box-shadow:0 0 0 2px rgba(212,175,55,.08);
+}
+
+.form-group select option{
+    background:#111;
+    color:white;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.btn{
+    border:none;
+    border-radius:8px;
+    min-height:40px;
+    padding:0 17px;
+    font-size:11px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.btn-gold{
+    background:
+        linear-gradient(
+            135deg,
+            #9D7918,
+            #D4AF37,
+            #E5C46A
+        );
+    color:#111;
+}
+
+.btn-gold:hover{
+    transform:translateY(-1px);
+    box-shadow:0 7px 20px rgba(212,175,55,.12);
+}
+
+.btn-dark{
+    background:#151515;
+    color:#ccc;
+    border:1px solid #3a3011;
+}
+
+.btn-danger{
+    background:#210d0d;
+    color:#ff8d8d;
+    border:1px solid #5c2222;
+}
+
+.form-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.toolbar{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+}
+
+.search-box{
+    flex:1;
+    min-width:220px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 13px;
+    background:#090909;
+    border:1px solid #30280f;
+    border-radius:8px;
+}
+
+.search-box i{
+    color:var(--gold);
+    font-size:12px;
+}
+
+.search-box input{
+    flex:1;
+    height:100%;
+    border:none;
+    outline:none;
+    background:transparent;
+    color:#eee;
+    font-size:11px;
+}
+
+.toolbar select{
+    height:42px;
+    min-width:150px;
+    background:#090909;
+    border:1px solid #30280f;
+    border-radius:8px;
+    color:#ccc;
+    padding:0 12px;
+    outline:none;
+    font-size:11px;
+}
+
+
+/* =====================================================
+   PRODUCTS GRID
+===================================================== */
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+}
+
+.product-card{
+    background:#101010;
+    border:1px solid #29230f;
+    border-radius:12px;
+    overflow:hidden;
+    transition:.25s;
+}
+
+.product-card:hover{
+    transform:translateY(-3px);
+    border-color:#6d5718;
+}
+
+.product-image{
+    height:190px;
+    background:#080808;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.product-info{
+    padding:14px;
+}
+
+.product-info h3{
+    color:#eee;
+    font-size:12px;
+    margin-bottom:7px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.product-price{
+    color:var(--gold-light);
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.product-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:5px;
+    margin-bottom:12px;
+}
+
+.product-meta span{
+    font-size:8px;
+    padding:4px 7px;
+    border-radius:12px;
+    color:#d9c77e;
+    background:#17130a;
+    border:1px solid #403411;
+}
+
+.product-actions{
+    display:flex;
+    gap:7px;
+}
+
+.product-actions button{
+    flex:1;
+    min-height:34px;
+    border-radius:7px;
+    font-size:9px;
+    font-weight:600;
+}
+
+.edit-btn{
+    background:#17130a;
+    color:var(--gold-light);
+    border:1px solid #4b3c12;
+}
+
+.delete-btn{
+    background:#210d0d;
+    color:#ff8b8b;
+    border:1px solid #5c2222;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.table-wrapper{
+    width:100%;
+    overflow-x:auto;
+    border-radius:10px;
+}
+
+table{
+    width:100%;
+    min-width:850px;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#17130a;
+}
+
+th{
+    text-align:left;
+    padding:13px 12px;
+    color:var(--gold-light);
+    font-size:9px;
+    letter-spacing:.7px;
+    border-bottom:1px solid #403411;
+}
+
+td{
+    padding:13px 12px;
+    color:#bbb;
+    font-size:10px;
+    border-bottom:1px solid #211d12;
+    vertical-align:middle;
+}
+
+tbody tr:hover{
+    background:rgba(212,175,55,.025);
+}
+
+
+/* =====================================================
+   ORDER STATUS
+===================================================== */
+
+.order-status-select{
+    min-width:145px;
+    height:35px;
+    padding:0 9px;
+    border-radius:7px;
+    border:1px solid #6c5618;
+    background:#0d0d0d;
+    color:var(--gold-light);
+    outline:none;
+    font-size:10px;
+    cursor:pointer;
+}
+
+.order-status-select option{
+    background:#111;
+    color:#fff;
+}
+
+.status-badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:100px;
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:9px;
+    font-weight:600;
+    color:var(--gold-light);
+    background:#17130a;
+    border:1px solid #604d14;
+}
+
+.status-placed{
+    color:#f0cf68;
+}
+
+.status-confirmed{
+    color:#8ebcff;
+    border-color:#29456e;
+    background:#0c1520;
+}
+
+.status-packed{
+    color:#cf9aff;
+    border-color:#54356f;
+    background:#170d20;
+}
+
+.status-shipped{
+    color:#66c9ff;
+    border-color:#225b79;
+    background:#081720;
+}
+
+.status-out{
+    color:#ffad67;
+    border-color:#704117;
+    background:#1d1007;
+}
+
+.status-delivered{
+    color:#6ee08d;
+    border-color:#24613a;
+    background:#0b1b11;
+}
+
+.status-cancelled{
+    color:#ff7f7f;
+    border-color:#702828;
+    background:#1b0909;
+}
+
+
+/* =====================================================
+   GOLD RATE
+===================================================== */
+
+.gold-rate-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+    align-items:center;
+}
+
+.current-rate{
+    min-height:160px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212,175,55,.10),
+            transparent 65%
+        ),
+        #0b0b0b;
+    border:1px solid #493a12;
+    border-radius:14px;
+}
+
+.current-rate i{
+    color:var(--gold);
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.current-rate span{
+    color:#888;
+    font-size:10px;
+}
+
+.current-rate strong{
+    color:var(--gold-light);
+    font-size:30px;
+    margin-top:5px;
+}
+
+.rate-form{
+    padding:20px;
+    background:#0d0d0d;
+    border:1px solid #29230f;
+    border-radius:12px;
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.message{
+    margin-top:12px;
+    font-size:10px;
+    color:var(--gold-light);
+}
+
+.empty{
+    padding:45px 20px;
+    text-align:center;
+    color:#666;
+    font-size:11px;
+}
+
+.loading{
+    padding:30px;
+    text-align:center;
+    color:var(--gold-light);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:1100px){
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:800px){
+
+    .sidebar{
+        transform:translateX(-100%);
+        transition:.3s;
+    }
+
+    .sidebar.open{
+        transform:translateX(0);
+    }
+
+    .mobile-top{
+        display:flex;
+    }
+
+    .main{
+        margin-left:0;
+        padding:85px 15px 25px;
+    }
+
+    .topbar{
+        align-items:flex-start;
+    }
+
+    .admin-profile{
+        display:none;
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .gold-rate-box{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .main{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    .page-title h1{
+        font-size:21px;
+    }
+
+    .page-title p{
+        font-size:9px;
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .stat-card{
+        padding:15px;
+        min-height:110px;
+    }
+
+    .stat-card strong{
+        font-size:21px;
+    }
+
+    .stat-icon{
+        width:35px;
+        height:35px;
+        font-size:12px;
+    }
+
+    .panel{
+        padding:14px;
+        border-radius:11px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:9px;
+    }
+
+    .product-image{
+        height:145px;
+    }
+
+    .product-info{
+        padding:9px;
+    }
+
+    .product-info h3{
+        font-size:10px;
+    }
+
+    .product-price{
+        font-size:12px;
+    }
+
+    .product-actions{
+        flex-direction:column;
+    }
+
+    .toolbar{
+        flex-direction:column;
+    }
+
+    .search-box,
+    .toolbar select{
+        width:100%;
+        min-width:0;
+    }
+
+    .section-header{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .gold-rate-box{
+        gap:12px;
+    }
+
+    .form-buttons{
+        flex-direction:column;
+    }
+
+    .form-buttons .btn{
+        width:100%;
+    }
+
+}
+
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar{
+    width:7px;
+    height:7px;
+}
+
+::-webkit-scrollbar-track{
+    background:#080808;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#4c3d12;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#80651b;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     MOBILE TOP
+===================================================== -->
+
+<div class="mobile-top">
+
+    <button
+        class="mobile-menu-btn"
+        onclick="toggleSidebar()">
+
+        <i class="fa-solid fa-bars"></i>
+
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+
+        <img
+            src="images/logo.png"
+            alt="Pushapa Jewellers">
+
+        <h2>Pushapa</h2>
+
+        <p>JEWELLERS ADMIN</p>
+
+    </div>
+
+
+    <div class="nav-title">
+        MAIN MENU
+    </div>
+
+
+    <a
+        href="#"
+        class="side-link active"
+        data-section="dashboard">
+
+        <i class="fa-solid fa-chart-line"></i>
+
+        <span>Dashboard</span>
+
+    </a>
+
+
+    <a
+        href="#"
+        class="side-link"
+        data-section="products">
+
+        <i class="fa-solid fa-gem"></i>
+
+        <span>Products</span>
+
+    </a>
+
+
+    <a
+        href="#"
+        class="side-link"
+        data-section="orders">
+
+        <i class="fa-solid fa-box"></i>
+
+        <span>Orders</span>
+
+    </a>
+
+
+    <a
+        href="#"
+        class="side-link"
+        data-section="customers">
+
+        <i class="fa-solid fa-users"></i>
+
+        <span>Customers</span>
+
+    </a>
+
+
+    <a
+        href="#"
+        class="side-link"
+        data-section="gold-rate">
+
+        <i class="fa-solid fa-coins"></i>
+
+        <span>Gold Rate</span>
+
+    </a>
+    <a
+    href="#"
+    class="side-link"
+    data-section="contact-messages">
+
+    <i class="fa-solid fa-envelope"></i>
+
+    <span>Contact Messages</span>
+
+</a>
+<a
+    href="#"
+    class="side-link"
+    data-section="custom-designs">
+
+    <i class="fa-solid fa-gem"></i>
+
+    <span>Custom Design Requests</span>
+
+</a>
+
+    <div class="nav-title">
+        ACCOUNT
+    </div>
+
+
+    <a
+        href="index.html"
+        class="side-link">
+
+        <i class="fa-solid fa-store"></i>
+
+        <span>View Website</span>
+
+    </a>
+
+
+    <a
+        href="#"
+        class="side-link logout-link"
+        onclick="adminLogout()">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Logout</span>
+
+    </a>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+
+    <div class="topbar">
+
+        <div class="page-title">
+
+            <h1>Admin Dashboard</h1>
+
+            <p>
+                Manage Pushapa Jewellers
+            </p>
+
+        </div>
+
+
+        <div class="admin-profile">
+
+            <i class="fa-solid fa-user-shield"></i>
+
+            <span>Administrator</span>
+
+        </div>
+
+    </div>
+
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section
+    id="dashboard"
+    class="section active">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>Dashboard Overview</h2>
+
+            <p>
+                Store summary and quick statistics
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-gem"></i>
+
+            </div>
+
+            <h3>Total Products</h3>
+
+            <strong id="totalProducts">0</strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-users"></i>
+
+            </div>
+
+            <h3>Total Users</h3>
+
+            <strong id="totalUsers">0</strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-box"></i>
+
+            </div>
+
+            <h3>Total Orders</h3>
+
+            <strong id="totalOrders">0</strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+            </div>
+
+            <h3>Cart Items</h3>
+
+            <strong id="totalCart">0</strong>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="panel">
+
+        <div class="panel-title">
+            Quick Information
+        </div>
+
+        <p style="
+            color:#888;
+            font-size:11px;
+            line-height:1.8;
+        ">
+            Use the sidebar to manage jewellery products,
+            customer orders, registered users and the
+            current gold rate.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PRODUCTS
+===================================================== -->
+
+<section
+    id="products"
+    class="section">
+
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>Product Management</h2>
+
+            <p>
+                Add, edit and delete jewellery products
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ADD PRODUCT -->
+
+    <div class="panel">
+
+        <div class="panel-title">
+
+            <span id="productFormTitle">
+                Add New Product
+            </span>
+
+        </div>
+
+
+       <form id="productForm">
+
+    <div class="form-grid">
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Product Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productName"
+                        placeholder="Enter product name"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Price
+                    </label>
+
+                    <input
+                        type="number"
+                        id="price"
+                        placeholder="Enter price"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Category
+                    </label>
+
+                    <select id="category" required>
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option value="Ring">
+                            Ring
+                        </option>
+
+                        <option value="Necklace">
+                            Necklace
+                        </option>
+
+                        <option value="Earring">
+                            Earring
+                        </option>
+
+                        <option value="Bracelet">
+                            Bracelet
+                        </option>
+
+                        <option value="Bangle">
+                            Bangle
+                        </option>
+
+                        <option value="Chain">
+                            Chain
+                        </option>
+
+                        <option value="Pendant">
+                            Pendant
+                        </option>
+
+                        <option value="Mangalsutra">
+                            Mangalsutra
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Purity
+                    </label>
+
+                    <select id="purity">
+
+                        <option value="22K">
+                            22K Gold
+                        </option>
+
+                        <option value="18K">
+                            18K Gold
+                        </option>
+
+                        <option value="24K">
+                            24K Gold
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Weight
+                    </label>
+
+                    <input
+                        type="text"
+                        id="weight"
+                        placeholder="Example: 4.2g">
+
+                </div>
+
+
+                <div class="form-group">
+    <label>Product Image</label>
+
+    <input
+        type="file"
+        id="imageFile"
+        accept="image/jpeg,image/jpg,image/png,image/webp"
+    >
+
+    <small style="color:#aaa; display:block; margin-top:8px;">
+        JPG, PNG or WEBP • Maximum 5MB
+    </small>
+
+    <div id="imagePreview" style="margin-top:12px;"></div>
+    <script>
+document.getElementById("imageFile").addEventListener("change", function () {
+
+    const file = this.files[0];
+    const preview = document.getElementById("imagePreview");
+
+    if (!file) {
+        preview.innerHTML = "";
+        return;
+    }
+
+    const imageURL = URL.createObjectURL(file);
+
+    preview.innerHTML = `
+        <img
+            src="${imageURL}"
+            style="
+                width:140px;
+                height:140px;
+                object-fit:cover;
+                border-radius:12px;
+                border:2px solid #E5C46A;
+                box-shadow:0 0 15px rgba(229,196,106,0.3);
+            "
+        >
+    `;
+});
+</script>
+</div>
+
+
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    type="submit"
+                    class="btn btn-gold">
+
+                    <i class="fa-solid fa-save"></i>
+                    Save Product
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="cancelEditBtn"
+                    class="btn btn-dark"
+                    style="display:none;">
+
+                    Cancel Edit
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="productMessage"
+                class="message">
+            </div>
+
+
+        </form>
+
+    </div>
+
+
+
+    <!-- PRODUCTS -->
+
+    <div class="panel">
+
+        <div class="section-header">
+
+            <div>
+
+                <div class="panel-title">
+                    Manage Products
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="toolbar">
+
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-search"></i>
+
+                <input
+                    type="text"
+                    id="searchProduct"
+                    placeholder="Search products...">
+
+            </div>
+
+
+            <select id="filterCategory">
+
+                <option value="all">
+                    All Categories
+                </option>
+
+                <option value="Ring">
+                    Ring
+                </option>
+
+                <option value="Necklace">
+                    Necklace
+                </option>
+
+                <option value="Earring">
+                    Earring
+                </option>
+
+                <option value="Bracelet">
+                    Bracelet
+                </option>
+
+                <option value="Bangle">
+                    Bangle
+                </option>
+
+                <option value="Chain">
+                    Chain
+                </option>
+
+                <option value="Pendant">
+                    Pendant
+                </option>
+
+                <option value="Mangalsutra">
+                    Mangalsutra
+                </option>
+
+            </select>
+
+
+        </div>
+
+
+        <div
+            id="productGrid"
+            class="product-grid">
+
+            <div class="loading">
+                Loading products...
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ORDERS
+===================================================== -->
+
+<section
+    id="orders"
+    class="section">
+
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>Order Management</h2>
+
+            <p>
+                Manage customer orders and delivery status
+            </p>
+
+        </div>
+
+
+        <button
+            class="btn btn-dark"
+            onclick="loadOrders()">
+
+            <i class="fa-solid fa-rotate"></i>
+            Refresh
+
+        </button>
+
+    </div>
+
+
+    <div class="panel">
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ORDER ID
+                        </th>
+
+                        <th>
+                            CUSTOMER
+                        </th>
+
+                        <th>
+                            PRODUCT
+                        </th>
+
+                        <th>
+                            AMOUNT
+                        </th>
+
+                        <th>
+                            STATUS
+                        </th>
+
+                        <th>
+                            UPDATE
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="ordersTable">
+
+                    <tr>
+
+                        <td colspan="6">
+
+                            <div class="loading">
+                                Loading orders...
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CUSTOMERS
+===================================================== -->
+
+<section
+    id="customers"
+    class="section">
+
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>Customers</h2>
+
+            <p>
+                Registered Pushapa customers
+            </p>
+
+        </div>
+
+
+        <button
+            class="btn btn-dark"
+            onclick="loadUsers()">
+
+            <i class="fa-solid fa-rotate"></i>
+            Refresh
+
+        </button>
+
+    </div>
+
+
+    <div class="panel">
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            NAME
+                        </th>
+
+                        <th>
+                            EMAIL
+                        </th>
+
+                        <th>
+                            MOBILE
+                        </th>
+
+                        <th>
+                            STATUS
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="usersTable">
+
+                    <tr>
+
+                        <td colspan="4">
+
+                            <div class="loading">
+                                Loading customers...
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     GOLD & SILVER RATE
+===================================================== -->
+
+<section id="gold-rate" class="section">
+
+    <div class="section-header">
+
+        <div>
+            <h2>Gold & Silver Rate</h2>
+
+            <p>
+                Manage today's gold and silver rates
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <div class="gold-rate-box">
+
+
+            <!-- 22K GOLD -->
+
+            <div class="form-group">
+
+                <label>
+                    22K Gold Rate per 1 gram
+                </label>
+
+                <input
+                    type="number"
+                    id="gold22kInput"
+                    placeholder="Enter 22K gold rate">
+
+            </div>
+
+
+            <!-- 24K GOLD -->
+
+            <div class="form-group">
+
+                <label>
+                    24K Gold Rate per 1 gram
+                </label>
+
+                <input
+                    type="number"
+                    id="gold24kInput"
+                    placeholder="Enter 24K gold rate">
+
+            </div>
+
+
+            <!-- SILVER -->
+
+            <div class="form-group">
+
+                <label>
+                    Silver Rate per 1 kilogram
+                </label>
+
+                <input
+                    type="number"
+                    id="silverInput"
+                    placeholder="Enter silver rate">
+
+            </div>
+
+
+            <!-- SAVE -->
+
+            <button
+                class="btn btn-gold"
+                style="margin-top:15px;"
+                onclick="saveMetalRates()">
+
+                <i class="fa-solid fa-save"></i>
+
+                Save Metal Rates
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     CONTACT MESSAGES
+===================================================== -->
+
+<section
+    id="contact-messages"
+    class="section">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>Contact Messages</h2>
+
+            <p>
+                Messages received from website customers
+            </p>
+
+        </div>
+
+        <button
+            class="btn btn-dark"
+            onclick="loadContactMessages()">
+
+            <i class="fa-solid fa-rotate"></i>
+            Refresh
+
+        </button>
+
+    </div>
+
+
+    <div class="panel">
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            NAME
+                        </th>
+
+                        <th>
+                            EMAIL
+                        </th>
+
+                        <th>
+                            PHONE
+                        </th>
+
+                        <th>
+                            SUBJECT
+                        </th>
+
+                        <th>
+                            MESSAGE
+                        </th>
+
+                        <th>
+                            STATUS
+                        </th>
+
+                        <th>
+                            ACTION
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="contactMessagesTable">
+
+                    <tr>
+
+                        <td colspan="7">
+
+                            <div class="loading">
+                                Loading contact messages...
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     CUSTOM DESIGN REQUESTS
+===================================================== -->
+
+<section id="custom-designs" class="section">
+
+    <div class="section-header">
+
+        <div>
+            <h2>Custom Design Requests</h2>
+
+            <p>
+                Jewellery designs submitted by customers
+            </p>
+        </div>
+
+        <button
+            class="btn btn-dark"
+            onclick="loadCustomDesigns()">
+
+            <i class="fa-solid fa-rotate"></i>
+
+            Refresh
+
+        </button>
+
+    </div>
+
+
+    <div class="panel">
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>DESIGN</th>
+
+                        <th>CUSTOMER</th>
+
+                        <th>CONTACT</th>
+
+                        <th>TYPE</th>
+
+                        <th>PURITY</th>
+
+                        <th>WEIGHT</th>
+
+                        <th>NOTES</th>
+
+                        <th>STATUS</th>
+
+                        <th>ACTION</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="customDesignsTable">
+
+                    <tr>
+
+                        <td colspan="9">
+
+                            <div class="loading">
+
+                                Loading custom design requests...
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+</main>
+
+
+
+<script>
+
+/* =====================================================
+   API
+===================================================== */
+
+const API = "http://localhost:5000";
+
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
+if(
+    localStorage.getItem("adminLogin") !== "true"
+){
+
+    window.location.href = "login.html";
+
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+function toggleSidebar(){
+
+    document
+        .getElementById("sidebar")
+        .classList.toggle("open");
+
+}
+
+
+document
+.querySelectorAll(".side-link[data-section]")
+.forEach(link => {
+
+    link.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        const section =
+            this.dataset.section;
+
+        document
+        .querySelectorAll(".side-link")
+        .forEach(item =>
+            item.classList.remove("active")
+        );
+
+        this.classList.add("active");
+
+
+        document
+        .querySelectorAll(".section")
+        .forEach(item =>
+            item.classList.remove("active")
+        );
+
+
+        const target =
+            document.getElementById(section);
+
+        if(target){
+            target.classList.add("active");
+        }
+
+
+        document
+            .getElementById("sidebar")
+            .classList.remove("open");
+
+    });
+
+});
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function adminLogout(){
+
+    localStorage.removeItem("adminLogin");
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* =====================================================
+   PRODUCTS
+===================================================== */
+
+let allProducts = [];
+
+let editProductId = null;
+
+
+/* ================= LOAD PRODUCTS ================= */
+
+async function loadProducts(){
+
+    const grid =
+        document.getElementById("productGrid");
+
+    grid.innerHTML = `
+        <div class="loading">
+            Loading products...
+        </div>
+    `;
+
+
+    try{
+
+        const response =
+            await fetch(API + "/products");
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Products API failed"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        allProducts =
+            Array.isArray(data)
+                ? data
+                : data.products || [];
+
+
+        document
+            .getElementById("totalProducts")
+            .textContent =
+            allProducts.length;
+
+
+        renderProducts();
+
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        allProducts = [];
+
+        document
+            .getElementById("totalProducts")
+            .textContent = "0";
+
+
+        grid.innerHTML = `
+            <div class="empty">
+                Unable to load products.
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* ================= RENDER PRODUCTS ================= */
+
+function renderProducts(){
+
+    const grid =
+        document.getElementById("productGrid");
+
+
+    const search =
+        document
+        .getElementById("searchProduct")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const category =
+        document
+        .getElementById("filterCategory")
+        .value;
+
+
+    let products =
+        [...allProducts];
+
+
+    if(search){
+
+        products =
+            products.filter(product => {
+
+                return String(
+                    product.name || ""
+                )
+                .toLowerCase()
+                .includes(search);
+
+            });
+
+    }
+
+
+    if(
+        category &&
+        category !== "all"
+    ){
+
+        products =
+            products.filter(product => {
+
+                return String(
+                    product.category || ""
+                )
+                .toLowerCase() ===
+                category.toLowerCase();
+
+            });
+
+    }
+
+
+    if(!products.length){
+
+        grid.innerHTML = `
+            <div class="empty">
+                No products found.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML =
+        products.map(product => {
+
+
+            let image =
+                product.image || "";
+
+
+            if(
+                image &&
+                !image.startsWith("http") &&
+                !image.startsWith("data:")
+            ){
+
+                image =
+                    `${API}/${image.replace(/^\/+/,"")}`;
+
+            }
+
+
+            if(!image){
+
+                image =
+                    "images/logo.png";
+
+            }
+
+
+            const name =
+                product.name ||
+                "Jewellery";
+
+
+            const price =
+                Number(product.price || 0);
+
+
+            const category =
+                product.category ||
+                "-";
+
+
+            const purity =
+                product.purity ||
+                "22K";
+
+
+            const weight =
+                product.weight ||
+                "-";
+
+
+            return `
+
+                <div class="product-card">
+
+
+                    <div class="product-image">
+
+                        <img
+                            src="${image}"
+                            alt="${escapeHTML(name)}"
+                            onerror="
+                                this.src='images/logo.png'
+                            ">
+
+                    </div>
+
+
+                    <div class="product-info">
+
+
+                        <h3
+                            title="${escapeHTML(name)}">
+
+                            ${escapeHTML(name)}
+
+                        </h3>
+
+
+                        <div class="product-price">
+
+                            ₹${price.toLocaleString("en-IN")}
+
+                        </div>
+
+
+                        <div class="product-meta">
+
+                            <span>
+                                ${escapeHTML(category)}
+                            </span>
+
+                            <span>
+                                ${escapeHTML(purity)}
+                            </span>
+
+                            <span>
+                                ${escapeHTML(String(weight))}
+                            </span>
+
+                        </div>
+
+
+                        <div class="product-actions">
+
+
+                            <button
+                                class="edit-btn"
+                                onclick="
+                                    editProduct('${product._id}')
+                                ">
+
+                                <i class="fa-solid fa-pen"></i>
+                                Edit
+
+                            </button>
+
+
+                            <button
+                                class="delete-btn"
+                                onclick="
+                                    deleteProduct('${product._id}')
+                                ">
+
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            `;
+
+        })
+        .join("");
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   ADD / UPDATE PRODUCT
+===================================================== */
+
+document
+.getElementById("productForm")
+.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const name =
+        document
+        .getElementById("productName")
+        .value
+        .trim();
+
+    const price =
+        document
+        .getElementById("price")
+        .value;
+
+    const category =
+        document
+        .getElementById("category")
+        .value;
+
+    const purity =
+        document
+        .getElementById("purity")
+        .value;
+
+    const weight =
+        document
+        .getElementById("weight")
+        .value
+        .trim();
+
+    const imageFile =
+        document
+        .getElementById("imageFile")
+        .files[0];
+
+    const message =
+        document
+        .getElementById("productMessage");
+
+
+    /* ================= VALIDATION ================= */
+
+    if(!name || !price || !category){
+
+        message.textContent =
+            "Please fill required fields.";
+
+        return;
+
+    }
+
+
+    /* ================= IMAGE VALIDATION ================= */
+
+    if(!editProductId && !imageFile){
+
+        message.textContent =
+            "Please select a product image.";
+
+        return;
+
+    }
+
+
+    if(imageFile){
+
+        const allowedTypes = [
+            "image/jpeg",
+            "image/jpg",
+            "image/png",
+            "image/webp"
+        ];
+
+        if(!allowedTypes.includes(imageFile.type)){
+
+            message.textContent =
+                "Only JPG, JPEG, PNG and WEBP images are allowed.";
+
+            return;
+
+        }
+
+
+        if(imageFile.size > 5 * 1024 * 1024){
+
+            message.textContent =
+                "Image size must be less than 5MB.";
+
+            return;
+
+        }
+
+    }
+
+
+    /* ================= FORM DATA ================= */
+
+    const formData = new FormData();
+
+    formData.append("name", name);
+
+    formData.append(
+        "price",
+        Number(price)
+    );
+
+    formData.append(
+        "category",
+        category
+    );
+
+    formData.append(
+        "purity",
+        purity
+    );
+
+    formData.append(
+        "weight",
+        weight
+    );
+
+
+    if(imageFile){
+
+        formData.append(
+            "image",
+            imageFile
+        );
+
+    }
+
+
+    try{
+
+        let response;
+
+
+        /* ================= UPDATE ================= */
+
+        if(editProductId){
+
+            response =
+                await fetch(
+                    `${API}/products/${editProductId}`,
+                    {
+                        method:"PUT",
+
+                        body:formData
+                    }
+                );
+
+        }
+
+        /* ================= ADD ================= */
+
+        else{
+
+            response =
+                await fetch(
+                    `${API}/add-product`,
+                    {
+                        method:"POST",
+
+                        body:formData
+                    }
+                );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Product save failed"
+            );
+
+        }
+
+
+        message.textContent =
+            editProductId
+                ? "Product updated successfully."
+                : "Product added successfully.";
+
+
+        resetProductForm();
+
+        await loadProducts();
+
+
+    }
+    catch(error){
+
+        console.error(
+            "PRODUCT SAVE ERROR:",
+            error
+        );
+
+        message.innerHTML = `
+    <div style="
+        color:#ff6b6b;
+        background:#2a1111;
+        border:1px solid #ff6b6b;
+        padding:12px;
+        margin-top:15px;
+        border-radius:8px;
+        font-size:14px;
+    ">
+        <strong>PRODUCT ERROR:</strong><br>
+        ${error.message || "Unable to save product."}
+    </div>
+`;
+    }
+
+});
+
+/* =====================================================
+   EDIT PRODUCT
+===================================================== */
+
+function editProduct(id){
+
+    const product =
+        allProducts.find(
+            item =>
+                String(item._id) === String(id)
+        );
+
+
+    if(!product){
+
+        alert("Product not found.");
+
+        return;
+
+    }
+
+
+    editProductId =
+        product._id;
+
+
+    document
+        .getElementById("productName")
+        .value =
+        product.name || "";
+
+
+    document
+        .getElementById("price")
+        .value =
+        product.price || "";
+
+
+    document
+        .getElementById("category")
+        .value =
+        product.category || "";
+
+
+    document
+        .getElementById("purity")
+        .value =
+        product.purity || "22K";
+
+
+    document
+        .getElementById("weight")
+        .value =
+        product.weight || "";
+
+
+
+
+    document
+        .getElementById("productFormTitle")
+        .textContent =
+        "Edit Product";
+
+
+    document
+        .getElementById("cancelEditBtn")
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById("products")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =====================================================
+   CANCEL EDIT
+===================================================== */
+
+document
+.getElementById("cancelEditBtn")
+.addEventListener("click", resetProductForm);
+
+
+function resetProductForm(){
+
+    editProductId = null;
+
+    document
+        .getElementById("productForm")
+        .reset();
+
+
+    document
+        .getElementById("purity")
+        .value =
+        "22K";
+
+
+    document
+        .getElementById("productFormTitle")
+        .textContent =
+        "Add New Product";
+
+
+    document
+        .getElementById("cancelEditBtn")
+        .style.display =
+        "none";
+
+}
+
+
+/* =====================================================
+   DELETE PRODUCT
+===================================================== */
+
+async function deleteProduct(id){
+
+    const product =
+        allProducts.find(
+            item =>
+                String(item._id) === String(id)
+        );
+
+
+    const productName =
+        product?.name ||
+        "this product";
+
+
+    const confirmed =
+        confirm(
+            `Delete ${productName}?`
+        );
+
+
+    if(!confirmed){
+        return;
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                `${API}/products/${id}`,
+                {
+                    method:"DELETE"
+                }
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Delete failed"
+            );
+
+        }
+
+
+        alert(
+            "Product deleted successfully."
+        );
+
+
+        loadProducts();
+
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "Unable to delete product."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   PRODUCT SEARCH
+===================================================== */
+
+document
+.getElementById("searchProduct")
+.addEventListener(
+    "input",
+    renderProducts
+);
+
+
+document
+.getElementById("filterCategory")
+.addEventListener(
+    "change",
+    renderProducts
+);
+
+
+/* =====================================================
+   ORDERS
+===================================================== */
+
+async function loadOrders(){
+
+    const table =
+        document.getElementById(
+            "ordersTable"
+        );
+
+
+    table.innerHTML = `
+        <tr>
+            <td colspan="6">
+                <div class="loading">
+                    Loading orders...
+                </div>
+            </td>
+        </tr>
+    `;
+
+
+    const endpoints = [
+
+        "/orders",
+
+        "/api/orders",
+
+        "/api/orders/all"
+
+    ];
+
+
+    let orders = null;
+
+
+    for(
+        const endpoint
+        of endpoints
+    ){
+
+        try{
+
+            const response =
+                await fetch(
+                    API + endpoint
+                );
+
+
+            if(!response.ok){
+                continue;
+            }
+
+
+            const data =
+                await response.json();
+
+
+            if(Array.isArray(data)){
+
+                orders = data;
+
+                break;
+
+            }
+
+
+            if(
+                data &&
+                Array.isArray(data.orders)
+            ){
+
+                orders =
+                    data.orders;
+
+                break;
+
+            }
+
+        }
+        catch(error){
+
+            console.log(
+                "Orders endpoint:",
+                endpoint,
+                error
+            );
+
+        }
+
+    }
+
+
+    if(!orders){
+
+        document
+            .getElementById("totalOrders")
+            .textContent =
+            "0";
+
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="6">
+                    <div class="empty">
+                        Orders API not available.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("totalOrders")
+        .textContent =
+        orders.length;
+
+
+    if(!orders.length){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="6">
+                    <div class="empty">
+                        No orders found.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+
+    }
+
+
+    const savedStatuses =
+        JSON.parse(
+            localStorage.getItem(
+                "pushapaOrderStatuses"
+            ) || "{}"
+        );
+
+
+    table.innerHTML =
+        orders
+        .map(order => {
+
+
+            const orderId =
+                order.orderId ||
+                order._id ||
+                "-";
+
+
+            const customer =
+                order.name ||
+                order.customerName ||
+                order.user?.name ||
+                order.user?.email ||
+                "-";
+
+
+            let product =
+                order.productName ||
+                order.product?.name ||
+                order.items?.[0]?.name ||
+                "Jewellery";
+
+
+            const amount =
+                order.total ||
+                order.amount ||
+                order.price ||
+                order.grandTotal ||
+                0;
+
+
+            const status =
+                savedStatuses[orderId] ||
+                order.status ||
+                "Placed";
+
+
+            return `
+
+                <tr>
+
+
+                    <td>
+
+                        <strong
+                            style="
+                                color:#E5C46A;
+                            ">
+
+                            ${escapeHTML(orderId)}
+
+                        </strong>
+
+                    </td>
+
+
+                    <td>
+
+                        ${escapeHTML(customer)}
+
+                    </td>
+
+
+                    <td>
+
+                        ${escapeHTML(product)}
+
+                    </td>
+
+
+                    <td>
+
+                        <strong
+                            style="
+                                color:#E5C46A;
+                            ">
+
+                            ₹${Number(amount)
+                                .toLocaleString("en-IN")}
+
+                        </strong>
+
+                    </td>
+
+
+                    <td>
+
+                        <span
+                            class="
+                                status-badge
+                                ${getStatusClass(status)}
+                            ">
+
+                            ${escapeHTML(status)}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <select
+                            class="order-status-select"
+                            onchange="
+                                changeOrderStatus(
+                                    '${escapeHTML(orderId)}',
+                                    this.value
+                                )
+                            ">
+
+                            ${statusOption(
+                                "Placed",
+                                status
+                            )}
+
+                            ${statusOption(
+                                "Confirmed",
+                                status
+                            )}
+
+                            ${statusOption(
+                                "Packed",
+                                status
+                            )}
+
+                            ${statusOption(
+                                "Shipped",
+                                status
+                            )}
+
+                            ${statusOption(
+                                "Out for Delivery",
+                                status
+                            )}
+
+                            ${statusOption(
+                                "Delivered",
+                                status
+                            )}
+
+                            ${statusOption(
+                                "Cancelled",
+                                status
+                            )}
+
+                        </select>
+
+                    </td>
+
+
+                </tr>
+
+            `;
+
+        })
+        .join("");
+
+}
+
+
+/* =====================================================
+   STATUS OPTION
+===================================================== */
+
+function statusOption(
+    value,
+    current
+){
+
+    return `
+
+        <option
+            value="${value}"
+            ${value === current
+                ? "selected"
+                : ""}>
+
+            ${value}
+
+        </option>
+
+    `;
+
+}
+
+
+/* =====================================================
+   STATUS CLASS
+===================================================== */
+
+function getStatusClass(status){
+
+    switch(status){
+
+        case "Confirmed":
+            return "status-confirmed";
+
+        case "Packed":
+            return "status-packed";
+
+        case "Shipped":
+            return "status-shipped";
+
+        case "Out for Delivery":
+            return "status-out";
+
+        case "Delivered":
+            return "status-delivered";
+
+        case "Cancelled":
+            return "status-cancelled";
+
+        default:
+            return "status-placed";
+
+    }
+
+}
+
+
+/* =====================================================
+   CHANGE STATUS
+===================================================== */
+
+async function changeOrderStatus(
+    orderId,
+    newStatus
+){
+
+    try{
+
+        const savedStatuses =
+            JSON.parse(
+                localStorage.getItem(
+                    "pushapaOrderStatuses"
+                ) || "{}"
+            );
+
+
+        savedStatuses[orderId] =
+            newStatus;
+
+
+        localStorage.setItem(
+            "pushapaOrderStatuses",
+            JSON.stringify(
+                savedStatuses
+            )
+        );
+
+
+        /* Try backend */
+
+        const endpoints = [
+
+            `/orders/${orderId}`,
+
+            `/api/orders/${orderId}`
+
+        ];
+
+
+        let backendUpdated =
+            false;
+
+
+        for(
+            const endpoint
+            of endpoints
+        ){
+
+            try{
+
+                const response =
+                    await fetch(
+                        API + endpoint,
+                        {
+                            method:"PUT",
+
+                            headers:{
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify({
+                                    status:
+                                        newStatus
+                                })
+                        }
+                    );
+
+
+                if(response.ok){
+
+                    backendUpdated =
+                        true;
+
+                    break;
+
+                }
+
+            }
+            catch(error){
+
+                console.log(
+                    "Backend status update failed."
+                );
+
+            }
+
+        }
+
+
+        if(backendUpdated){
+
+            alert(
+                `Order status changed to ${newStatus}.`
+            );
+
+        }
+        else{
+
+            alert(
+                `Order status changed to ${newStatus}.`
+            );
+
+        }
+
+
+        loadOrders();
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "Unable to change order status."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   USERS
+===================================================== */
+
+async function loadUsers(){
+
+    const table =
+        document.getElementById(
+            "usersTable"
+        );
+
+
+    table.innerHTML = `
+        <tr>
+            <td colspan="4">
+                <div class="loading">
+                    Loading customers...
+                </div>
+            </td>
+        </tr>
+    `;
+
+
+    const endpoints = [
+
+        "/users",
+
+        "/api/users",
+
+        "/api/auth/users"
+
+    ];
+
+
+    let users = null;
+
+
+    for(
+        const endpoint
+        of endpoints
+    ){
+
+        try{
+
+            const response =
+                await fetch(
+                    API + endpoint
+                );
+
+
+            if(!response.ok){
+                continue;
+            }
+
+
+            const data =
+                await response.json();
+
+
+            if(Array.isArray(data)){
+
+                users = data;
+
+                break;
+
+            }
+
+
+            if(
+                data &&
+                Array.isArray(data.users)
+            ){
+
+                users =
+                    data.users;
+
+                break;
+
+            }
+
+        }
+        catch(error){
+
+            console.log(error);
+
+        }
+
+    }
+
+
+    if(!users){
+
+        document
+            .getElementById("totalUsers")
+            .textContent =
+            "0";
+
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="4">
+                    <div class="empty">
+                        Users API not available.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("totalUsers")
+        .textContent =
+        users.length;
+
+
+    if(!users.length){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="4">
+                    <div class="empty">
+                        No customers found.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+
+    }
+
+
+    table.innerHTML =
+        users.map(user => {
+
+
+            const name =
+                user.name ||
+                user.fullName ||
+                "-";
+
+
+            const email =
+                user.email ||
+                "-";
+
+
+            const mobile =
+                user.mobile ||
+                user.phone ||
+                user.phoneNumber ||
+                "-";
+
+
+            return `
+
+                <tr>
+
+                    <td>
+                        ${escapeHTML(name)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(email)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(mobile)}
+                    </td>
+
+                    <td>
+
+                        <span
+                            class="
+                                status-badge
+                                status-delivered
+                            ">
+
+                            Active
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        })
+        .join("");
+
+}
+
+
+/* =====================================================
+   CART COUNT
+===================================================== */
+
+function loadCartCount(){
+
+    try{
+
+        const cart =
+            JSON.parse(
+                localStorage.getItem(
+                    "cart"
+                )
+            ) || [];
+
+
+        document
+            .getElementById("totalCart")
+            .textContent =
+            cart.length;
+
+    }
+    catch(error){
+
+        document
+            .getElementById("totalCart")
+            .textContent =
+            "0";
+
+    }
+
+}
+
+
+/* =====================================================
+   GOLD RATE
+===================================================== */
+
+function loadGoldRate(){
+
+    const rate =
+        localStorage.getItem(
+            "pushapaGoldRate"
+        );
+
+
+    const display =
+        document.getElementById(
+            "goldRateDisplay"
+        );
+
+
+    const input =
+        document.getElementById(
+            "goldRateInput"
+        );
+
+
+    if(rate){
+
+        display.textContent =
+            "₹" +
+            Number(rate)
+            .toLocaleString("en-IN") +
+            " / 10g";
+
+
+        input.value = rate;
+
+    }
+    else{
+
+        display.textContent =
+            "₹0 / 10g";
+
+    }
+
+}
+
+
+function saveGoldRate(){
+
+    const input =
+        document.getElementById(
+            "goldRateInput"
+        );
+
+
+    const message =
+        document.getElementById(
+            "goldMessage"
+        );
+
+
+    const rate =
+        Number(input.value);
+
+
+    if(!rate || rate <= 0){
+
+        message.textContent =
+            "Enter a valid gold rate.";
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        "pushapaGoldRate",
+        rate
+    );
+
+
+    document
+        .getElementById(
+            "goldRateDisplay"
+        )
+        .textContent =
+        "₹" +
+        rate.toLocaleString("en-IN") +
+        " / 10g";
+
+
+    message.textContent =
+        "Gold rate saved successfully.";
+
+}
+
+
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadProducts();
+
+        loadUsers();
+
+        loadOrders();
+
+        loadCartCount();
+
+      loadMetalRates();
+        loadContactMessages();
+        loadCustomDesigns();
+    }
+);
+// =====================================================
+// LOAD METAL RATES
+// =====================================================
+
+async function loadMetalRates() {
+
+    try {
+
+        const response =
+            await fetch("http://localhost:5000/gold-rates");
+
+        const data = await response.json();
+
+        document.getElementById("gold22kInput").value =
+            data.gold22k || "";
+
+        document.getElementById("gold24kInput").value =
+            data.gold24k || "";
+
+        document.getElementById("silverInput").value =
+            data.silver || "";
+
+    } catch (error) {
+
+        console.error("LOAD RATES ERROR:", error);
+
+    }
+}
+
+
+// =====================================================
+// SAVE METAL RATES
+// =====================================================
+
+async function saveMetalRates() {
+
+    const gold22k =
+        document.getElementById("gold22kInput").value;
+
+    const gold24k =
+        document.getElementById("gold24kInput").value;
+
+    const silver =
+        document.getElementById("silverInput").value;
+
+
+    if (!gold22k || !gold24k || !silver) {
+
+        alert("Please enter all rates.");
+
+        return;
+    }
+
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/gold-rates",
+            {
+                method: "PUT",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    gold22k: Number(gold22k),
+                    gold24k: Number(gold24k),
+                    silver: Number(silver)
+                })
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        if (!response.ok) {
+
+            alert(data.message || "Failed to update rates.");
+
+            return;
+        }
+
+
+        alert("Gold & Silver rates updated successfully!");
+
+
+        loadMetalRates();
+
+
+    } catch (error) {
+
+        console.error("SAVE RATES ERROR:", error);
+
+        alert(
+            "Server connection failed. Make sure backend is running."
+        );
+
+    }
+}
+/* =====================================================
+   CONTACT MESSAGES
+===================================================== */
+
+async function loadContactMessages() {
+
+    const table = document.getElementById("contactMessagesTable");
+
+    if (!table) return;
+
+    table.innerHTML = `
+        <tr>
+            <td colspan="7">
+                <div class="loading">
+                    Loading contact messages...
+                </div>
+            </td>
+        </tr>
+    `;
+
+    try {
+
+        const response = await fetch(
+            API + "/contact-messages"
+        );
+
+        if (!response.ok) {
+            throw new Error("Contact messages API failed");
+        }
+
+        const messages = await response.json();
+
+        if (!Array.isArray(messages) || messages.length === 0) {
+
+            table.innerHTML = `
+                <tr>
+                    <td colspan="7">
+                        <div class="empty">
+                            No contact messages found.
+                        </div>
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+        table.innerHTML = messages.map(item => {
+
+            const id = item._id || "";
+            const status = item.status || "New";
+
+            const date = item.createdAt
+                ? new Date(item.createdAt).toLocaleString("en-IN")
+                : "-";
+
+            return `
+                <tr>
+
+                    <td>
+
+                        <strong style="color:#E5C46A;">
+                            ${escapeHTML(item.name || "-")}
+                        </strong>
+
+                        <div style="
+                            color:#777;
+                            font-size:10px;
+                            margin-top:5px;
+                        ">
+                            ${escapeHTML(date)}
+                        </div>
+
+                    </td>
+
+                    <td>
+                        ${escapeHTML(item.email || "-")}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(item.phone || "-")}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(item.subject || "-")}
+                    </td>
+
+                    <td style="
+                        max-width:280px;
+                        white-space:normal;
+                        line-height:1.6;
+                    ">
+                        ${escapeHTML(item.message || "-")}
+                    </td>
+
+                    <td>
+
+                        <select
+                            class="order-status-select"
+                            onchange="changeContactStatus('${id}', this.value)"
+                        >
+
+                            <option value="New"
+                                ${status === "New" ? "selected" : ""}>
+                                New
+                            </option>
+
+                            <option value="Read"
+                                ${status === "Read" ? "selected" : ""}>
+                                Read
+                            </option>
+
+                            <option value="Replied"
+                                ${status === "Replied" ? "selected" : ""}>
+                                Replied
+                            </option>
+
+                        </select>
+
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="delete-btn"
+                            style="
+                                min-height:34px;
+                                padding:0 12px;
+                                border-radius:7px;
+                            "
+                            onclick="deleteContactMessage('${id}')"
+                        >
+
+                            <i class="fa-solid fa-trash"></i>
+                            Delete
+
+                        </button>
+
+                    </td>
+
+                </tr>
+            `;
+
+        }).join("");
+
+    } catch (error) {
+
+        console.error(
+            "LOAD CONTACT MESSAGES ERROR:",
+            error
+        );
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="7">
+                    <div class="empty">
+                        Unable to load contact messages.
+                    </div>
+                </td>
+            </tr>
+        `;
+    }
+}
+
+
+/* =====================================================
+   CHANGE CONTACT MESSAGE STATUS
+===================================================== */
+
+async function changeContactStatus(id, status) {
+
+    try {
+
+        const response = await fetch(
+            `${API}/contact-messages/${id}`,
+            {
+                method: "PUT",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    status: status
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            throw new Error(
+                data.message ||
+                "Status update failed"
+            );
+        }
+
+        loadContactMessages();
+
+    } catch (error) {
+
+        console.error(
+            "CONTACT STATUS ERROR:",
+            error
+        );
+
+        alert(
+            error.message ||
+            "Unable to update message status."
+        );
+    }
+}
+
+
+/* =====================================================
+   DELETE CONTACT MESSAGE
+===================================================== */
+
+async function deleteContactMessage(id) {
+
+    if (!confirm("Delete this contact message?")) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            `${API}/contact-messages/${id}`,
+            {
+                method: "DELETE"
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            throw new Error(
+                data.message ||
+                "Delete failed"
+            );
+        }
+
+        alert(
+            "Contact message deleted successfully."
+        );
+
+        loadContactMessages();
+
+    } catch (error) {
+
+        console.error(
+            "DELETE CONTACT MESSAGE ERROR:",
+            error
+        );
+
+        alert(
+            error.message ||
+            "Unable to delete contact message."
+        );
+    }
+}
+
+
+/* =====================================================
+   CUSTOM DESIGN REQUESTS
+===================================================== */
+
+async function loadCustomDesigns() {
+
+    const table =
+        document.getElementById(
+            "customDesignsTable"
+        );
+
+    if (!table) return;
+
+
+    table.innerHTML = `
+        <tr>
+            <td colspan="9">
+
+                <div class="loading">
+                    Loading custom design requests...
+                </div>
+
+            </td>
+        </tr>
+    `;
+
+
+    try {
+
+        const response =
+            await fetch(
+                API + "/custom-designs"
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Custom designs API failed"
+            );
+
+        }
+
+
+        const designs =
+            await response.json();
+
+
+        if (
+            !Array.isArray(designs) ||
+            designs.length === 0
+        ) {
+
+            table.innerHTML = `
+                <tr>
+
+                    <td colspan="9">
+
+                        <div class="empty">
+
+                            No custom design requests found.
+
+                        </div>
+
+                    </td>
+
+                </tr>
+            `;
+
+            return;
+
+        }
+
+
+        table.innerHTML =
+            designs.map(function (item) {
+
+                const id =
+                    item._id || "";
+
+
+                const status =
+                    item.status || "New";
+
+
+                const date =
+                    item.createdAt
+                        ? new Date(
+                            item.createdAt
+                          ).toLocaleString(
+                            "en-IN"
+                          )
+                        : "-";
+
+
+                let image =
+                    item.image || "";
+
+
+                if (
+                    image &&
+                    !image.startsWith("http") &&
+                    !image.startsWith("data:")
+                ) {
+
+                    image =
+                        API +
+                        "/" +
+                        image.replace(
+                            /^\/+/,
+                            ""
+                        );
+
+                }
+
+
+                return `
+
+                    <tr>
+
+                        <!-- DESIGN -->
+
+                        <td>
+
+                            ${
+                                image
+                                ?
+                                `
+                                <img
+                                    src="${image}"
+                                    alt="Custom Design"
+                                    style="
+                                        width:80px;
+                                        height:80px;
+                                        object-fit:cover;
+                                        border-radius:10px;
+                                        border:1px solid #E5C46A;
+                                        cursor:pointer;
+                                    "
+                                    onclick="window.open('${image}', '_blank')"
+                                >
+                                `
+                                :
+                                `
+                                <span>
+                                    No Image
+                                </span>
+                                `
+                            }
+
+                        </td>
+
+
+                        <!-- CUSTOMER -->
+
+                        <td>
+
+                            <strong
+                                style="
+                                    color:#E5C46A;
+                                "
+                            >
+
+                                ${escapeHTML(
+                                    item.name || "-"
+                                )}
+
+                            </strong>
+
+                            <div
+                                style="
+                                    color:#777;
+                                    font-size:10px;
+                                    margin-top:5px;
+                                "
+                            >
+
+                                ${escapeHTML(
+                                    date
+                                )}
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- CONTACT -->
+
+                        <td>
+
+                            <div>
+
+                                ${escapeHTML(
+                                    item.phone || "-"
+                                )}
+
+                            </div>
+
+                            <div
+                                style="
+                                    color:#aaa;
+                                    font-size:12px;
+                                    margin-top:5px;
+                                "
+                            >
+
+                                ${escapeHTML(
+                                    item.email || "-"
+                                )}
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- TYPE -->
+
+                        <td>
+
+                            ${escapeHTML(
+                                item.jewelleryType || "-"
+                            )}
+
+                        </td>
+
+
+                        <!-- PURITY -->
+
+                        <td>
+
+                            <strong
+                                style="
+                                    color:#E5C46A;
+                                "
+                            >
+
+                                ${escapeHTML(
+                                    item.purity || "-"
+                                )}
+
+                            </strong>
+
+                        </td>
+
+
+                        <!-- WEIGHT -->
+
+                        <td>
+
+                            ${Number(
+                                item.weight || 0
+                            ).toFixed(1)} g
+
+                        </td>
+
+
+                        <!-- NOTES -->
+
+                        <td
+                            style="
+                                max-width:220px;
+                                white-space:normal;
+                                line-height:1.5;
+                            "
+                        >
+
+                            ${escapeHTML(
+                                item.notes || "-"
+                            )}
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            <select
+                                class="order-status-select"
+                                onchange="
+                                    changeCustomDesignStatus(
+                                        '${id}',
+                                        this.value
+                                    )
+                                "
+                            >
+
+                                <option
+                                    value="New"
+                                    ${
+                                        status === "New"
+                                        ? "selected"
+                                        : ""
+                                    }
+                                >
+                                    New
+                                </option>
+
+                                <option
+                                    value="Reviewed"
+                                    ${
+                                        status === "Reviewed"
+                                        ? "selected"
+                                        : ""
+                                    }
+                                >
+                                    Reviewed
+                                </option>
+
+                                <option
+                                    value="Contacted"
+                                    ${
+                                        status === "Contacted"
+                                        ? "selected"
+                                        : ""
+                                    }
+                                >
+                                    Contacted
+                                </option>
+
+                                <option
+                                    value="Completed"
+                                    ${
+                                        status === "Completed"
+                                        ? "selected"
+                                        : ""
+                                    }
+                                >
+                                    Completed
+                                </option>
+
+                            </select>
+
+                        </td>
+
+
+                        <!-- ACTION -->
+
+                        <td>
+
+                            <button
+                                class="delete-btn"
+                                style="
+                                    min-height:34px;
+                                    padding:0 12px;
+                                    border-radius:7px;
+                                "
+                                onclick="
+                                    deleteCustomDesign(
+                                        '${id}'
+                                    )
+                                "
+                            >
+
+                                <i
+                                    class="fa-solid fa-trash"
+                                ></i>
+
+                                Delete
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }).join("");
+
+
+    } catch (error) {
+
+        console.error(
+            "LOAD CUSTOM DESIGNS ERROR:",
+            error
+        );
+
+
+        table.innerHTML = `
+            <tr>
+
+                <td colspan="9">
+
+                    <div class="empty">
+
+                        Unable to load custom design requests.
+
+                    </div>
+
+                </td>
+
+            </tr>
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   CHANGE STATUS
+===================================================== */
+
+async function changeCustomDesignStatus(
+    id,
+    status
+) {
+
+    try {
+
+        const response =
+            await fetch(
+                `${API}/custom-designs/${id}`,
+                {
+                    method: "PUT",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        status: status
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            !response.ok ||
+            !data.success
+        ) {
+
+            throw new Error(
+                data.message ||
+                "Status update failed"
+            );
+
+        }
+
+
+        loadCustomDesigns();
+
+
+    } catch (error) {
+
+        console.error(
+            "CUSTOM DESIGN STATUS ERROR:",
+            error
+        );
+
+
+        alert(
+            error.message ||
+            "Unable to update status."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   DELETE CUSTOM DESIGN
+===================================================== */
+
+async function deleteCustomDesign(id) {
+
+    if (
+        !confirm(
+            "Delete this custom design request?"
+        )
+    ) {
+        return;
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                `${API}/custom-designs/${id}`,
+                {
+                    method: "DELETE"
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            !response.ok ||
+            !data.success
+        ) {
+
+            throw new Error(
+                data.message ||
+                "Delete failed"
+            );
+
+        }
+
+
+        alert(
+            "Custom design request deleted successfully."
+        );
+
+
+        loadCustomDesigns();
+
+
+    } catch (error) {
+
+        console.error(
+            "DELETE CUSTOM DESIGN ERROR:",
+            error
+        );
+
+
+        alert(
+            error.message ||
+            "Unable to delete request."
+        );
+
+    }
+
+}
+
+
+</script>
+
+</body>
+</html>

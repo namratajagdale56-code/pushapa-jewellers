@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Details | Pushapa Jewellers</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+    <header>
+
+<nav class="navbar">
+
+    <!-- Logo Left Side -->
+    <div class="logo">
+    <a href="index.html">
+        <div class="logo">
+            <img src="images/logo.png" alt="Pushapa Jewellers">
+            <span>Pushapa Jewellers</span>
+        </div>
+    </a>
+</div>
+
+<div class="menu-btn">
+    ☰
+</div>
+    <!-- Menu Right Side -->
+    <ul class="nav-links">
+
+        <li><a href="index.html">Home</a></li>
+
+        <li><a href="login.html">Login</a></li>
+
+        <li><a href="product.html">Product</a></li>
+
+
+        <li><a href="about.html">About</a></li>
+
+        <li><a href="contact.html">Contact</a></li>
+        <li>
+    <a href="wishlist.html" title="Wishlist" class="nav-icon">
+        <i class="fa-regular fa-heart"></i>
+    </a>
+</li>
+<li>
+    <a href="my-orders.html" title="My Orders" class="nav-icon">
+        <i class="fa-solid fa-box-open"></i>
+    </a>
+</li>
+
+
+<li>
+    <a href="cart.html" title="Cart" class="nav-icon cart-icon">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cart-count">0</span>
+    </a>
+</li>
+
+    </ul>
+
+</nav>
+
+</header>
+<!-- ================= BACK BUTTON ================= -->
+
+<div class="back-area">
+    <a href="necklace.html" class="back-btn">❮</a>
+</div>
+
+<!-- ================= PRODUCT DETAILS ================= -->
+
+<section class="product-details">
+
+    <!-- ================= LEFT SIDE ================= -->
+
+    <div class="product-gallery">
+
+        <div class="main-image">
+
+            <img
+                src="images/necklace/necklace1.jpg"
+                alt="Product Image"
+                id="mainProductImage"
+            >
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ================= RIGHT SIDE ================= -->
+
+    <div class="product-info">
+
+        <!-- CATEGORY -->
+
+        <p class="category" id="productCategory">
+            GOLD COLLECTION
+        </p>
+
+
+        <!-- PRODUCT NAME -->
+
+        <h1 id="productName">
+            Elegant Gold Necklace
+        </h1>
+
+
+        <!-- RATING -->
+
+        <div class="rating">
+
+            <span>★★★★★</span>
+
+            <strong>4.8</strong>
+
+            <small>(128 Reviews)</small>
+
+        </div>
+
+
+        <!-- PRICE -->
+
+        <h2 class="price" id="productPrice">
+            ₹ 85,999
+        </h2>
+
+
+        <div class="gold-line"></div>
+
+
+        <!-- ================= PRODUCT INFO ================= -->
+
+        <div class="info-row">
+
+            <span>Gold Purity</span>
+
+            <strong>22K Gold</strong>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <span>Gross Weight</span>
+
+            <strong>12.5 g</strong>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <span>Making Charges</span>
+
+            <strong>₹5,000</strong>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <span>GST</span>
+
+            <strong>Included</strong>
+
+        </div>
+
+
+        <!-- ================= QUANTITY ================= -->
+
+        <div class="quantity-section">
+
+            <label>Quantity</label>
+
+            <div class="quantity-box">
+
+                <button onclick="decreaseQty()">−</button>
+
+                <span id="quantity">1</span>
+
+                <button onclick="increaseQty()">+</button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= BUTTONS ================= -->
+
+        <div class="buttons">
+
+            <button
+                class="cart-btn"
+                onclick="addToCart()">
+                🛒 ADD TO CART
+            </button>
+
+            <button
+                class="buy-btn"
+                onclick="buyNow()">
+                BUY NOW
+            </button>
+
+        </div>
+
+
+        <!-- ================= FEATURES ================= -->
+
+        <div class="features">
+
+            <div>
+                <span>✓</span>
+                BIS Hallmarked
+            </div>
+
+            <div>
+                <span>✓</span>
+                Secure Packaging
+            </div>
+
+            <div>
+                <span>✓</span>
+                Easy Returns
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= DESCRIPTION ================= -->
+
+<section class="description-section">
+
+    <h2>PRODUCT DESCRIPTION</h2>
+
+    <div class="section-line"></div>
+
+    <p>
+        Elegant 22K gold jewellery crafted for a premium and timeless look.
+        This beautifully designed jewellery combines traditional craftsmanship
+        with modern elegance, making it perfect for weddings, festivals and
+        special occasions.
+    </p>
+
+</section>
+
+
+
+<!-- ================= PRODUCT INFORMATION ================= -->
+
+<section class="information-section">
+
+    <h2>PRODUCT INFORMATION</h2>
+
+    <div class="section-line"></div>
+
+
+    <div class="information-grid">
+
+        <div class="information-card">
+
+            <span>Purity</span>
+
+            <strong>22K Gold</strong>
+
+        </div>
+
+
+        <div class="information-card">
+
+            <span>Gross Weight</span>
+
+            <strong>12.5 g</strong>
+
+        </div>
+
+
+        <div class="information-card">
+
+            <span>Category</span>
+
+            <strong id="informationCategory">
+                Necklace
+            </strong>
+
+        </div>
+
+
+        <div class="information-card">
+
+            <span>Certification</span>
+
+            <strong>BIS Hallmarked</strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-top">
+
+        <!-- BRAND -->
+
+        <div class="footer-brand">
+
+            <h2>Pushapa</h2>
+
+            <h3>JEWELLERS</h3>
+
+            <p>
+                Timeless jewellery crafted with purity,
+                elegance and trust.
+            </p>
+
+            <div class="footer-line"></div>
+
+            <p class="tagline">
+                ✦ Crafted With Purity<br>
+                ✦ Designed With Elegance
+            </p>
+
+        </div>
+
+
+        <!-- QUICK PAGES -->
+
+        <div class="footer-column">
+
+            <h3>Quick Pages</h3>
+
+            <a href="index.html">Home</a>
+
+            <a href="product.html">Products</a>
+
+            <a href="about.html">About Us</a>
+
+            <a href="contact.html">Contact Us</a>
+
+            <a href="login.html">Login</a>
+
+            <a href="cart.html">Cart</a>
+
+        </div>
+
+
+        <!-- CONTACT -->
+
+        <div class="footer-column contact-column">
+
+            <h3>Contact Us</h3>
+
+            <p>📞 +91 8956618480</p>
+
+            <p>✉ pushapajewellers@gmail.com</p>
+
+            <h4>Our Address</h4>
+
+            <p>
+                📍 Pushapa Jewellers,<br>
+                natepute,<br>
+                solapur, Maharashtra,<br>
+                India - 411005
+            </p>
+
+        </div>
+
+
+        <!-- MAP -->
+
+        <div class="footer-column map-column">
+
+            <h3>Find Us</h3>
+
+            <iframe
+                src="https://www.google.com/maps?q=natepute,Pune&output=embed"
+                loading="lazy">
+            </iframe>
+
+        </div>
+
+    </div>
+
+
+    <!-- BOTTOM FOOTER -->
+
+    <div class="footer-bottom">
+
+        <p>
+
+            © 2026
+            <span>Pushapa Jewellers</span>.
+            All Rights Reserved.
+
+        </p>
+
+
+        <div class="footer-links">
+
+            <a href="#">Privacy Policy</a>
+
+            <span>|</span>
+
+            <a href="#">Terms & Conditions</a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="script.js"></script>
+
+<script src="view-details.js"></script>
+
+</body>
+
+</html>

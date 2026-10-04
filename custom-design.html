@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Custom Jewellery Design | Pushapa Jewellers</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #0b0b0b;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .custom-hero {
+            min-height: 330px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.72),
+                    rgba(0,0,0,.88)
+                ),
+                url("images/hero.jpg");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .custom-hero-content {
+            max-width: 850px;
+        }
+
+        .custom-hero .small-title {
+            color: #E5C46A;
+            letter-spacing: 4px;
+            font-size: 13px;
+        }
+
+        .custom-hero h1 {
+            font-family: 'Cinzel', serif;
+            color: #E5C46A;
+            font-size: clamp(32px, 5vw, 55px);
+            margin: 15px 0;
+        }
+
+        .custom-hero p {
+            color: #ccc;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .custom-wrapper {
+            width: min(1100px, 92%);
+            margin: 60px auto;
+        }
+
+        .custom-box {
+            background: #111;
+            border: 1px solid rgba(229,196,106,.35);
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 0 35px rgba(0,0,0,.5);
+        }
+
+        .custom-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .custom-title h2 {
+            font-family: 'Cinzel', serif;
+            color: #E5C46A;
+            margin: 0 0 10px;
+        }
+
+        .custom-title p {
+            color: #999;
+            margin: 0;
+        }
+
+
+        /* ================= FORM ================= */
+
+        .custom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .custom-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .custom-field.full {
+            grid-column: 1 / -1;
+        }
+
+        .custom-field label {
+            color: #E5C46A;
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .custom-field input,
+        .custom-field select,
+        .custom-field textarea {
+            width: 100%;
+            padding: 14px 15px;
+            background: #090909;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+        }
+
+        .custom-field input:focus,
+        .custom-field select:focus,
+        .custom-field textarea:focus {
+            border-color: #E5C46A;
+            box-shadow: 0 0 10px rgba(229,196,106,.15);
+        }
+
+        .custom-field textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .custom-field select option {
+            background: #111;
+            color: #fff;
+        }
+
+
+        /* ================= RATE BOX ================= */
+
+        .rate-box {
+            margin-top: 28px;
+            padding: 22px;
+            border-radius: 12px;
+            background: #0a0a0a;
+            border: 1px solid rgba(229,196,106,.25);
+        }
+
+        .rate-box h3 {
+            color: #E5C46A;
+            font-family: 'Cinzel', serif;
+            margin-top: 0;
+        }
+
+        .rate-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .rate-item {
+            padding: 15px;
+            background: #111;
+            border-radius: 8px;
+        }
+
+        .rate-item span {
+            display: block;
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .rate-item strong {
+            color: #fff;
+            font-size: 18px;
+        }
+
+
+        /* ================= PREVIEW ================= */
+
+        .upload-area {
+            border: 1px dashed rgba(229,196,106,.5);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            background: #0b0b0b;
+        }
+
+        .upload-area i {
+            color: #E5C46A;
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .upload-area p {
+            color: #aaa;
+            margin: 5px 0 15px;
+            font-size: 13px;
+        }
+
+        #designPreview {
+            display: none;
+            max-width: 220px;
+            max-height: 220px;
+            margin: 20px auto 0;
+            border-radius: 12px;
+            border: 1px solid #E5C46A;
+            object-fit: cover;
+        }
+
+
+        /* ================= PRICE ================= */
+
+        .estimate-box {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #151515,
+                    #0b0b0b
+                );
+            border: 1px solid rgba(229,196,106,.4);
+        }
+
+        .estimate-box h3 {
+            margin-top: 0;
+            color: #E5C46A;
+            font-family: 'Cinzel', serif;
+        }
+
+        .estimate-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 9px 0;
+            border-bottom: 1px solid #222;
+            color: #bbb;
+        }
+
+        .estimate-row:last-child {
+            border-bottom: 0;
+        }
+
+        .estimate-total {
+            color: #E5C46A;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+
+        /* ================= BUTTON ================= */
+
+        .custom-submit {
+            width: 100%;
+            margin-top: 28px;
+            padding: 16px;
+            border: 0;
+            border-radius: 8px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #E5C46A,
+                    #b9973e
+                );
+
+            color: #111;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: .3s;
+        }
+
+        .custom-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(229,196,106,.25);
+        }
+
+        #customMessage {
+            text-align: center;
+            margin-top: 18px;
+            font-weight: 500;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width:700px) {
+
+            .custom-wrapper {
+                margin: 35px auto;
+            }
+
+            .custom-box {
+                padding: 22px 18px;
+            }
+
+            .custom-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .custom-field.full {
+                grid-column: auto;
+            }
+
+            .rate-details {
+                grid-template-columns: 1fr;
+            }
+
+            .custom-hero {
+                min-height: 280px;
+            }
+
+            .custom-hero p {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="custom-hero">
+
+        <div class="custom-hero-content">
+
+            <span class="small-title">
+                CREATE SOMETHING UNIQUE
+            </span>
+
+            <h1>
+                Design Your Jewellery
+            </h1>
+
+            <p>
+                Have a jewellery design in mind?
+                Upload your design, select gold purity,
+                enter the required weight and send us your request.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="custom-wrapper">
+
+        <div class="custom-box">
+
+
+            <div class="custom-title">
+
+                <h2>
+                    CUSTOM JEWELLERY REQUEST
+                </h2>
+
+                <p>
+                    Share your design and requirements with Pushapa Jewellers
+                </p>
+
+            </div>
+
+
+            <form id="customDesignForm">
+
+
+                <div class="custom-grid">
+
+
+                    <!-- CUSTOMER NAME -->
+
+                    <div class="custom-field">
+
+                        <label>
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customName"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="custom-field">
+
+                        <label>
+                            Mobile Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="customPhone"
+                            placeholder="10 digit mobile number"
+                            maxlength="10"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="custom-field">
+
+                        <label>
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="customEmail"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- JEWELLERY TYPE -->
+
+                    <div class="custom-field">
+
+                        <label>
+                            Jewellery Type
+                        </label>
+
+                        <select id="customType" required>
+
+                            <option value="">
+                                Select Jewellery Type
+                            </option>
+
+                            <option value="Ring">
+                                Ring
+                            </option>
+
+                            <option value="Necklace">
+                                Necklace
+                            </option>
+
+                            <option value="Earrings">
+                                Earrings
+                            </option>
+
+                            <option value="Bracelet">
+                                Bracelet
+                            </option>
+
+                            <option value="Bangle">
+                                Bangle
+                            </option>
+
+                            <option value="Pendant">
+                                Pendant
+                            </option>
+
+                            <option value="Mangalsutra">
+                                Mangalsutra
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- PURITY -->
+
+                    <div class="custom-field">
+
+                        <label>
+                            Gold Purity
+                        </label>
+
+                        <select id="customPurity" required>
+
+                            <option value="">
+                                Select Gold Purity
+                            </option>
+
+                            <option value="22K">
+                                22K Gold
+                            </option>
+
+                            <option value="24K">
+                                24K Gold
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- WEIGHT -->
+
+                    <div class="custom-field">
+
+                        <label>
+                            Approximate Weight (grams)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="customWeight"
+                            min="0.1"
+                            step="0.1"
+                            placeholder="Example: 4.5"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- IMAGE -->
+
+                    <div class="custom-field full">
+
+                        <label>
+                            Upload Your Jewellery Design
+                        </label>
+
+                        <div class="upload-area">
+
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                            <p>
+                                Upload JPG, PNG or WEBP image
+                            </p>
+
+                            <input
+                                type="file"
+                                id="customImage"
+                                accept="image/jpeg,image/png,image/webp"
+                                required
+                            >
+
+                            <img
+                                id="designPreview"
+                                alt="Design Preview"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div class="custom-field full">
+
+                        <label>
+                            Additional Requirements
+                        </label>
+
+                        <textarea
+                            id="customNotes"
+                            placeholder="Tell us about your preferred design, size or other requirements..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ================= CURRENT RATES ================= -->
+
+                <div class="rate-box">
+
+                    <h3>
+                        <i class="fa-solid fa-coins"></i>
+                        Current Gold Rates
+                    </h3>
+
+                    <div class="rate-details">
+
+                        <div class="rate-item">
+
+                            <span>
+                                22K Gold / Gram
+                            </span>
+
+                            <strong id="custom22Rate">
+                                Loading...
+                            </strong>
+
+                        </div>
+
+
+                        <div class="rate-item">
+
+                            <span>
+                                24K Gold / Gram
+                            </span>
+
+                            <strong id="custom24Rate">
+                                Loading...
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ================= ESTIMATE ================= -->
+
+                <div class="estimate-box">
+
+                    <h3>
+                        Estimated Gold Value
+                    </h3>
+
+                    <div class="estimate-row">
+
+                        <span>
+                            Selected Purity
+                        </span>
+
+                        <strong id="estimatePurity">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="estimate-row">
+
+                        <span>
+                            Weight
+                        </span>
+
+                        <strong id="estimateWeight">
+                            0 g
+                        </strong>
+
+                    </div>
+
+
+                    <div class="estimate-row">
+
+                        <span>
+                            Gold Rate
+                        </span>
+
+                        <strong id="estimateRate">
+                            ₹0 / g
+                        </strong>
+
+                    </div>
+
+
+                    <div class="estimate-row estimate-total">
+
+                        <span>
+                            Estimated Gold Value
+                        </span>
+
+                        <strong id="estimateTotal">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="custom-submit">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    SEND CUSTOM DESIGN REQUEST
+
+                </button>
+
+
+                <div id="customMessage"></div>
+
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+
+    <script src="script.js"></script>
+
+
+    <script>
+
+        let customRates = {
+            gold22k: 0,
+            gold24k: 0
+        };
+
+
+        /* ================= LOAD GOLD RATES ================= */
+
+        async function loadCustomGoldRates() {
+
+            try {
+
+                const response =
+                    await fetch(
+                        "http://localhost:5000/gold-rates"
+                    );
+
+                if (!response.ok) {
+                    throw new Error("Unable to load gold rates");
+                }
+
+                const data =
+                    await response.json();
+
+
+                customRates.gold22k =
+                    Number(data.gold22k || 0);
+
+                customRates.gold24k =
+                    Number(data.gold24k || 0);
+
+
+                document.getElementById(
+                    "custom22Rate"
+                ).textContent =
+                    "₹" +
+                    customRates.gold22k.toLocaleString("en-IN");
+
+
+                document.getElementById(
+                    "custom24Rate"
+                ).textContent =
+                    "₹" +
+                    customRates.gold24k.toLocaleString("en-IN");
+
+
+                calculateCustomEstimate();
+
+
+            } catch (error) {
+
+                console.error(
+                    "CUSTOM GOLD RATE ERROR:",
+                    error
+                );
+
+            }
+
+        }
+
+
+
+        /* ================= IMAGE PREVIEW ================= */
+
+        document
+            .getElementById("customImage")
+            .addEventListener(
+                "change",
+                function () {
+
+                    const file =
+                        this.files[0];
+
+                    const preview =
+                        document.getElementById(
+                            "designPreview"
+                        );
+
+
+                    if (!file) {
+
+                        preview.style.display =
+                            "none";
+
+                        preview.src = "";
+
+                        return;
+
+                    }
+
+
+                    const allowedTypes = [
+                        "image/jpeg",
+                        "image/png",
+                        "image/webp"
+                    ];
+
+
+                    if (
+                        !allowedTypes.includes(
+                            file.type
+                        )
+                    ) {
+
+                        alert(
+                            "Only JPG, PNG and WEBP images are allowed."
+                        );
+
+                        this.value = "";
+
+                        preview.style.display =
+                            "none";
+
+                        return;
+
+                    }
+
+
+                    if (
+                        file.size >
+                        5 * 1024 * 1024
+                    ) {
+
+                        alert(
+                            "Image size must be less than 5MB."
+                        );
+
+                        this.value = "";
+
+                        preview.style.display =
+                            "none";
+
+                        return;
+
+                    }
+
+
+                    preview.src =
+                        URL.createObjectURL(file);
+
+                    preview.style.display =
+                        "block";
+
+                }
+            );
+
+
+
+        /* ================= PRICE CALCULATION ================= */
+
+        document
+            .getElementById("customPurity")
+            .addEventListener(
+                "change",
+                calculateCustomEstimate
+            );
+
+
+        document
+            .getElementById("customWeight")
+            .addEventListener(
+                "input",
+                calculateCustomEstimate
+            );
+
+
+        function calculateCustomEstimate() {
+
+            const purity =
+                document.getElementById(
+                    "customPurity"
+                ).value;
+
+
+            const weight =
+                Number(
+                    document.getElementById(
+                        "customWeight"
+                    ).value
+                ) || 0;
+
+
+            let rate = 0;
+
+
+            if (purity === "22K") {
+
+                rate =
+                    customRates.gold22k;
+
+            }
+
+
+            if (purity === "24K") {
+
+                rate =
+                    customRates.gold24k;
+
+            }
+
+
+            document.getElementById(
+                "estimatePurity"
+            ).textContent =
+                purity || "-";
+
+
+            document.getElementById(
+                "estimateWeight"
+            ).textContent =
+                weight.toFixed(1) + " g";
+
+
+            document.getElementById(
+                "estimateRate"
+            ).textContent =
+                "₹" +
+                rate.toLocaleString("en-IN") +
+                " / g";
+
+
+            const total =
+                weight * rate;
+
+
+            document.getElementById(
+                "estimateTotal"
+            ).textContent =
+                "₹" +
+                total.toLocaleString("en-IN");
+
+        }
+
+
+
+        /* ================= FORM SUBMIT ================= */
+
+        document
+            .getElementById("customDesignForm")
+            .addEventListener(
+                "submit",
+                async function (e) {
+
+                    e.preventDefault();
+
+
+                    const name =
+                        document.getElementById(
+                            "customName"
+                        ).value.trim();
+
+
+                    const phone =
+                        document.getElementById(
+                            "customPhone"
+                        ).value.trim();
+
+
+                    const email =
+                        document.getElementById(
+                            "customEmail"
+                        ).value.trim();
+
+
+                    const type =
+                        document.getElementById(
+                            "customType"
+                        ).value;
+
+
+                    const purity =
+                        document.getElementById(
+                            "customPurity"
+                        ).value;
+
+
+                    const weight =
+                        Number(
+                            document.getElementById(
+                                "customWeight"
+                            ).value
+                        );
+
+
+                    const image =
+                        document.getElementById(
+                            "customImage"
+                        ).files[0];
+
+
+                    const notes =
+                        document.getElementById(
+                            "customNotes"
+                        ).value.trim();
+
+
+                    const messageBox =
+                        document.getElementById(
+                            "customMessage"
+                        );
+
+
+                    if (
+                        !name ||
+                        !phone ||
+                        !email ||
+                        !type ||
+                        !purity ||
+                        !weight ||
+                        !image
+                    ) {
+
+                        messageBox.textContent =
+                            "Please fill all required fields.";
+
+                        messageBox.style.color =
+                            "#ff6b6b";
+
+                        return;
+
+                    }
+
+
+                    if (
+                        !/^[6-9][0-9]{9}$/.test(
+                            phone
+                        )
+                    ) {
+
+                        messageBox.textContent =
+                            "Please enter a valid 10 digit mobile number.";
+
+                        messageBox.style.color =
+                            "#ff6b6b";
+
+                        return;
+
+                    }
+
+
+                    messageBox.textContent =
+                        "Sending your design request...";
+
+                    messageBox.style.color =
+                        "#E5C46A";
+
+
+                    try {
+
+                        const formData =
+                            new FormData();
+
+
+                        formData.append(
+                            "name",
+                            name
+                        );
+
+                        formData.append(
+                            "phone",
+                            phone
+                        );
+
+                        formData.append(
+                            "email",
+                            email
+                        );
+
+                        formData.append(
+                            "jewelleryType",
+                            type
+                        );
+
+                        formData.append(
+                            "purity",
+                            purity
+                        );
+
+                        formData.append(
+                            "weight",
+                            weight
+                        );
+
+                        formData.append(
+                            "notes",
+                            notes
+                        );
+
+                        formData.append(
+                            "image",
+                            image
+                        );
+
+
+                        const response =
+                            await fetch(
+                                "http://localhost:5000/custom-designs",
+                                {
+                                    method: "POST",
+                                    body: formData
+                                }
+                            );
+
+
+                        const data =
+                            await response.json();
+
+
+                        if (
+                            !response.ok ||
+                            !data.success
+                        ) {
+
+                            throw new Error(
+                                data.message ||
+                                "Request could not be sent."
+                            );
+
+                        }
+
+
+                        messageBox.textContent =
+                            "Custom design request sent successfully!";
+
+                        messageBox.style.color =
+                            "#E5C46A";
+
+
+                        document
+                            .getElementById(
+                                "customDesignForm"
+                            )
+                            .reset();
+
+
+                        document.getElementById(
+                            "designPreview"
+                        ).style.display =
+                            "none";
+
+
+                        calculateCustomEstimate();
+
+
+                    } catch (error) {
+
+                        console.error(
+                            "CUSTOM DESIGN ERROR:",
+                            error
+                        );
+
+                        messageBox.textContent =
+                            error.message ||
+                            "Server connection failed.";
+
+                        messageBox.style.color =
+                            "#ff6b6b";
+
+                    }
+
+                }
+            );
+
+
+
+        /* ================= START ================= */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                loadCustomGoldRates();
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

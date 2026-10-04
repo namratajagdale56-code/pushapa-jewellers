@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mangalsutra | Pushapa Jewellers</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body class="category-page">
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<nav class="navbar">
+
+    <!-- Logo Left Side -->
+    <div class="logo">
+
+        <a href="index.html">
+
+            <div class="logo">
+                <img src="images/logo.png" alt="Pushapa Jewellers">
+                <span>Pushapa Jewellers</span>
+            </div>
+
+        </a>
+
+    </div>
+
+    <!-- Menu Button -->
+    <div class="menu-btn">
+        ☰
+    </div>
+
+    <!-- Menu Right Side -->
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="login.html">Login</a>
+        </li>
+
+        <li>
+            <a href="product.html">Product</a>
+        </li>
+
+        <li>
+            <a href="about.html">About</a>
+        </li>
+
+        <li>
+            <a href="contact.html">Contact</a>
+        </li>
+
+        <!-- Wishlist -->
+        <li>
+            <a href="wishlist.html"
+               title="Wishlist"
+               class="nav-icon">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </a>
+        </li>
+<li>
+    <a href="my-orders.html" title="My Orders" class="nav-icon">
+        <i class="fa-solid fa-box-open"></i>
+    </a>
+</li>
+
+        <!-- Cart -->
+        <li>
+            <a href="cart.html"
+               title="Cart"
+               class="nav-icon cart-icon">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span id="cart-count">0</span>
+
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+</header>
+
+
+<!-- ================= BACK BUTTON ================= -->
+
+<div class="back-area">
+
+    <a href="product.html" class="back-btn">
+        ❮
+    </a>
+
+</div>
+
+
+<!-- =====================================================
+     PUSHAPA JEWELLERS - MANGALSUTRA LUXURY HERO
+     ===================================================== -->
+
+<section class="rings-luxury-hero mangalsutra-luxury-hero">
+
+
+    <div class="rings-hero-content">
+
+        <div class="rings-collection-label">
+            <span></span>
+            ✦ EXQUISITE COLLECTION ✦
+            <span></span>
+        </div>
+
+        <h1>
+            <small>OUR</small>
+            MANGALSUTRA
+        </h1>
+
+        <div class="rings-title-decoration">
+            <span></span>
+            ✦
+            <span></span>
+        </div>
+
+        <p class="rings-hero-description">
+            Discover our exquisite collection of mangalsutras,
+            crafted to celebrate timeless elegance and tradition.
+        </p>
+
+        <div class="rings-hero-buttons">
+
+            <a href="#mangalsutraProducts"
+               class="rings-hero-btn rings-primary-btn">
+                SHOP COLLECTION
+                <span>→</span>
+            </a>
+
+            <a href="product.html"
+               class="rings-hero-btn rings-secondary-btn">
+                VIEW ALL JEWELLERY
+            </a>
+
+        </div>
+
+        <div class="rings-hero-features">
+
+            <div class="rings-feature">
+                <div class="rings-feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <strong>BIS HALLMARKED</strong>
+            </div>
+
+            <div class="rings-feature-divider"></div>
+
+            <div class="rings-feature">
+                <div class="rings-feature-icon">
+                    <i class="fa-regular fa-gem"></i>
+                </div>
+                <strong>CERTIFIED JEWELLERY</strong>
+            </div>
+
+            <div class="rings-feature-divider"></div>
+
+            <div class="rings-feature">
+                <div class="rings-feature-icon">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <strong>PREMIUM CRAFTSMANSHIP</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="hero-bottom-line"></div>
+
+</section>
+
+
+<!-- ================= MANGALSUTRA SECTION ================= -->
+
+<section class="products">
+
+<h2 class="title">
+    Our Mangalsutra
+</h2>
+
+
+<div class="product-container category-product-container"
+     id="mangalsutraProducts"
+     data-category="mangalsutra">
+
+<!-- ================= MANGALSUTRA 1 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Mangalsutra 1', 'images/mangalsutra/mangalsutra1.jpg', 12999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/mangalsutra/mangalsutra1.jpg">
+
+    <p class="price">₹12999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/mangalsutra/mangalsutra1.jpg",
+            name:"Mangalsutra 1",
+            category:"Mangalsutra",
+            price:12999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= MANGALSUTRA 2 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Mangalsutra 2', 'images/mangalsutra/mangalsutra2.jpg', 14999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/mangalsutra/mangalsutra2.jpg">
+
+    <p class="price">₹14999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/mangalsutra/mangalsutra2.jpg",
+            name:"Mangalsutra 2",
+            category:"Mangalsutra",
+            price:14999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= MANGALSUTRA 3 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Mangalsutra 3', 'images/mangalsutra/mangalsutra3.jpg', 16999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/mangalsutra/mangalsutra3.jpg">
+
+    <p class="price">₹16999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/mangalsutra/mangalsutra3.jpg",
+            name:"Mangalsutra 3",
+            category:"Mangalsutra",
+            price:16999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= MANGALSUTRA 4 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Mangalsutra 4', 'images/mangalsutra/mangalsutra4.jpg', 18999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/mangalsutra/mangalsutra4.jpg">
+
+    <p class="price">₹18999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/mangalsutra/mangalsutra4.jpg",
+            name:"Mangalsutra 4",
+            category:"Mangalsutra",
+            price:18999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= MANGALSUTRA 5 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Mangalsutra 5', 'images/mangalsutra/mangalsutra5.jpg', 20999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/mangalsutra/mangalsutra5.jpg">
+
+    <p class="price">₹20999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/mangalsutra/mangalsutra5.jpg",
+            name:"Mangalsutra 5",
+            category:"Mangalsutra",
+            price:20999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= MANGALSUTRA 6 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Mangalsutra 6', 'images/mangalsutra/mangalsutra6.jpg', 22999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/mangalsutra/mangalsutra6.jpg">
+
+    <p class="price">₹22999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/mangalsutra/mangalsutra6.jpg",
+            name:"Mangalsutra 6",
+            category:"Mangalsutra",
+            price:22999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= MANGALSUTRA 7 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Mangalsutra 7', 'images/mangalsutra/mangalsutra7.jpg', 25999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/mangalsutra/mangalsutra7.jpg">
+
+    <p class="price">₹25999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/mangalsutra/mangalsutra7.jpg",
+            name:"Mangalsutra 7",
+            category:"Mangalsutra",
+            price:25999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= MANGALSUTRA 8 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Mangalsutra 8', 'images/mangalsutra/mangalsutra8.jpg', 28999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/mangalsutra/mangalsutra8.jpg">
+
+    <p class="price">₹28999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/mangalsutra/mangalsutra8.jpg",
+            name:"Mangalsutra 8",
+            category:"Mangalsutra",
+            price:28999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= MANGALSUTRA 9 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Mangalsutra 9', 'images/mangalsutra/mangalsutra9.jpg', 31999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/mangalsutra/mangalsutra9.jpg">
+
+    <p class="price">₹31999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/mangalsutra/mangalsutra9.jpg",
+            name:"Mangalsutra 9",
+            category:"Mangalsutra",
+            price:31999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- ================= MANGALSUTRA 10 ================= -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Mangalsutra 10', 'images/mangalsutra/mangalsutra10.jpg', 34999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/mangalsutra/mangalsutra10.jpg">
+
+    <p class="price">₹34999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/mangalsutra/mangalsutra10.jpg",
+            name:"Mangalsutra 10",
+            category:"Mangalsutra",
+            price:34999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<p>
+© 2026 Pushapa Jewellers. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="script.js"></script>
+<script src="category-pages.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rings | Pushapa Jewellers</title>
+
+    <link rel="stylesheet" href="style.css">
+
+ 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="category-page">
+
+    <header>
+
+<nav class="navbar">
+
+    <!-- Logo Left Side -->
+    <div class="logo">
+    <a href="index.html">
+        <div class="logo">
+            <img src="images/logo.png" alt="Pushapa Jewellers">
+            <span>Pushapa Jewellers</span>
+        </div>
+    </a>
+</div>
+
+<div class="menu-btn">
+    ☰
+</div>
+    <!-- Menu Right Side -->
+    <ul class="nav-links">
+
+        <li><a href="index.html">Home</a></li>
+
+        <li><a href="login.html">Login</a></li>
+
+        <li><a href="product.html">Product</a></li>
+
+
+        <li><a href="about.html">About</a></li>
+
+        <li><a href="contact.html">Contact</a></li>
+        <li>
+    <a href="wishlist.html" title="Wishlist" class="nav-icon">
+        <i class="fa-regular fa-heart"></i>
+    </a>
+</li>
+<li>
+    <a href="my-orders.html" title="My Orders" class="nav-icon">
+        <i class="fa-solid fa-box-open"></i>
+    </a>
+</li>
+
+<li>
+    <a href="cart.html" title="Cart" class="nav-icon cart-icon">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cart-count">0</span>
+    </a>
+</li>
+
+    </ul>
+
+</nav>
+
+</header>
+<!-- Back Button BELOW NAVBAR -->
+
+<div class="back-area">
+
+   <a href="product.html" class="back-btn">
+    ❮
+</a>
+
+</div>
+<!-- =====================================================
+     PUSHAPA JEWELLERS - RINGS LUXURY HERO
+     ===================================================== -->
+
+<section class="rings-luxury-hero">
+
+   
+
+    <!-- LEFT CONTENT -->
+    <div class="rings-hero-content">
+
+        <div class="rings-collection-label">
+            <span></span>
+            ✦ EXQUISITE COLLECTION ✦
+            <span></span>
+        </div>
+
+        <h1>
+            <small>OUR</small>
+            RINGS
+        </h1>
+
+        <div class="rings-title-decoration">
+            <span></span>
+            ✦
+            <span></span>
+        </div>
+
+        <p class="rings-hero-description">
+            Discover our elegant collection of rings,
+            crafted to celebrate every special moment.
+        </p>
+
+        <div class="rings-hero-buttons">
+
+            <a href="#ringProducts"
+               class="rings-hero-btn rings-primary-btn">
+                SHOP COLLECTION
+                <span>→</span>
+            </a>
+
+            <a href="product.html"
+               class="rings-hero-btn rings-secondary-btn">
+                VIEW ALL JEWELLERY
+            </a>
+
+        </div>
+
+        <!-- FEATURES -->
+
+        <div class="rings-hero-features">
+
+            <div class="rings-feature">
+
+                <div class="rings-feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div>
+                    <strong>BIS HALLMARKED</strong>
+                </div>
+
+            </div>
+
+
+            <div class="rings-feature-divider"></div>
+
+
+            <div class="rings-feature">
+
+                <div class="rings-feature-icon">
+                    <i class="fa-regular fa-gem"></i>
+                </div>
+
+                <div>
+                    <strong>CERTIFIED JEWELLERY</strong>
+                </div>
+
+            </div>
+
+
+            <div class="rings-feature-divider"></div>
+
+
+            <div class="rings-feature">
+
+                <div class="rings-feature-icon">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+
+                <div>
+                    <strong>PREMIUM CRAFTSMANSHIP</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    
+
+        <!-- Floating diamonds -->
+
+        <span class="floating-diamond diamond-one">◇</span>
+        <span class="floating-diamond diamond-two">✦</span>
+        <span class="floating-diamond diamond-three">◇</span>
+        <span class="floating-diamond diamond-four">✧</span>
+
+    </div>
+
+
+    <!-- Bottom gold line -->
+
+    <div class="hero-bottom-line"></div>
+
+</section>
+    <!-- ================= RINGS SECTION ================= -->
+
+<section class="products">
+
+    <div class="products-heading">
+        <span>✦</span>
+        <h2 class="title">Our Rings</h2>
+        <span>✦</span>
+    </div>
+
+    <p class="category-subtitle">
+        Discover our elegant collection of rings crafted for every occasion.
+    </p>
+
+    <div class="product-container category-product-container"
+     id="ringProducts"
+     data-category="rings">
+</div>
+</section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+        <p>&copy; 2026 Pushapa Jewellers. All Rights Reserved.</p>
+    </footer>
+    <script>
+
+console.log("Ring page loaded");
+
+</script>
+    <script src="script.js"></script>
+<script src="category-pages.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", async function () {
+
+    const container = document.getElementById("ringProducts");
+
+    if (!container) return;
+
+    try {
+
+        /* ==========================================
+           1. OLD / EXISTING RINGS
+           ========================================== */
+
+        const oldResponse = await fetch(
+            "http://localhost:5000/api/jewellery-images"
+        );
+
+       let oldProducts = [];
+
+if (oldResponse.ok) {
+
+    const allOldProducts = await oldResponse.json();
+
+    oldProducts = allOldProducts.filter(function (product) {
+
+        const category = String(
+            product.category ||
+            product.type ||
+            ""
+        ).toLowerCase().trim();
+
+        return (
+            category === "ring" ||
+            category === "rings"
+        );
+
+    });
+}
+
+        /* ==========================================
+           2. ADMIN ADDED PRODUCTS
+           ========================================== */
+
+        const newResponse = await fetch(
+            "http://localhost:5000/products"
+        );
+
+        let newProducts = [];
+
+        if (newResponse.ok) {
+            newProducts = await newResponse.json();
+        }
+
+
+        /* ==========================================
+           3. GET ONLY RINGS FROM ADMIN PRODUCTS
+           ========================================== */
+
+        const adminRings = newProducts.filter(function (product) {
+
+            const category = String(
+                product.category ||
+                product.type ||
+                ""
+            )
+            .toLowerCase()
+            .trim();
+
+            return (
+                category === "ring" ||
+                category === "rings"
+            );
+
+        });
+
+
+        /* ==========================================
+           4. COMBINE OLD + NEW
+           ========================================== */
+
+        const rings = [
+            ...oldProducts,
+            ...adminRings
+        ];
+
+
+        container.innerHTML = "";
+
+
+        /* ==========================================
+           5. NO PRODUCTS
+           ========================================== */
+
+        if (rings.length === 0) {
+
+            container.innerHTML = `
+                <div class="no-category-products">
+
+                    <i class="fa-regular fa-gem"></i>
+
+                    <h3>No Rings Found</h3>
+
+                    <p>
+                        Rings will appear here when products are available.
+                    </p>
+
+                </div>
+            `;
+
+            return;
+        }
+
+
+        /* ==========================================
+           6. DISPLAY ALL RINGS
+           ========================================== */
+
+        rings.forEach(function (product) {
+
+            let image = product.image || "";
+
+            if (
+                image &&
+                !image.startsWith("http") &&
+                !image.startsWith("/") &&
+                !image.startsWith("data:")
+            ) {
+
+                image =
+                    "http://localhost:5000/" +
+                    image;
+
+            }
+
+
+            const name =
+                product.name ||
+                product.title ||
+                "Ring";
+
+
+            const price =
+                Number(product.price) || 0;
+
+
+            const card =
+                document.createElement("div");
+
+
+            card.className =
+                "product-card";
+
+
+            card.dataset.name =
+                name;
+
+
+            card.dataset.category =
+                "ring";
+
+
+            card.dataset.price =
+                price;
+
+
+            card.innerHTML = `
+
+                <div class="product-image-wrap">
+
+                    <img
+                        src="${image}"
+                        alt="${name}"
+                        loading="lazy"
+                        onerror="this.src='images/logo.png'"
+                    >
+
+                    <button
+                        class="product-wishlist-btn"
+                        type="button"
+                        title="Add to Wishlist"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="product-card-content">
+
+                    <div class="product-category">
+                        Rings
+                    </div>
+
+
+                    <h3 class="product-name">
+                        ${name}
+                    </h3>
+
+
+                    <div class="product-rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="rating-number">
+                            5.0
+                        </span>
+
+                    </div>
+
+
+                    <p class="price">
+                        ₹${price.toLocaleString("en-IN")}
+                    </p>
+
+
+                    <div class="product-buttons">
+
+                        <button
+                            class="view-btn"
+                            type="button"
+                        >
+                            View Details
+                        </button>
+
+
+                        <button
+                            class="cart-btn"
+                            type="button"
+                            data-name="${name}"
+                            data-price="${price}"
+                            data-image="${image}"
+                        >
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            /* ==========================================
+               VIEW DETAILS
+               ========================================== */
+
+            const viewButton =
+                card.querySelector(".view-btn");
+
+
+            viewButton.addEventListener(
+                "click",
+                function () {
+
+                    localStorage.setItem(
+                        "selectedProduct",
+                        JSON.stringify(product)
+                    );
+
+
+                    window.location.href =
+                        "view-details.html";
+
+                }
+            );
+
+
+            /* ==========================================
+               WISHLIST
+               ========================================== */
+
+            const wishlistButton =
+                card.querySelector(
+                    ".product-wishlist-btn"
+                );
+
+
+            wishlistButton.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    event.stopPropagation();
+
+
+                    toggleWishlist(
+                        wishlistButton,
+                        name,
+                        image,
+                        price
+                    );
+
+                }
+            );
+
+
+            container.appendChild(card);
+
+        });
+
+
+        console.log(
+            "Total Rings:",
+            rings.length
+        );
+
+        console.log(
+            "Old Rings:",
+            oldProducts.length
+        );
+
+        console.log(
+            "Admin Rings:",
+            adminRings.length
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Ring products error:",
+            error
+        );
+
+    }
+
+});
+
+</script>
+</body>
+
+</html>

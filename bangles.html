@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bangles | Pushapa Jewellers</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body class="category-page">
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<nav class="navbar">
+
+    <!-- Logo Left Side -->
+    <div class="logo">
+
+        <a href="index.html">
+
+            <div class="logo">
+                <img src="images/logo.png" alt="Pushapa Jewellers">
+                <span>Pushapa Jewellers</span>
+            </div>
+
+        </a>
+
+    </div>
+
+    <!-- Menu Button -->
+    <div class="menu-btn">
+        ☰
+    </div>
+
+    <!-- Menu Right Side -->
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="login.html">Login</a>
+        </li>
+
+        <li>
+            <a href="product.html">Product</a>
+        </li>
+
+        <li>
+            <a href="about.html">About</a>
+        </li>
+
+        <li>
+            <a href="contact.html">Contact</a>
+        </li>
+
+        <li>
+            <a href="wishlist.html"
+               title="Wishlist"
+               class="nav-icon">
+                <i class="fa-regular fa-heart"></i>
+            </a>
+        </li>
+        <li>
+    <a href="my-orders.html" title="My Orders" class="nav-icon">
+        <i class="fa-solid fa-box-open"></i>
+    </a>
+</li>
+
+        <li>
+            <a href="cart.html"
+               title="Cart"
+               class="nav-icon cart-icon">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span id="cart-count">0</span>
+
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+</header>
+
+
+<!-- ================= BACK BUTTON ================= -->
+
+<div class="back-area">
+
+    <a href="product.html" class="back-btn">
+        ❮
+    </a>
+
+</div>
+<!-- =====================================================
+     PUSHAPA JEWELLERS - BANGLES LUXURY HERO
+     ===================================================== -->
+
+<section class="rings-luxury-hero bangles-luxury-hero">
+
+    
+
+    <!-- HERO CONTENT -->
+
+    <div class="rings-hero-content">
+
+        <div class="rings-collection-label">
+            <span></span>
+            ✦ EXQUISITE COLLECTION ✦
+            <span></span>
+        </div>
+
+
+        <h1>
+            <small>OUR</small>
+            BANGLES
+        </h1>
+
+
+        <div class="rings-title-decoration">
+            <span></span>
+            ✦
+            <span></span>
+        </div>
+
+
+        <p class="rings-hero-description">
+            Discover our exquisite collection of bangles,
+            crafted to add timeless elegance to every occasion.
+        </p>
+
+
+        <!-- BUTTONS -->
+
+        <div class="rings-hero-buttons">
+
+            <a href="#bangleProducts"
+               class="rings-hero-btn rings-primary-btn">
+
+                SHOP COLLECTION
+                <span>→</span>
+
+            </a>
+
+
+            <a href="product.html"
+               class="rings-hero-btn rings-secondary-btn">
+
+                VIEW ALL JEWELLERY
+
+            </a>
+
+        </div>
+
+
+        <!-- FEATURES -->
+
+        <div class="rings-hero-features">
+
+            <div class="rings-feature">
+
+                <div class="rings-feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <strong>
+                    BIS HALLMARKED
+                </strong>
+
+            </div>
+
+
+            <div class="rings-feature-divider"></div>
+
+
+            <div class="rings-feature">
+
+                <div class="rings-feature-icon">
+                    <i class="fa-regular fa-gem"></i>
+                </div>
+
+                <strong>
+                    CERTIFIED JEWELLERY
+                </strong>
+
+            </div>
+
+
+            <div class="rings-feature-divider"></div>
+
+
+            <div class="rings-feature">
+
+                <div class="rings-feature-icon">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+
+                <strong>
+                    PREMIUM CRAFTSMANSHIP
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Bottom Gold Line -->
+
+    <div class="hero-bottom-line"></div>
+
+</section>
+
+<!-- ================= BANGLES SECTION ================= -->
+
+<section class="products">
+
+<h2 class="title">
+    Our Bangles
+</h2>
+
+
+<div class="product-container category-product-container"
+     id="bangleProducts"
+     data-category="bangles">
+
+
+<!-- Bangle 1 -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Bangle 1', 'images/bangles/bangle1.jpg', 8999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/bangles/bangle1.jpg">
+
+    <p class="price">₹8999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/bangles/bangle1.jpg",
+            name:"Bangle 1",
+            category:"Bangle",
+            price:8999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- Bangle 2 -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Bangle 2', 'images/bangles/bangle2.jpg', 10999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/bangles/bangle2.jpg">
+
+    <p class="price">₹10999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/bangles/bangle2.jpg",
+            name:"Bangle 2",
+            category:"Bangle",
+            price:10999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- Bangle 3 -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Bangle 3', 'images/bangles/bangle3.jpg', 12999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/bangles/bangle3.jpg">
+
+    <p class="price">₹12999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/bangles/bangle3.jpg",
+            name:"Bangle 3",
+            category:"Bangle",
+            price:12999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- Bangle 4 -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Bangle 4', 'images/bangles/bangle4.jpg', 14999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/bangles/bangle4.jpg">
+
+    <p class="price">₹14999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/bangles/bangle4.jpg",
+            name:"Bangle 4",
+            category:"Bangle",
+            price:14999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- Bangle 5 -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Bangle 5', 'images/bangles/bangle5.jpg', 16999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/bangles/bangle5.jpg">
+
+    <p class="price">₹16999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/bangles/bangle5.jpg",
+            name:"Bangle 5",
+            category:"Bangle",
+            price:16999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- Bangle 6 -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Bangle 6', 'images/bangles/bangle6.jpg', 18999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/bangles/bangle6.jpg">
+
+    <p class="price">₹18999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/bangles/bangle6.jpg",
+            name:"Bangle 6",
+            category:"Bangle",
+            price:18999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- Bangle 7 -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Bangle 7', 'images/bangles/bangle7.jpg', 20999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/bangles/bangle7.jpg">
+
+    <p class="price">₹20999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/bangles/bangle7.jpg",
+            name:"Bangle 7",
+            category:"Bangle",
+            price:20999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- Bangle 8 -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Bangle 8', 'images/bangles/bangle8.jpg', 22999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/bangles/bangle8.jpg">
+
+    <p class="price">₹22999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/bangles/bangle8.jpg",
+            name:"Bangle 8",
+            category:"Bangle",
+            price:22999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- Bangle 9 -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Bangle 9', 'images/bangles/bangle9.jpg', 25999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/bangles/bangle9.jpg">
+
+    <p class="price">₹25999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/bangles/bangle9.jpg",
+            name:"Bangle 9",
+            category:"Bangle",
+            price:25999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- Bangle 10 -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Bangle 10', 'images/bangles/bangle10.jpg', 28999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/bangles/bangle10.jpg">
+
+    <p class="price">₹28999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/bangles/bangle10.jpg",
+            name:"Bangle 10",
+            category:"Bangle",
+            price:28999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- Bangle 11 -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Bangle 11', 'images/bangles/bangle11.jpg', 31999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/bangles/bangle11.jpg">
+
+    <p class="price">₹31999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/bangles/bangle11.jpg",
+            name:"Bangle 11",
+            category:"Bangle",
+            price:31999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+<!-- Bangle 12 -->
+
+<div class="card">
+
+    <button class="wishlist-btn"
+        type="button"
+        onclick="toggleWishlist(this, 'Bangle 12', 'images/bangles/bangle12.jpg', 34999)">
+
+        <i class="fa-regular fa-heart"></i>
+
+    </button>
+
+    <img src="images/bangles/bangle12.jpg">
+
+    <p class="price">₹34999</p>
+
+    <button class="view-btn"
+        onclick='viewDetails({
+            image:"images/bangles/bangle12.jpg",
+            name:"Bangle 12",
+            category:"Bangle",
+            price:34999
+        })'>
+
+        View Details
+
+    </button>
+
+    <button class="cart-btn">
+        Add to Cart
+    </button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<p>
+© 2026 Pushapa Jewellers. All Rights Reserved.
+</p>
+
+</footer>
+
+
+    <script src="script.js"></script>
+        <script src="category-pages.js"></script>
+
+</body>
+
+</html>

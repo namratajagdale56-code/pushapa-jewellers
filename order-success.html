@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>Order Confirmed | Pushapa Jewellers</title>
+
+<link rel="stylesheet"
+    href="style.css">
+
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+</head>
+
+<body class="buy-now-page">
+
+
+<div class="order-success-page">
+
+
+    <!-- SUCCESS ICON -->
+
+    <div class="success-icon">
+
+        <i class="fa-solid fa-check"></i>
+
+    </div>
+
+
+    <!-- TITLE -->
+
+    <p class="success-small">
+        PUSHAPA JEWELLERS
+    </p>
+
+    <h1>
+        Order Placed Successfully!
+    </h1>
+
+    <p class="success-message">
+        Thank you for choosing Pushapa Jewellers.
+        Your jewellery order has been confirmed.
+    </p>
+
+
+    <!-- ORDER CARD -->
+
+    <div class="success-card">
+
+
+        <div class="order-number">
+
+            <span>
+                ORDER ID
+            </span>
+
+            <strong id="success-order-id">
+                PJ202600001
+            </strong>
+
+        </div>
+
+
+        <div class="success-product">
+
+
+            <img id="success-image"
+                src=""
+                alt="Jewellery">
+
+
+            <div>
+
+                <h2 id="success-product-name">
+                    Jewellery Product
+                </h2>
+
+                <p>
+                    Quantity: 1
+                </p>
+
+                <strong id="success-total">
+                    ₹0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="success-divider"></div>
+
+
+        <!-- CUSTOMER -->
+
+        <div class="success-details">
+
+            <div>
+
+                <span>
+                    Customer
+                </span>
+
+                <strong id="success-name">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Payment
+                </span>
+
+                <strong id="success-payment">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Delivery
+                </span>
+
+                <strong>
+                    5–7 Business Days
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Status
+                </span>
+
+                <strong class="confirmed">
+                    <i class="fa-solid fa-circle-check"></i>
+                    Confirmed
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADDRESS -->
+
+        <div class="delivery-box">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <div>
+
+                <span>
+                    Delivering To
+                </span>
+
+                <p id="success-address">
+                    -
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ORDER TRACKING -->
+
+        <div class="tracking">
+
+            <div class="tracking-step active">
+
+                <div class="tracking-icon">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <span>
+                    Confirmed
+                </span>
+
+            </div>
+
+
+            <div class="tracking-line"></div>
+
+
+            <div class="tracking-step">
+
+                <div class="tracking-icon">
+                    <i class="fa-solid fa-box"></i>
+                </div>
+
+                <span>
+                    Processing
+                </span>
+
+            </div>
+
+
+            <div class="tracking-line"></div>
+
+
+            <div class="tracking-step">
+
+                <div class="tracking-icon">
+                    <i class="fa-solid fa-truck"></i>
+                </div>
+
+                <span>
+                    Shipped
+                </span>
+
+            </div>
+
+
+            <div class="tracking-line"></div>
+
+
+            <div class="tracking-step">
+
+                <div class="tracking-icon">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+
+                <span>
+                    Delivered
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- BUTTONS -->
+
+    <div class="success-buttons">
+
+        <a href="product.html"
+            class="continue-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Continue Shopping
+
+        </a>
+
+
+        <button onclick="window.print()"
+            class="invoice-btn">
+
+            <i class="fa-solid fa-file-invoice"></i>
+
+            Print Invoice
+
+        </button>
+
+    </div>
+
+
+    <!-- TRUST -->
+
+    <div class="success-trust">
+
+        <span>
+            <i class="fa-solid fa-shield-halved"></i>
+            Secure Order
+        </span>
+
+        <span>
+            <i class="fa-solid fa-certificate"></i>
+            BIS Hallmarked
+        </span>
+
+        <span>
+            <i class="fa-solid fa-truck"></i>
+            Insured Delivery
+        </span>
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+    /* =================================================
+       LOAD ORDER DATA
+    ================================================= */
+
+    const orderData =
+        JSON.parse(
+            localStorage.getItem("latestOrder")
+        );
+
+   if (!orderData) {
+    console.log("Order data missing on success page");
+} 
+
+    else {
+
+        document.getElementById("success-order-id")
+            .textContent = orderData.orderId;
+
+
+        document.getElementById("success-product-name")
+            .textContent = orderData.product.name;
+
+
+        document.getElementById("success-total")
+            .textContent = orderData.total;
+
+
+        document.getElementById("success-name")
+            .textContent = orderData.customer.name;
+
+
+        document.getElementById("success-payment")
+            .textContent = orderData.payment;
+
+
+        document.getElementById("success-address")
+            .textContent =
+            orderData.customer.address +
+            ", " +
+            orderData.customer.city +
+            " - " +
+            orderData.customer.pincode;
+
+
+        document.getElementById("success-image")
+            .src = orderData.product.image;
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

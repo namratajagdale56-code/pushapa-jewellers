@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Admin - Add Product</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<h1>Add New Product</h1>
+
+<div class="admin-box">
+
+<input type="text" id="name" placeholder="Product Name">
+
+<input type="text" id="category" placeholder="Category">
+
+<input type="number" id="price" placeholder="Price">
+
+<input type="text" id="image" placeholder="Image Path">
+
+<button onclick="addProduct()">
+Add Product
+</button>
+
+</div>
+
+
+<script>
+
+function addProduct(){
+
+let product = {
+
+name: document.getElementById("name").value,
+
+category: document.getElementById("category").value,
+
+price: document.getElementById("price").value,
+
+image: document.getElementById("image").value
+
+};
+
+
+fetch("http://localhost:5000/add-product",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify(product)
+
+})
+
+.then(res=>res.json())
+
+.then(data=>{
+
+alert(data.message);
+
+});
+
+
+}
+
+</script>
+
+
+</body>
+</html>

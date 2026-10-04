@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Pushapa Jewellers</title>
+    <script>
+
+if(localStorage.getItem("adminLogin") !== "true"){
+    window.location.href="login.html";
+}
+
+</script>
+
+    <style>
+        
+        input,select,button{
+            width:100%;
+            padding:10px;
+            margin:10px 0;
+        }
+
+        button{
+            background:black;
+            color:white;
+            border:none;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#444;
+        }
+        /* ===== PROFESSIONAL ADMIN DESIGN ===== */
+
+*{
+    box-sizing:border-box;
+}
+
+
+.box{
+    width:100%;
+    max-width:500px;
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    margin:auto;
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+
+h2{
+    text-align:center;
+    color:#b8860b;
+}
+
+
+input,select{
+    border-radius:12px;
+    border:1px solid #ddd;
+    padding:14px;
+}
+
+
+button{
+    background:#111;
+    color:#FFD700;
+    border-radius:30px;
+    padding:14px;
+    transition:.3s;
+}
+
+
+button:hover{
+    background:#FFD700;
+    color:#111;
+}
+
+
+#product-list div{
+    background:white;
+    border-radius:15px;
+    padding:15px;
+    margin-top:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+
+#product-list img{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+
+/* Mobile Responsive */
+
+@media(max-width:600px){
+
+    body{
+        padding:20px 10px;
+    }
+
+    .box{
+        padding:20px;
+    }
+
+    h2{
+        font-size:24px;
+    }
+
+}
+
+body{
+    min-height:100vh;
+
+    background-image:
+    linear-gradient(
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    ),
+    url("/images/hero.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    padding:40px 20px;
+}
+/* ===== PROFESSIONAL ADMIN DASHBOARD ===== */
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+
+/* Main Card */
+
+.box{
+    max-width:700px;
+    width:95%;
+    margin-top:30px;
+    background:rgba(255,255,255,0.95);
+}
+
+
+/* Add Product Section */
+
+input, select{
+    height:50px;
+    font-size:16px;
+}
+
+
+/* Product List */
+
+#product-list{
+    margin-top:20px;
+}
+
+
+.product-card{
+
+    display:flex;
+    align-items:center;
+    gap:20px;
+
+    background:white;
+    padding:20px;
+
+    margin:15px 0;
+
+    border-radius:20px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+
+}
+
+
+/* Product Image */
+
+.product-card img{
+
+    width:120px;
+    height:120px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+}
+
+
+/* Product Name */
+
+.product-card h3{
+
+    flex:1;
+
+    color:#333;
+
+    margin:0;
+
+}
+
+
+/* Price */
+
+.product-card p{
+
+    font-size:18px;
+
+    color:#b8860b;
+
+    font-weight:bold;
+
+}
+
+
+/* Buttons */
+
+.product-card button{
+
+    width:auto;
+
+    padding:10px 25px;
+
+    border-radius:25px;
+
+}
+
+
+/* Update Button */
+
+.product-card button:first-of-type{
+
+    background:#b8860b;
+
+    color:white;
+
+}
+
+
+/* Delete Button */
+
+.product-card button:last-child{
+
+    background:#8b0000;
+
+    color:white;
+
+}
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+.product-card{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.product-card button{
+
+    width:100%;
+
+}
+
+}
+.dashboard-card{
+
+    background:#111;
+    color:#FFD700;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    margin:20px 0;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+
+}
+
+
+.dashboard-card h3{
+
+    margin:0;
+
+    font-size:20px;
+
+}
+
+
+#productCount{
+
+    font-size:35px;
+
+    font-weight:bold;
+
+    margin:10px;
+
+}
+.manage-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:20px;
+}
+
+
+.manage-title h2{
+    margin:0;
+}
+
+
+#totalCount{
+
+    background:#b8860b;
+    color:white;
+
+    padding:8px 18px;
+
+    border-radius:20px;
+
+    font-size:15px;
+
+    font-weight:bold;
+}
+.manage-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+
+.manage-title h2{
+    margin:0;
+}
+
+
+#totalCount{
+    background:#b8860b;
+    color:white;
+    padding:8px 15px;
+    border-radius:20px;
+    font-weight:bold;
+}
+.admin-header{
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+    background:#111;
+
+    padding:10px 20px;
+
+    border-radius:20px;
+
+    margin-bottom:25px;
+
+}
+
+.admin-logo{
+
+    width:60px;
+    height:60px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+}
+
+.admin-header h1{
+
+    color:#FFD700;
+
+    font-size:22px;
+
+    margin:0;
+
+}
+
+
+.admin-header button{
+
+    margin-left:auto;
+
+    width:auto;
+
+    padding:10px 20px;
+
+    background:#b8860b;
+
+    color:white;
+
+}
+    </style>
+</head>
+
+
+<body>
+
+<div class="box">
+
+<div class="admin-header">
+
+   <img src="images/logo.png" class="admin-logo">
+
+    <h1>Pushapa Jewellers</h1>
+
+    <button onclick="logout()">
+        Logout
+    </button>
+
+</div>
+
+<h2>Add Product</h2>
+
+<input type="text" id="productName" placeholder="Product Name">
+
+<input type="number" id="price" placeholder="Price">
+
+<input type="text" id="image" placeholder="Image URL">
+
+<select id="category">
+    <option>Ring</option>
+    <option>Necklace</option>
+    <option>Bangles</option>
+    <option>Earring</option>
+    <option>Bracelet</option>
+    <option>Mangalsutra</option>
+    <option>Chain</option>
+    <option>Pendant</option>
+</select>
+
+<button onclick="addProduct()">Add Product</button>
+<button id="updateBtn" onclick="updateProduct()" style="display:none;">
+Update Product
+</button>
+<p id="msg"></p>
+<hr>
+
+<hr>
+<div class="manage-title">
+
+    <h2>Manage Products</h2>
+
+    <span id="totalCount">
+        Total Products: 0
+    </span>
+
+</div>
+
+
+<button onclick="showProducts()">
+    View All Products
+</button>
+<input 
+type="text" 
+id="searchBox" 
+placeholder="Search Product..."
+onkeyup="searchProducts()">
+
+
+<select id="filterCategory" onchange="filterProducts()">
+    <option value="All">All Categories</option>
+    <option value="Ring">Ring</option>
+    <option value="Necklace">Necklace</option>
+    <option value="Bangles">Bangles</option>
+    <option value="Earring">Earring</option>
+    <option value="Bracelet">Bracelet</option>
+    <option value="Mangalsutra">Mangalsutra</option>
+    <option value="Chain">Chain</option>
+    <option value="Pendant">Pendant</option>
+</select>
+<div id="product-list"></div>
+
+</div>
+
+<script>
+    let editId = null;
+    let allProducts = [];
+
+// Update button click केल्यावर form मध्ये data आणणे
+
+function editProduct(id){
+
+    editId = id;
+
+    fetch("http://localhost:5000/products")
+    .then(res=>res.json())
+    .then(products=>{
+
+        let product = products.find(p=>p._id === id);
+
+
+        document.getElementById("productName").value = product.name;
+        document.getElementById("price").value = product.price;
+        document.getElementById("image").value = product.image;
+        document.getElementById("category").value = product.category;
+
+
+        document.querySelector("button[onclick='addProduct()']").style.display="none";
+
+        document.getElementById("updateBtn").style.display="block";
+
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    });
+
+}
+
+
+
+// Update Product Save
+
+async function updateProduct(){
+
+    const name = document.getElementById("productName").value;
+    const price = document.getElementById("price").value;
+    const image = document.getElementById("image").value;
+    const category = document.getElementById("category").value;
+
+
+    await fetch(
+        `http://localhost:5000/products/${editId}`,
+        {
+            method:"PUT",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                name,
+                price,
+                image,
+                category
+            })
+        }
+    );
+
+
+    alert("Product Updated Successfully");
+
+
+    document.getElementById("updateBtn").style.display="none";
+
+    document.querySelector("button[onclick='addProduct()']").style.display="block";
+
+
+    document.getElementById("productName").value="";
+    document.getElementById("price").value="";
+    document.getElementById("image").value="";
+
+
+    loadProducts();
+
+}
+    // LOAD PRODUCTS
+
+async function loadProducts(){
+
+    const response = await fetch("http://localhost:5000/products");
+
+    const products = await response.json();
+    allProducts = products;
+    
+    let html = "";
+
+    products.forEach(product => {
+
+        
+        html += `
+
+<div class="product-card">
+
+<img src="${
+product.image 
+? (product.image.startsWith('http') 
+    ? product.image 
+    : 'http://localhost:5000/' + product.image)
+: 'images/logo.png'
+}" width="80">
+
+<h3>${product.name}</h3>
+
+<p>₹${product.price}</p>
+
+<button onclick="editProduct('${product._id}')">
+Update
+</button>
+
+<button onclick="deleteProduct('${product._id}')">
+Delete
+</button>
+
+</div>
+
+`;
+    });
+
+
+console.log(products);
+console.log(html);
+    document.getElementById("product-list").innerHTML = html;
+console.log(products);
+console.log(html);
+
+document.getElementById("totalCount").innerHTML =
+"Total Products: " + products.length;
+
+}
+
+
+function showProducts(){
+    loadProducts();
+}
+
+// DELETE PRODUCT
+
+async function deleteProduct(id){
+
+    let confirmDelete = confirm(
+        "Are you sure you want to delete this product?"
+    );
+
+
+    if(confirmDelete){
+
+        await fetch(
+    `http://localhost:5000/products/${id}`,
+    {
+        method:"DELETE"
+    }
+);
+
+
+        alert("Product Deleted");
+        loadProducts();
+
+        
+
+    }
+
+}
+
+
+// page open झाल्यावर products दाखवणे
+
+
+async function addProduct(){
+
+    const name = document.getElementById("productName").value;
+    const price = document.getElementById("price").value;
+    const image = document.getElementById("image").value;
+    const category = document.getElementById("category").value;
+
+    const response = await fetch("http://localhost:5000/add-product",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+            name,
+            price,
+            image,
+            category
+        })
+    });
+
+    const data = await response.json();
+    document.getElementById("msg").innerHTML = data.message;
+    loadProducts();
+}
+
+function logout(){
+
+    let confirmLogout = confirm("Logout from Admin Panel?");
+
+    if(confirmLogout){
+
+        localStorage.removeItem("adminLogin");
+
+        window.location.href="login.html";
+
+    }
+
+}
+
+</script>
+</body>
+</html>

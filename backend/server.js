@@ -3,7 +3,7 @@ console.log("EMAIL USER:", process.env.EMAIL_USER);
 console.log("EMAIL PASS:", process.env.EMAIL_PASS ? "LOADED" : "MISSING");
 const fs = require("fs");
 const path = require("path");
-const Product = require("./models/Product");
+const Product = require("./models/product");
 const multer = require("multer");
 const express = require("express");
 const mongoose = require("mongoose");

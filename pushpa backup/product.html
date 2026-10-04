@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products | Pushapa Jewellers</title>
+
+    
+<link rel="stylesheet" href="style.css">
+
+<script>
+if (localStorage.getItem("login") !== "true") {
+    window.location.href = "login.html";
+}
+</script>
+</head>
+
+<body>
+
+
+<!-- LOGIN CHECK -->
+
+
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+<nav class="navbar">
+
+
+    <div class="logo">
+
+        <img src="images/logo.png" alt="Logo">
+
+        <h2>Pushapa Jewellers</h2>
+
+    </div>
+
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+
+        <li>
+            <a href="login.html">Login</a>
+        </li>
+
+
+        <li>
+            <a href="product.html">Product</a>
+        </li>
+
+
+        <li>
+            <a href="cart.html">Cart</a>
+        </li>
+
+
+        <li>
+            <a href="about.html">About</a>
+        </li>
+
+
+        <li>
+            <a href="contact.html">Contact</a>
+        </li>
+
+        <li>
+            <a href="#" onclick="logout()">Logout</a>
+        </li>
+    </ul>
+
+
+</nav>
+
+</header>
+
+
+
+
+<!-- ================= HERO ================= -->
+
+
+<section class="hero">
+
+
+    <div class="hero-content">
+
+
+        <h1>
+            Our Jewellery Collection
+        </h1>
+
+
+        <p>
+            Choose your favourite jewellery category.
+        </p>
+
+
+    </div>
+    </section>
+<!-- ================= ALL PRODUCTS FROM DATABASE ================= -->
+
+<section class="products">
+
+
+
+<div class="product-container" id="product-container">
+
+</div>
+
+</section>
+
+</section>
+
+
+
+
+
+<!-- ================= SHOP BY CATEGORY ================= -->
+
+
+<section class="products">
+
+
+<h2 class="title">
+    Shop By Category
+</h2>
+
+
+
+<div class="product-container">
+
+
+
+<!-- Rings -->
+
+<div class="card">
+
+<a href="ring.html">
+
+<img src="images/ring.jpg" alt="Rings">
+
+<h3>
+Rings
+</h3>
+
+</a>
+
+</div>
+
+
+
+
+
+<!-- Necklace -->
+
+
+<div class="card">
+
+
+<a href="necklace.html">
+
+
+<img src="images/necklace.jpg" alt="Necklace">
+
+
+<h3>
+Necklace
+</h3>
+
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+<!-- Earrings -->
+
+
+<div class="card">
+
+
+<a href="earring.html">
+
+
+<img src="images/earring.jpg" alt="Earrings">
+
+
+<h3>
+Earrings
+</h3>
+
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+<!-- Bracelet -->
+
+
+<div class="card">
+
+
+<a href="bracelet.html">
+
+
+<img src="images/bracelet.jpg" alt="Bracelets">
+
+
+<h3>
+Bracelets
+</h3>
+
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Bangles -->
+
+
+<div class="card">
+
+
+<a href="bangles.html">
+
+
+<img src="images/bangle.jpg" alt="Bangles">
+
+
+<h3>
+Bangles
+</h3>
+
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+<!-- Chains -->
+
+
+<div class="card">
+
+
+<a href="chain.html">
+
+
+<img src="images/chain.jpg" alt="Chains">
+
+
+<h3>
+Chains
+</h3>
+
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+<!-- Pendants -->
+
+
+<div class="card">
+
+
+<a href="pendant.html">
+
+
+<img src="images/pendant.jpg" alt="Pendants">
+
+
+<h3>
+Pendants
+</h3>
+
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+<!-- Mangalsutra -->
+
+
+<div class="card">
+
+
+<a href="mangalsutra.html">
+
+
+<img src="images/mangalsutra.jpg" alt="Mangalsutra">
+
+
+<h3>
+Mangalsutra
+</h3>
+
+
+</a>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- ================= FOOTER ================= -->
+
+
+<footer>
+
+
+<p>
+&copy; 2026 Pushapa Jewellers. All Rights Reserved.
+</p>
+
+
+</footer>
+
+
+
+
+<script src="script.js"></script>
+</body>
+
+</html>

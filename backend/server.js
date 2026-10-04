@@ -8,8 +8,8 @@ const multer = require("multer");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const User = require("./models/User");
-console.log("USER MODEL FILE:", require.resolve("./models/User"));
+const User = require("./models/user.js");
+console.log("USER MODEL FILE:", require.resolve("./models/user.js"));
 console.log(
     "OTP FIELD CHECK:",
     User.schema.path("resetPasswordToken") ? "FOUND" : "MISSING"

@@ -241,7 +241,7 @@ document.addEventListener("DOMContentLoaded", async function () {
            ========================================== */
 
         const oldResponse = await fetch(
-            "http://localhost:5000/api/jewellery-images"
+            "https://pushapa-jewellers.onrender.com/api/jewellery-images"
         );
 
        let oldProducts = [];
@@ -271,7 +271,7 @@ if (oldResponse.ok) {
            ========================================== */
 
         const newResponse = await fetch(
-            "http://localhost:5000/products"
+            "https://pushapa-jewellers.onrender.com/products"
         );
 
         let newProducts = [];
@@ -356,7 +356,7 @@ if (oldResponse.ok) {
             ) {
 
                 image =
-                    "http://localhost:5000/" +
+                    "https://pushapa-jewellers.onrender.com/" +
                     image;
 
             }

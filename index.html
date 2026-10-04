@@ -844,7 +844,7 @@ async function loadHomeGoldRates() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/gold-rates"
+            "https://pushapa-jewellers.onrender.com/gold-rates"
         );
 
         if (!response.ok) {
@@ -1595,7 +1595,7 @@ async function loadHomeMetalRates() {
     try {
 
         const response =
-            await fetch("http://localhost:5000/gold-rates");
+            await fetch("https://pushapa-jewellers.onrender.com/gold-rates");
 
         const data = await response.json();
 

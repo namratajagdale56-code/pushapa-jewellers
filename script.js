@@ -336,7 +336,7 @@ card.dataset.purity = String(
             !image.startsWith("/") &&
             !image.startsWith("data:")
         ) {
-            image = "http://localhost:5000/" + image;
+            image = "https://pushapa-jewellers.onrender.com/" + image;
         }
 
 
@@ -578,7 +578,7 @@ async function loginUser(event) {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/login",
+            "https://pushapa-jewellers.onrender.com/login",
             {
                 method: "POST",
                 headers: {
@@ -863,7 +863,7 @@ async function placeOrder() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/orders",
+            "https://pushapa-jewellers.onrender.com/orders",
             {
                 method: "POST",
 
@@ -1008,7 +1008,7 @@ async function handleGoogleLogin(response) {
 
     try {
         const res = await fetch(
-            "http://localhost:5000/api/auth/google",
+            "https://pushapa-jewellers.onrender.com/api/auth/google",
             {
                 method: "POST",
                 headers: {
@@ -1507,7 +1507,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/jewellery-images"
+            "https://pushapa-jewellers.onrender.com/api/jewellery-images"
         );
 
         const products = await response.json();

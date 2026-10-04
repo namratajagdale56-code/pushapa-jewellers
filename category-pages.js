@@ -125,7 +125,7 @@ async function loadCategoryProducts(category, container) {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/jewellery-images"
+            "https://pushapa-jewellers.onrender.com/api/jewellery-images"
         );
 
         if (!response.ok) {
@@ -438,7 +438,7 @@ function createCategoryCard(
 
         image =
 
-            "http://localhost:5000/" +
+            "https://pushapa-jewellers.onrender.com/" +
 
             image.replace(/^\/+/, "");
 

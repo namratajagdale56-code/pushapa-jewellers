@@ -2132,7 +2132,7 @@ document.getElementById("imageFile").addEventListener("change", function () {
    API
 ===================================================== */
 
-const API = "http://localhost:5000";
+const API = "https://pushapa-jewellers.onrender.com";
 
 
 /* =====================================================
@@ -3828,7 +3828,7 @@ async function loadMetalRates() {
     try {
 
         const response =
-            await fetch("http://localhost:5000/gold-rates");
+            await fetch("https://pushapa-jewellers.onrender.com/gold-rates");
 
         const data = await response.json();
 
@@ -3876,7 +3876,7 @@ async function saveMetalRates() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/gold-rates",
+            "https://pushapa-jewellers.onrender.com/gold-rates",
             {
                 method: "PUT",
 

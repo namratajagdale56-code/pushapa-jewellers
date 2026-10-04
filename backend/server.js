@@ -31,6 +31,7 @@ const app = express();
 // =====================================================
 
 const uploadFolder = path.join(__dirname, "uploads");
+console.log("UPLOAD FOLDER:", uploadFolder);
 
 if (!fs.existsSync(uploadFolder)) {
     fs.mkdirSync(uploadFolder, { recursive: true });

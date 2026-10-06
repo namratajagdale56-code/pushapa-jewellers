@@ -220,9 +220,14 @@ app.post("/add-product", upload.single("image"), async (req, res) => {
 
         let imagePath = "";
 
-        if (req.file) {
-            imagePath = "uploads/" + req.file.filename;
-        }
+if (req.file) {
+    imagePath =
+        req.protocol +
+        "://" +
+        req.get("host") +
+        "/uploads/" +
+        req.file.filename;
+}
 
         const product = new Product({
 
@@ -464,10 +469,14 @@ app.put("/products/:id", upload.single("image"), async (req, res) => {
         // If new image selected
         if (req.file) {
 
-            product.image =
-                "uploads/" + req.file.filename;
+    product.image =
+        req.protocol +
+        "://" +
+        req.get("host") +
+        "/uploads/" +
+        req.file.filename;
 
-        }
+}
 
         await product.save();
 

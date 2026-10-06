@@ -274,8 +274,9 @@ function normalizePurity(value) {
         .replace(/\s+/g, "")
         .replace(/[^a-z0-9]/g, "");
 }
+
 // =====================================================
-// PRODUCT CARDS - LUXURY BLACK & GOLD
+// DISPLAY PRODUCTS - PREMIUM BLACK & GOLD
 // =====================================================
 
 function displayProducts(products) {
@@ -286,7 +287,24 @@ function displayProducts(products) {
 
     container.innerHTML = "";
 
-    if (!products || products.length === 0) {
+    // ---------------------------------------------
+    // SAFETY
+    // ---------------------------------------------
+
+    if (!Array.isArray(products)) {
+
+        if (products && Array.isArray(products.products)) {
+            products = products.products;
+        } else {
+            products = [];
+        }
+    }
+
+    // ---------------------------------------------
+    // NO PRODUCTS
+    // ---------------------------------------------
+
+    if (products.length === 0) {
 
         const noProducts = document.getElementById("noProductsMessage");
 
@@ -303,107 +321,157 @@ function displayProducts(products) {
         noProducts.style.display = "none";
     }
 
+    // ---------------------------------------------
+    // CREATE PRODUCT CARDS
+    // ---------------------------------------------
 
-    products.forEach(function(product) {
+    products.forEach(function (product) {
 
         const card = document.createElement("div");
 
         card.className = "product-card";
-        card.dataset.name = String(
-    product.name || product.title || "Jewellery Product"
-);
 
-card.dataset.category = String(
-    product.category || product.type || "jewellery"
-);
+        // -----------------------------------------
+        // PRODUCT NAME
+        // -----------------------------------------
 
-card.dataset.price = price;
-
-card.dataset.purity = String(
-    product.purity ||
-    product.karat ||
-    product.goldPurity ||
-    ""
-);
-
-
-        // IMAGE
-     // IMAGE
-let image = product.image || "";
-
-if (
-    image &&
-    !image.startsWith("http") &&
-    !image.startsWith("/") &&
-    !image.startsWith("data:")
-) {
-    image = "https://pushapa-jewellers.onrender.com/" + image;
-}
-const name = product.name || "Jewellery Product";
-        // NAME
-        let displayName =
+        const name =
             product.name ||
             product.title ||
             "Jewellery Product";
 
-        // Ring1 / Ring 1 / Ring-1 remove
+        let displayName = name;
+
+        // Remove Ring 1 / Ring-1 / Ring #1 etc.
         displayName = displayName
             .replace(/\s*[-#]?\s*\d+\s*$/, "")
             .trim();
 
+        if (!displayName) {
+            displayName = "Jewellery Product";
+        }
 
+        // -----------------------------------------
         // CATEGORY
-        let categoryText =
+        // -----------------------------------------
+
+        let rawCategory =
             product.category ||
             product.type ||
             "Jewellery";
 
+        let categoryText =
+            String(rawCategory).trim();
 
         categoryText =
             categoryText.charAt(0).toUpperCase() +
             categoryText.slice(1);
 
-
+        // -----------------------------------------
         // PRICE
-let rawPrice =
-    product.price ??
-    product.productPrice ??
-    product.sellingPrice ??
-    product.amount ??
-    product.total ??
-    0;
+        // -----------------------------------------
 
-let price = Number(
-    String(rawPrice).replace(/[^\d.]/g, "")
-);
+        let rawPrice =
+            product.price ??
+            product.productPrice ??
+            product.sellingPrice ??
+            product.amount ??
+            product.total ??
+            0;
 
-if (!Number.isFinite(price)) {
-    price = 0;
-}
+        let price = Number(
+            String(rawPrice).replace(/[^\d.]/g, "")
+        );
 
+        if (!Number.isFinite(price)) {
+            price = 0;
+        }
+
+        // -----------------------------------------
+        // PURITY
+        // -----------------------------------------
 
         let purity =
-    product.purity ||
-    product.karat ||
-    product.goldPurity ||
-    "22K";
+            product.purity ||
+            product.karat ||
+            product.goldPurity ||
+            "22K";
 
-let weight =
-    product.weight ||
-    product.gram ||
-    product.grams ||
-    product.goldWeight ||
-    "4.2g";
+        purity = String(purity).trim();
 
-purity = String(purity).trim();
-weight = String(weight).trim();
+        // -----------------------------------------
+        // WEIGHT
+        // -----------------------------------------
 
-if (!weight.toLowerCase().endsWith("g")) {
-    weight += "g";
+        let weight =
+            product.weight ||
+            product.gram ||
+            product.grams ||
+            product.goldWeight ||
+            "4.2g";
+
+        weight = String(weight).trim();
+
+        if (
+            weight &&
+            !weight.toLowerCase().endsWith("g")
+        ) {
+            weight += "g";
+        }
+
+       // -----------------------------------------
+// IMAGE URL
+// -----------------------------------------
+
+let image = product.image || "";
+image = String(image).trim();
+
+if (!image) {
+
+    image = "images/logo.png";
+
 }
+else if (image.startsWith("data:image/")) {
 
+    // Base64 image - keep as it is
 
-        // CARD
+}
+else if (
+    image.startsWith("http://") ||
+    image.startsWith("https://")
+) {
+
+    // Full URL - keep as it is
+
+}
+else {
+
+    // MongoDB image path like uploads/filename.jpg
+    image =
+        "https://pushapa-jewellers.onrender.com/" +
+        image.replace(/^\/+/, "");
+
+}
+       
+        // -----------------------------------------
+        // DATASET
+        // -----------------------------------------
+
+        card.dataset.name = name;
+
+        card.dataset.category =
+            String(rawCategory);
+
+        card.dataset.price =
+            String(price);
+
+        card.dataset.purity =
+            String(purity);
+
+        // -----------------------------------------
+        // CARD HTML
+        // -----------------------------------------
+
         card.innerHTML = `
 
             <div class="product-image-wrap">
@@ -412,14 +480,13 @@ if (!weight.toLowerCase().endsWith("g")) {
                     src="${image}"
                     alt="${displayName}"
                     loading="lazy"
-                    onerror="this.src='images/logo.png'"
+                    onerror="this.onerror=null; this.src='images/logo.png';"
                 >
 
             </div>
 
 
             <div class="product-card-content">
-
 
                 <div class="product-category">
                     ${categoryText}
@@ -443,22 +510,41 @@ if (!weight.toLowerCase().endsWith("g")) {
 
                 </div>
 
-                <p class="price">₹ ${price.toLocaleString("en-IN")}</p>
 
-<div class="product-buttons">
+                <div class="product-details">
 
-    <button 
-        class="view-btn" 
-        type="button"
-    >
-        View Details
-    </button>
+                    <div class="product-feature">
+                        <i class="fa-solid fa-coins"></i>
+                        <span>${purity} Gold</span>
+                    </div>
+
+                    <div class="product-feature">
+                        <i class="fa-solid fa-weight-hanging"></i>
+                        <span>${weight}</span>
+                    </div>
+
+                </div>
+
+
+                <p class="price">
+                    ₹ ${price.toLocaleString("en-IN")}
+                </p>
+
+
+                <div class="product-buttons">
+
+                    <button
+                        class="view-btn"
+                        type="button"
+                    >
+                        View Details
+                    </button>
 
 
                     <button
                         class="cart-btn"
                         type="button"
-                        data-name="${product.name || "Jewellery Product"}"
+                        data-name="${name}"
                         data-price="${price}"
                         data-image="${image}"
                     >
@@ -472,46 +558,70 @@ if (!weight.toLowerCase().endsWith("g")) {
         `;
 
 
+        // -----------------------------------------
         // VIEW DETAILS
+        // -----------------------------------------
+
         const viewButton =
             card.querySelector(".view-btn");
 
         if (viewButton) {
 
-            viewButton.addEventListener("click", function() {
+            viewButton.addEventListener(
+                "click",
+                function () {
 
-                localStorage.setItem(
-                    "selectedProduct",
-                    JSON.stringify(product)
-                );
+                    localStorage.setItem(
+                        "selectedProduct",
+                        JSON.stringify(product)
+                    );
 
-                window.location.href =
-                    "view-details.html";
+                    window.location.href =
+                        "view-details.html";
 
-            });
+                }
+            );
 
         }
 
+
+        // -----------------------------------------
+        // ADD CARD TO PAGE
+        // -----------------------------------------
 
         container.appendChild(card);
 
     });
 
 
-    // KEEP EXISTING FILTERS WORKING
-    if (typeof window.applyJewelleryFilters === "function") {
+    // ---------------------------------------------
+    // APPLY FILTERS
+    // ---------------------------------------------
+
+    if (
+        typeof window.applyJewelleryFilters ===
+        "function"
+    ) {
+
         window.applyJewelleryFilters();
+
     }
 
 
-    // KEEP WISHLIST WORKING
-    if (typeof loadWishlistStatus === "function") {
+    // ---------------------------------------------
+    // WISHLIST
+    // ---------------------------------------------
+
+    if (
+        typeof loadWishlistStatus ===
+        "function"
+    ) {
+
         loadWishlistStatus();
+
     }
 
 }
-
-
 // ================= WISHLIST =================
 
 function getWishlist() {
@@ -1525,12 +1635,21 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         try {
 
-            const oldResponse = await fetch(
+const oldResponse = await fetch(
     "https://pushapa-jewellers.onrender.com/api/jewellery-images"
 );
-            if (oldResponse.ok) {
-                oldProducts = await oldResponse.json();
-            }
+if (oldResponse.ok) {
+
+    const oldData = await oldResponse.json();
+
+    oldProducts =
+        Array.isArray(oldData)
+            ? oldData
+            : (Array.isArray(oldData.products)
+                ? oldData.products
+                : []);
+
+}
 
         } catch (error) {
 
@@ -1544,13 +1663,21 @@ document.addEventListener("DOMContentLoaded", async function () {
         let adminProducts = [];
 
         try {
-
-           const adminResponse = await fetch(
+            const adminResponse = await fetch(
     "https://pushapa-jewellers.onrender.com/products"
 );
-            if (adminResponse.ok) {
-                adminProducts = await adminResponse.json();
-            }
+if (adminResponse.ok) {
+
+    const adminData = await adminResponse.json();
+
+    adminProducts =
+        Array.isArray(adminData)
+            ? adminData
+            : (Array.isArray(adminData.products)
+                ? adminData.products
+                : []);
+
+}
 
         } catch (error) {
 

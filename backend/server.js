@@ -86,10 +86,13 @@ app.use(
     "/images",
     express.static(path.join(__dirname, "..", "images"))
 );
-app.use(
-    "/uploads",
-    express.static(path.join(__dirname, "uploads"))
-);
+const uploadsPath = path.join(__dirname, "uploads");
+
+if (!fs.existsSync(uploadsPath)) {
+    fs.mkdirSync(uploadsPath, { recursive: true });
+}
+
+app.use("/uploads", express.static(uploadsPath));
 mongoose.connect("mongodb+srv://namratajagdale56_db_user:Namratajagdale2005@pushapacluster.l0tmkad.mongodb.net/Pushapa?retryWrites=true&w=majority")
 .then(()=>{
     console.log("MongoDB Connected");

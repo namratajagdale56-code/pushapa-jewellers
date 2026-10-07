@@ -5,6 +5,8 @@ const fs = require("fs");
 const path = require("path");
 const Product = require("./models/product");
 const multer = require("multer");
+const { v2: cloudinary } = require("cloudinary");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -33,58 +35,30 @@ app.get("/version", (req, res) => {
     });
 });
 // =====================================================
-// PRODUCT IMAGE UPLOAD
+// CLOUDINARY PRODUCT IMAGE UPLOAD
 // =====================================================
 
-const uploadFolder = path.join(__dirname, "uploads");
-console.log("UPLOAD FOLDER:", uploadFolder);
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
-if (!fs.existsSync(uploadFolder)) {
-    fs.mkdirSync(uploadFolder, { recursive: true });
-}
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
 
-const storage = multer.diskStorage({
-
-    destination: function (req, file, cb) {
-        cb(null, uploadFolder);
-    },
-
-    filename: function (req, file, cb) {
-
-        const uniqueName =
-            Date.now() +
-            "-" +
-            file.originalname.replace(/\s+/g, "-");
-
-        cb(null, uniqueName);
+    params: {
+        folder: "pushapa-jewellers/products",
+        allowed_formats: ["jpg", "jpeg", "png", "webp"]
     }
-
 });
 
 const upload = multer({
     storage: storage,
 
-    fileFilter: function (req, file, cb) {
-
-        const allowedTypes = [
-            "image/jpeg",
-            "image/jpg",
-            "image/png",
-            "image/webp"
-        ];
-
-        if (allowedTypes.includes(file.mimetype)) {
-            cb(null, true);
-        } else {
-            cb(new Error("Only JPG, JPEG, PNG and WEBP images are allowed."));
-        }
-
-    },
-
     limits: {
         fileSize: 5 * 1024 * 1024
     }
-
 });
 app.use(cors());
 app.use(express.json());
@@ -92,13 +66,7 @@ app.use(
     "/images",
     express.static(path.join(__dirname, "..", "images"))
 );
-const uploadsPath = path.join(__dirname, "uploads");
 
-if (!fs.existsSync(uploadsPath)) {
-    fs.mkdirSync(uploadsPath, { recursive: true });
-}
-
-app.use("/uploads", express.static(uploadsPath));
 mongoose.connect("mongodb+srv://namratajagdale56_db_user:Namratajagdale2005@pushapacluster.l0tmkad.mongodb.net/Pushapa?retryWrites=true&w=majority")
 .then(()=>{
     console.log("MongoDB Connected");
@@ -226,18 +194,11 @@ app.post("/add-product", upload.single("image"), async (req, res) => {
             });
 
         }
-
-        let imagePath = "";
+let imagePath = "";
 
 if (req.file) {
-    imagePath =
-        req.protocol +
-        "://" +
-        req.get("host") +
-        "/uploads/" +
-        req.file.filename;
+    imagePath = req.file.path;
 }
-
         const product = new Product({
 
             name: name,

@@ -26,6 +26,12 @@ const CustomDesign = require("./models/CustomDesign");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const app = express();
+app.get("/version", (req, res) => {
+    res.json({
+        version: "PRICE-FIX-2026-10-07",
+        message: "NEW SERVER CODE IS RUNNING"
+    });
+});
 // =====================================================
 // PRODUCT IMAGE UPLOAD
 // =====================================================
@@ -505,72 +511,263 @@ app.put("/products/:id", upload.single("image"), async (req, res) => {
     }
 
 });
-// =====================================================
-// GET ALL JEWELLERY IMAGES
-// =====================================================
+app.get("/api/jewellery-images", async (req, res) => {
 
-app.get("/api/jewellery-images", (req, res) => {
+    try {
 
-    const imagesPath = path.join(__dirname, "..", "images");
+        const priceMap = {
 
-    const categories = [
-        "rings",
-        "necklace",
-        "earrings",
-        "bracelets",
-        "bangles",
-        "chains",
-        "pendants",
-        "mangalsutra",
-        "occasion"
-    ];
+            rings: {
+                ring1: 4999,
+                ring2: 5999,
+                ring3: 6999,
+                ring4: 7999,
+                ring5: 8999,
+                ring6: 9999,
+                ring7: 10999,
+                ring8: 11999,
+                ring9: 12999,
+                ring10: 13999,
+                ring11: 14999,
+                ring12: 15999,
+                ring13: 16999,
+                ring14: 17999,
+                ring15: 18999,
+                ring16: 19999,
+                ring17: 21999,
+                ring18: 23999,
+                ring19: 25999,
+                ring20: 27999,
+                ring21: 29999,
+                ring22: 32999,
+                ring23: 35999,
+                ring24: 39999,
+                ring25: 44999
+            },
 
-    const products = [];
+            necklace: {
+                necklace1: 4999,
+                necklace2: 6999,
+                necklace3: 8499,
+                necklace4: 12999,
+                necklace5: 15999,
+                necklace6: 18999,
+                necklace7: 21999,
+                necklace8: 24999,
+                necklace9: 28999,
+                necklace10: 32999,
+                necklace11: 35999,
+                necklace12: 39999,
+                necklace13: 42999,
+                necklace14: 45999,
+                necklace15: 49999,
+                necklace16: 54999,
+                necklace17: 59999,
+                necklace18: 64999,
+                necklace19: 72999,
+                necklace20: 89999
+            },
 
-    categories.forEach((category) => {
+            earrings: {
+                earring1: 7999,
+                earring2: 9999,
+                earring3: 11999,
+                earring4: 13999,
+                earring5: 15999,
+                earring6: 17999,
+                earring7: 19999,
+                earring8: 22999,
+                earring9: 25999,
+                earring10: 28999
+            },
 
-        const categoryPath = path.join(imagesPath, category);
+            bracelets: {
+                bracelet1: 7999,
+                bracelet2: 9999,
+                bracelet3: 11999,
+                bracelet4: 13999,
+                bracelet5: 15999,
+                bracelet6: 17999,
+                bracelet7: 19999,
+                bracelet8: 22999,
+                bracelet9: 25999,
+                bracelet10: 28999
+            },
 
-        if (!fs.existsSync(categoryPath)) {
-            console.log("Folder not found:", category);
-            return;
-        }
+            bangles: {
+                bangle1: 8999,
+                bangle2: 10999,
+                bangle3: 12999,
+                bangle4: 14999,
+                bangle5: 16999,
+                bangle6: 18999,
+                bangle7: 20999,
+                bangle8: 22999,
+                bangle9: 25999,
+                bangle10: 28999,
+                bangle11: 31999,
+                bangle12: 34999
+            },
 
-        const files = fs.readdirSync(categoryPath);
+            chains: {
+                chain1: 8999,
+                chain2: 10999,
+                chain3: 12999,
+                chain4: 14999,
+                chain5: 16999,
+                chain6: 18999,
+                chain7: 20999,
+                chain8: 22999,
+                chain9: 25999,
+                chain10: 28999,
+                chain11: 31999,
+                chain12: 34999
+            },
 
-        files.forEach((file) => {
+            pendants: {
+                pendant1: 8999,
+                pendant2: 10999,
+                pendant3: 12999,
+                pendant4: 14999,
+                pendant5: 16999,
+                pendant6: 18999,
+                pendant7: 20999,
+                pendant8: 22999,
+                pendant9: 25999,
+                pendant10: 28999,
+                pendant11: 32999,
+                pendant12: 35999
+            },
 
-            const extension = path.extname(file).toLowerCase();
+            mangalsutra: {
+                mangalsutra1: 12999,
+                mangalsutra2: 14999,
+                mangalsutra3: 16999,
+                mangalsutra4: 18999,
+                mangalsutra5: 20999,
+                mangalsutra6: 22999,
+                mangalsutra7: 25999,
+                mangalsutra8: 28999,
+                mangalsutra9: 31999,
+                mangalsutra10: 34999
+            }
+        };
 
-            if (
-                extension === ".jpg" ||
-                extension === ".jpeg" ||
-                extension === ".png" ||
-                extension === ".webp"
-            ) {
+
+        const imageFolders = [
+            "rings",
+            "necklace",
+            "earrings",
+            "bracelets",
+            "bangles",
+            "chains",
+            "pendants",
+            "mangalsutra"
+        ];
+
+
+        const products = [];
+
+
+        for (const category of imageFolders) {
+
+            const folderPath = path.join(
+                __dirname,
+                "..",
+                "images",
+                category
+            );
+
+
+            if (!fs.existsSync(folderPath)) {
+                console.log("Folder not found:", folderPath);
+                continue;
+            }
+
+
+            const files = fs.readdirSync(folderPath);
+
+
+            for (const file of files) {
+
+                const ext = path.extname(file).toLowerCase();
+
+                if (![".jpg", ".jpeg", ".png", ".webp"].includes(ext)) {
+                    continue;
+                }
+
 
                 const productName = path
                     .parse(file)
                     .name
-                    .replace(/[-_]/g, " ");
+                    .toLowerCase()
+                    .trim()
+                    .replace(/[-_\s]/g, "");
+
+
+                const categoryPrices = priceMap[category] || {};
+
+                const price = categoryPrices[productName];
+
+
+                // Hero images skip
+                if (productName.includes("hero")) {
+                    continue;
+                }
+
+
+                // Unknown product skip
+                if (price === undefined) {
+                    console.log(
+                        "PRICE NOT FOUND:",
+                        category,
+                        productName
+                    );
+                    continue;
+                }
+
+
+                console.log(
+                    "PRICE:",
+                    category,
+                    productName,
+                    "=>",
+                    price
+                );
+
 
                 products.push({
                     name: productName,
                     category: category,
-                    price: 4999,
+                    price: price,
                     purity: "22K",
                     image: `images/${category}/${file}`
                 });
 
             }
+        }
 
+
+        console.log(
+            "TOTAL IMAGE PRODUCTS:",
+            products.length
+        );
+
+
+        res.json(products);
+
+    } catch (error) {
+
+        console.error(
+            "Jewellery image API error:",
+            error
+        );
+
+        res.status(500).json({
+            message: "Failed to load jewellery images"
         });
 
-    });
-
-    console.log("Total image products:", products.length);
-
-    res.json(products);
+    }
 
 });
 // ================= HOME TEST =================

@@ -24765,3 +24765,61 @@ footer {
     visibility: visible !important;
     opacity: 1 !important;
 }
+/* =====================================================
+   ACTIVE NAVBAR PAGE
+   GOLD TEXT + NO YELLOW UNDERLINE
+===================================================== */
+
+.nav-links li a.active {
+    color: #d4af37 !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+}
+
+/* Remove any active underline */
+.nav-links li a.active::before,
+.nav-links li a.active::after {
+    content: none !important;
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Active icon */
+.nav-links li a.active i {
+    color: #d4af37 !important;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .nav-links li a.active {
+        color: #d4af37 !important;
+        border: none !important;
+        border-bottom: 0 !important;
+        box-shadow: none !important;
+        text-decoration: none !important;
+        background: transparent !important;
+    }
+
+    .nav-links li a.active::before,
+    .nav-links li a.active::after {
+        content: none !important;
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .nav-links li a.active i {
+        color: #d4af37 !important;
+    }
+}

@@ -1118,15 +1118,48 @@
 
 </footer>
 
-
-
-<!-- ================= JAVASCRIPT ================= -->
 <script src="script.js"></script>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    const puritySelect = document.getElementById("orderPurity");
-    const weightInput = document.getElementById("orderWeight");
+    // =====================================================
+    // LOAD BUY NOW PRODUCT
+    // =====================================================
+
+    const buyNowProduct =
+        JSON.parse(localStorage.getItem("buyNowProduct")) || null;
+
+    console.log("BUY NOW PRODUCT:", buyNowProduct);
+
+
+    // =====================================================
+    // ELEMENTS
+    // =====================================================
+
+    const productImage =
+        document.getElementById("product-image");
+
+    const summaryImage =
+        document.getElementById("summary-image");
+
+    const productNameElement =
+        document.getElementById("product-name");
+
+    const summaryName =
+        document.getElementById("summary-name");
+
+    const productPriceElement =
+        document.getElementById("product-price");
+
+    const summaryPrice =
+        document.getElementById("summary-price");
+
+    const puritySelect =
+        document.getElementById("orderPurity");
+
+    const weightInput =
+        document.getElementById("orderWeight");
 
     const goldRateElement =
         document.getElementById("orderGoldRate");
@@ -1134,74 +1167,122 @@ document.addEventListener("DOMContentLoaded", function () {
     const goldValueElement =
         document.getElementById("orderGoldValue");
 
-    const summaryPrice =
-        document.getElementById("summary-price");
-
     const gstElement =
         document.getElementById("gst");
 
     const totalElement =
         document.getElementById("total");
 
-    let gold22Rate = 0;
-    let gold24Rate = 0;
 
-    const MAKING_CHARGES = 2500;
-
-
-    // ================= PRODUCT NAME =================
-
-    const productName =
-        document.getElementById("product-name");
-
-    const summaryName =
-        document.getElementById("summary-name");
-
-
-    function cleanProductName(name) {
-
-        if (!name) return "";
-
-        return name
-            .replace(/\s*\d+\s*$/, "")
-            .trim();
-
-    }
-
-
-    if (productName) {
-
-        productName.textContent =
-            cleanProductName(
-                productName.textContent
-            );
-
-    }
-
-
-    if (summaryName) {
-
-        summaryName.textContent =
-            cleanProductName(
-                summaryName.textContent
-            );
-
-    }
-
-
-    // ================= FORMAT MONEY =================
+    // =====================================================
+    // FORMAT MONEY
+    // =====================================================
 
     function money(amount) {
 
-        return "₹" + Number(amount || 0)
-            .toLocaleString("en-IN", {
+        return "₹" +
+            Number(amount || 0).toLocaleString("en-IN", {
                 maximumFractionDigits: 2
             });
 
     }
 
 
-    // ================= LOAD GOLD RATES =================
+    // =====================================================
+    // LOAD PRODUCT DATA
+    // =====================================================
+
+    if (buyNowProduct) {
+
+        const image =
+            buyNowProduct.image || "images/logo.png";
+
+        const name =
+            buyNowProduct.name || "Jewellery";
+
+        const price =
+            Number(buyNowProduct.price) || 0;
+
+        const purity =
+            buyNowProduct.purity || "22K";
+
+
+        // IMAGE
+
+        if (productImage) {
+            productImage.src = image;
+        }
+
+        if (summaryImage) {
+            summaryImage.src = image;
+        }
+
+
+        // NAME
+
+        if (productNameElement) {
+            productNameElement.textContent = name;
+        }
+
+        if (summaryName) {
+            summaryName.textContent = name;
+        }
+
+
+        // PRODUCT PRICE
+
+        if (productPriceElement) {
+            productPriceElement.textContent = money(price);
+        }
+
+        if (summaryPrice) {
+            summaryPrice.textContent = money(price);
+        }
+
+
+        // PURITY
+
+        if (
+            puritySelect &&
+            (purity === "22K" || purity === "24K")
+        ) {
+            puritySelect.value = purity;
+        }
+
+
+        // CATEGORY
+
+        const categoryElement =
+            document.querySelector(
+                ".product-info .category"
+            );
+
+        if (
+            categoryElement &&
+            buyNowProduct.category
+        ) {
+
+            categoryElement.textContent =
+                buyNowProduct.category
+                    .charAt(0)
+                    .toUpperCase() +
+                buyNowProduct.category.slice(1) +
+                " Collection";
+
+        }
+
+    }
+
+
+    // =====================================================
+    // GOLD RATE
+    // =====================================================
+
+    let gold22Rate = 0;
+    let gold24Rate = 0;
+
+    const MAKING_CHARGES = 2500;
+
 
     async function loadGoldRates() {
 
@@ -1212,19 +1293,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     "https://pushapa-jewellers.onrender.com/gold-rates"
                 );
 
-
             if (!response.ok) {
-
                 throw new Error(
                     "Gold rates could not be loaded."
                 );
-
             }
-
 
             const data =
                 await response.json();
-
 
             gold22Rate =
                 Number(data.gold22k) || 0;
@@ -1233,19 +1309,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 Number(data.gold24k) || 0;
 
 
-            console.log(
-                "22K RATE:",
-                gold22Rate
-            );
-
-            console.log(
-                "24K RATE:",
-                gold24Rate
-            );
-
-
             calculatePrice();
-
 
         } catch (error) {
 
@@ -1255,10 +1319,8 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             if (goldRateElement) {
-
                 goldRateElement.textContent =
                     "Rate unavailable";
-
             }
 
         }
@@ -1266,45 +1328,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // ================= CALCULATE =================
+    // =====================================================
+    // CALCULATE GOLD VALUE
+    // =====================================================
 
     function calculatePrice() {
 
         const purity =
-            puritySelect
-                ? puritySelect.value
-                : "22K";
-
+            puritySelect?.value || "22K";
 
         const weight =
-            weightInput
-                ? parseFloat(weightInput.value) || 0
-                : 0;
+            parseFloat(weightInput?.value) || 0;
 
 
-        let selectedRate = 0;
+        const selectedRate =
+            purity === "24K"
+                ? gold24Rate
+                : gold22Rate;
 
-
-        if (purity === "24K") {
-
-            selectedRate =
-                gold24Rate;
-
-        } else {
-
-            selectedRate =
-                gold22Rate;
-
-        }
-
-
-        // GOLD VALUE
 
         const goldValue =
             selectedRate * weight;
 
-
-        // GST = 3% ON GOLD + MAKING
 
         const taxableAmount =
             goldValue + MAKING_CHARGES;
@@ -1314,24 +1359,11 @@ document.addEventListener("DOMContentLoaded", function () {
             taxableAmount * 0.03;
 
 
-        // FINAL TOTAL
-
         const finalTotal =
             taxableAmount + gst;
 
 
-        console.log({
-            purity,
-            weight,
-            selectedRate,
-            goldValue,
-            makingCharges: MAKING_CHARGES,
-            gst,
-            finalTotal
-        });
-
-
-        // ================= DISPLAY RATE =================
+        // GOLD RATE
 
         if (goldRateElement) {
 
@@ -1342,7 +1374,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        // ================= DISPLAY GOLD VALUE =================
+        // GOLD VALUE
 
         if (goldValueElement) {
 
@@ -1352,17 +1384,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        // ================= PRODUCT PRICE =================
-
-        if (summaryPrice) {
-
-            summaryPrice.textContent =
-                money(goldValue);
-
-        }
+        // NOTE:
+        // Product price remains the actual product price.
+        // Do NOT overwrite summary-price here.
 
 
-        // ================= GST =================
+        // GST
 
         if (gstElement) {
 
@@ -1372,7 +1399,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        // ================= TOTAL =================
+        // TOTAL
 
         if (totalElement) {
 
@@ -1384,7 +1411,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // ================= PURITY CHANGE =================
+    // =====================================================
+    // PURITY CHANGE
+    // =====================================================
 
     if (puritySelect) {
 
@@ -1396,7 +1425,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // ================= WEIGHT CHANGE =================
+    // =====================================================
+    // WEIGHT CHANGE
+    // =====================================================
 
     if (weightInput) {
 
@@ -1408,12 +1439,247 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // ================= START =================
+    // =====================================================
+    // PLACE ORDER
+    // =====================================================
+
+    window.placeOrder = function () {
+
+        const name =
+            document.getElementById("name")
+                ?.value.trim();
+
+        const mobile =
+            document.getElementById("mobile")
+                ?.value.trim();
+
+        const email =
+            document.getElementById("email")
+                ?.value.trim();
+
+        const address =
+            document.getElementById("address")
+                ?.value.trim();
+
+        const city =
+            document.getElementById("city")
+                ?.value.trim();
+
+        const pincode =
+            document.getElementById("pincode")
+                ?.value.trim();
+
+
+        // VALIDATION
+
+        if (
+            !name ||
+            !mobile ||
+            !email ||
+            !address ||
+            !city ||
+            !pincode
+        ) {
+
+            alert(
+                "Please fill all delivery details."
+            );
+
+            return;
+
+        }
+
+
+        // PRODUCT
+
+        const product =
+            JSON.parse(
+                localStorage.getItem(
+                    "buyNowProduct"
+                )
+            ) || {};
+
+
+        const productName =
+            product.name ||
+            document.getElementById(
+                "product-name"
+            )?.textContent.trim() ||
+            "Jewellery";
+
+
+        const productImage =
+            product.image ||
+            document.getElementById(
+                "product-image"
+            )?.src ||
+            "images/logo.png";
+
+
+        const productPrice =
+            Number(product.price) || 0;
+
+
+        // ORDER OPTIONS
+
+        const purity =
+            puritySelect?.value || "22K";
+
+        const weight =
+            Number(weightInput?.value) || 0;
+
+
+        const makingCharges =
+            MAKING_CHARGES;
+
+
+        const goldRate =
+            purity === "24K"
+                ? gold24Rate
+                : gold22Rate;
+
+
+        const goldValue =
+            goldRate * weight;
+
+
+        const gst =
+            (goldValue + makingCharges) * 0.03;
+
+
+        const finalTotal =
+            goldValue +
+            makingCharges +
+            gst;
+
+
+        // PAYMENT
+
+        const payment =
+            document.querySelector(
+                'input[name="payment"]:checked'
+            )?.value || "cod";
+
+
+        // ORDER ID
+
+        const orderId =
+            "PJ" + Date.now();
+
+
+        // =================================================
+        // ORDER OBJECT
+        // =================================================
+
+        const order = {
+
+            orderId: orderId,
+
+            name: name,
+            mobile: mobile,
+            email: email,
+
+            address: address,
+            city: city,
+            pincode: pincode,
+
+
+            product: productName,
+            productName: productName,
+
+
+            image: productImage,
+            productImage: productImage,
+
+
+            price: productPrice,
+            productPrice: productPrice,
+
+
+            quantity: 1,
+
+
+            purity: purity,
+            weight: weight,
+
+
+            goldRate: goldRate,
+            goldValue: goldValue,
+
+
+            makingCharges: makingCharges,
+
+            gst: gst,
+
+            total: finalTotal,
+
+
+            payment: payment,
+
+            status: "Placed",
+
+            date:
+                new Date()
+                    .toLocaleString("en-IN")
+
+        };
+
+
+        console.log(
+            "FINAL ORDER:",
+            order
+        );
+
+
+        // =================================================
+        // SAVE LATEST ORDER
+        // =================================================
+
+        localStorage.setItem(
+            "latestOrder",
+            JSON.stringify(order)
+        );
+
+
+        // =================================================
+        // SAVE ORDERS
+        // =================================================
+
+        let orders =
+            JSON.parse(
+                localStorage.getItem("orders")
+            ) || [];
+
+
+        orders.push(order);
+
+
+        localStorage.setItem(
+            "orders",
+            JSON.stringify(orders)
+        );
+
+
+        // =================================================
+        // REDIRECT
+        // =================================================
+
+        window.location.href =
+            "order-success.html";
+
+    };
+
+
+    // =====================================================
+    // START
+    // =====================================================
 
     loadGoldRates();
 
 });
 </script>
+
+
 </body>
 
 </html>

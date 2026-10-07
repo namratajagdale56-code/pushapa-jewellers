@@ -1912,3 +1912,248 @@
 
 }
 
+/* =====================================================
+   LOGIN PAGE - CENTER LOGIN BOX
+===================================================== */
+
+/* Hide left luxury showcase */
+.login-showcase {
+    display: none !important;
+}
+
+/* Center the login box */
+.login-section {
+    width: 100%;
+    min-height: calc(100vh - 90px);
+
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+    padding: 50px 20px !important;
+}
+
+/* Login box */
+.login-box {
+    width: 100%;
+    max-width: 480px;
+
+    margin: 0 auto !important;
+
+    position: relative;
+    z-index: 2;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .login-section {
+        min-height: auto;
+        padding: 35px 15px !important;
+    }
+
+    .login-box {
+        max-width: 100%;
+    }
+}
+/* =====================================================
+   MOBILE LOGIN - NAVBAR OVERLAP FIX
+===================================================== */
+
+@media (max-width: 768px) {
+
+    /* Login section navbar खाली सुरू होईल */
+    .login-section {
+        width: 100%;
+        min-height: auto !important;
+
+        display: flex !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+
+        padding: 35px 15px 50px !important;
+
+        margin-top: 0 !important;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Login box navbar च्या खाली */
+    .login-box {
+        width: 100% !important;
+        max-width: 430px !important;
+
+        margin: 0 auto !important;
+
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+
+        z-index: 2 !important;
+
+        box-sizing: border-box;
+    }
+
+    /* Left showcase पूर्ण बंद */
+    .login-showcase {
+        display: none !important;
+    }
+
+    /* Login box मधील content screen बाहेर जाऊ नये */
+    .login-box * {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Input full width */
+    .premium-input-group,
+    .input-box {
+        width: 100% !important;
+    }
+
+    .input-box input {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* Google button */
+    .social-buttons {
+        width: 100% !important;
+    }
+
+    #googleLoginBtn {
+        width: 100% !important;
+    }
+}
+/* =====================================================
+   FINAL MOBILE LOGIN FIX
+===================================================== */
+
+@media screen and (max-width: 768px) {
+
+    /* LEFT BOX REMOVE */
+    body.login-page .login-showcase {
+        display: none !important;
+    }
+
+    /* NAVBAR MUST STAY ON TOP */
+    body.login-page header {
+        position: relative !important;
+        z-index: 10000 !important;
+    }
+
+    body.login-page .navbar {
+        position: relative !important;
+        z-index: 10001 !important;
+    }
+
+    /* LOGIN SECTION BELOW NAVBAR */
+    body.login-page .login-section {
+        display: flex !important;
+
+        width: 100% !important;
+        min-height: auto !important;
+        height: auto !important;
+
+        margin: 0 !important;
+
+        padding: 30px 15px 50px !important;
+
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+
+        transform: none !important;
+
+        align-items: flex-start !important;
+        justify-content: center !important;
+
+        z-index: 1 !important;
+
+        box-sizing: border-box !important;
+    }
+
+    /* LOGIN BOX */
+    body.login-page .login-box {
+        display: block !important;
+
+        width: 100% !important;
+        max-width: 430px !important;
+
+        margin: 0 auto !important;
+        padding: 25px 20px !important;
+
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+
+        transform: none !important;
+
+        z-index: 2 !important;
+
+        box-sizing: border-box !important;
+    }
+
+    /* PREVENT OVERFLOW */
+    body.login-page .login-box,
+    body.login-page .login-box form {
+        overflow: visible !important;
+    }
+
+    body.login-page .premium-input-group,
+    body.login-page .input-box {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    body.login-page .input-box input {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    body.login-page .social-buttons {
+        width: 100% !important;
+    }
+
+    /* WHY CHOOSE US BELOW LOGIN */
+    body.login-page .why-section {
+        position: relative !important;
+        z-index: 1 !important;
+    }
+}
+/* =====================================================
+   LOGIN BOX - MOVE DOWN ON LAPTOP + MOBILE
+===================================================== */
+
+body.login-page .login-section {
+    padding-top: 70px !important;
+    align-items: flex-start !important;
+}
+
+/* Laptop / Desktop */
+@media (min-width: 769px) {
+
+    body.login-page .login-section {
+        padding-top: 70px !important;
+        padding-bottom: 60px !important;
+    }
+
+    body.login-page .login-box {
+        margin-top: 20px !important;
+    }
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    body.login-page .login-section {
+        padding-top: 40px !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    body.login-page .login-box {
+        margin-top: 10px !important;
+    }
+}

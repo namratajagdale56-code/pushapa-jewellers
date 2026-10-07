@@ -359,65 +359,233 @@
 
 </div>
 
+<script src="script.js"></script>
 
 <script>
-    showPremiumAlert(
-        "Your order has been placed successfully!",
-        "order"
-    );
+document.addEventListener("DOMContentLoaded", function () {
+
+    // =====================================================
+    // PREMIUM ALERT
+    // =====================================================
+
+    if (typeof showPremiumAlert === "function") {
+
+        showPremiumAlert(
+            "Your order has been placed successfully!",
+            "order"
+        );
+
+    }
 
 
-    /* =================================================
-       LOAD ORDER DATA
-    ================================================= */
+    // =====================================================
+    // LOAD LATEST ORDER
+    // =====================================================
 
     const orderData =
         JSON.parse(
             localStorage.getItem("latestOrder")
         );
 
-   if (!orderData) {
-    console.log("Order data missing on success page");
-} 
 
-    else {
-
-        document.getElementById("success-order-id")
-            .textContent = orderData.orderId;
+    console.log(
+        "ORDER SUCCESS DATA:",
+        orderData
+    );
 
 
-        document.getElementById("success-product-name")
-            .textContent = orderData.product.name;
+    // =====================================================
+    // CHECK ORDER
+    // =====================================================
 
+    if (!orderData) {
 
-        document.getElementById("success-total")
-            .textContent = orderData.total;
+        console.log(
+            "Order data missing on success page"
+        );
 
-
-        document.getElementById("success-name")
-            .textContent = orderData.customer.name;
-
-
-        document.getElementById("success-payment")
-            .textContent = orderData.payment;
-
-
-        document.getElementById("success-address")
-            .textContent =
-            orderData.customer.address +
-            ", " +
-            orderData.customer.city +
-            " - " +
-            orderData.customer.pincode;
-
-
-        document.getElementById("success-image")
-            .src = orderData.product.image;
+        return;
 
     }
 
-</script>
 
+    // =====================================================
+    // ORDER ID
+    // =====================================================
+
+    const orderId =
+        document.getElementById(
+            "success-order-id"
+        );
+
+    if (orderId) {
+
+        orderId.textContent =
+            orderData.orderId || "N/A";
+
+    }
+
+
+    // =====================================================
+    // PRODUCT NAME
+    // =====================================================
+
+    const productName =
+        document.getElementById(
+            "success-product-name"
+        );
+
+    if (productName) {
+
+        productName.textContent =
+            orderData.productName ||
+            orderData.product ||
+            "Jewellery Product";
+
+    }
+
+
+    // =====================================================
+    // PRODUCT IMAGE
+    // =====================================================
+
+    const productImage =
+        document.getElementById(
+            "success-image"
+        );
+
+
+    if (productImage) {
+
+        const image =
+            orderData.productImage ||
+            orderData.image ||
+            "images/logo.png";
+
+
+        productImage.src = image;
+
+        productImage.onerror = function () {
+
+            this.src =
+                "images/logo.png";
+
+        };
+
+    }
+
+
+    // =====================================================
+    // PRODUCT PRICE / TOTAL
+    // =====================================================
+
+    const total =
+        document.getElementById(
+            "success-total"
+        );
+
+
+    if (total) {
+
+        const totalAmount =
+            Number(orderData.total) || 0;
+
+
+        total.textContent =
+            "₹" +
+            totalAmount.toLocaleString(
+                "en-IN",
+                {
+                    maximumFractionDigits: 2
+                }
+            );
+
+    }
+
+
+    // =====================================================
+    // CUSTOMER NAME
+    // =====================================================
+
+    const customerName =
+        document.getElementById(
+            "success-name"
+        );
+
+
+    if (customerName) {
+
+        customerName.textContent =
+            orderData.name ||
+            "-";
+
+    }
+
+
+    // =====================================================
+    // PAYMENT
+    // =====================================================
+
+    const payment =
+        document.getElementById(
+            "success-payment"
+        );
+
+
+    if (payment) {
+
+        const paymentMethod =
+            orderData.payment || "cod";
+
+
+        if (paymentMethod === "cod") {
+
+            payment.textContent =
+                "Cash on Delivery";
+
+        } else {
+
+            payment.textContent =
+                "Online Payment";
+
+        }
+
+    }
+
+
+    // =====================================================
+    // DELIVERY ADDRESS
+    // =====================================================
+
+    const address =
+        document.getElementById(
+            "success-address"
+        );
+
+
+    if (address) {
+
+        const fullAddress = [
+
+            orderData.address,
+
+            orderData.city,
+
+            orderData.pincode
+
+        ]
+        .filter(Boolean)
+        .join(", ");
+
+
+        address.textContent =
+            fullAddress || "-";
+
+    }
+
+
+});
+</script>
 
 </body>
 

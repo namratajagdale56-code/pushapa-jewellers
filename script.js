@@ -511,19 +511,7 @@ else {
                 </div>
 
 
-                <div class="product-details">
-
-                    <div class="product-feature">
-                        <i class="fa-solid fa-coins"></i>
-                        <span>${purity} Gold</span>
-                    </div>
-
-                    <div class="product-feature">
-                        <i class="fa-solid fa-weight-hanging"></i>
-                        <span>${weight}</span>
-                    </div>
-
-                </div>
+                
 
 
                 <p class="price">
@@ -1617,6 +1605,7 @@ window.applyJewelleryFilters = applyFilters;
 
 });
 // =====================================================
+// =====================================================
 // LOAD ALL PRODUCTS
 // EXISTING PRODUCTS + ADMIN / MONGODB PRODUCTS
 // =====================================================
@@ -1629,27 +1618,31 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     try {
 
-        // ================= EXISTING PRODUCTS =================
+        // =================================================
+        // 1. OLD / EXISTING PRODUCTS
+        // =================================================
 
         let oldProducts = [];
 
         try {
 
-const oldResponse = await fetch(
-    "https://pushapa-jewellers.onrender.com/api/jewellery-images"
-);
-if (oldResponse.ok) {
+            const oldResponse = await fetch(
+                "https://pushapa-jewellers.onrender.com/api/jewellery-images"
+            );
 
-    const oldData = await oldResponse.json();
+            if (oldResponse.ok) {
 
-    oldProducts =
-        Array.isArray(oldData)
-            ? oldData
-            : (Array.isArray(oldData.products)
-                ? oldData.products
-                : []);
+                const oldData = await oldResponse.json();
 
-}
+                oldProducts =
+                    Array.isArray(oldData)
+                        ? oldData
+                        : (
+                            Array.isArray(oldData.products)
+                                ? oldData.products
+                                : []
+                        );
+            }
 
         } catch (error) {
 
@@ -1658,26 +1651,31 @@ if (oldResponse.ok) {
         }
 
 
-        // ================= ADMIN PRODUCTS =================
+        // =================================================
+        // 2. ADMIN / MONGODB PRODUCTS
+        // =================================================
 
         let adminProducts = [];
 
         try {
+
             const adminResponse = await fetch(
-    "https://pushapa-jewellers.onrender.com/products"
-);
-if (adminResponse.ok) {
+                "https://pushapa-jewellers.onrender.com/products"
+            );
 
-    const adminData = await adminResponse.json();
+            if (adminResponse.ok) {
 
-    adminProducts =
-        Array.isArray(adminData)
-            ? adminData
-            : (Array.isArray(adminData.products)
-                ? adminData.products
-                : []);
+                const adminData = await adminResponse.json();
 
-}
+                adminProducts =
+                    Array.isArray(adminData)
+                        ? adminData
+                        : (
+                            Array.isArray(adminData.products)
+                                ? adminData.products
+                                : []
+                        );
+            }
 
         } catch (error) {
 
@@ -1686,7 +1684,9 @@ if (adminResponse.ok) {
         }
 
 
-        // ================= COMBINE =================
+        // =================================================
+        // 3. COMBINE BOTH
+        // =================================================
 
         const allProducts = [
             ...oldProducts,
@@ -1694,10 +1694,13 @@ if (adminResponse.ok) {
         ];
 
 
-        // ================= REMOVE DUPLICATES =================
+        // =================================================
+        // 4. REMOVE DUPLICATES
+        // IMPORTANT:
+        // DO NOT USE PRICE IN DUPLICATE KEY
+        // =================================================
 
         const uniqueProducts = [];
-
         const productKeys = new Set();
 
         allProducts.forEach(function (product) {
@@ -1716,14 +1719,9 @@ if (adminResponse.ok) {
                 .trim()
                 .toLowerCase();
 
-            const price = Number(
-                product.price || 0
-            );
 
-            const key =
-                name + "|" +
-                image + "|" +
-                price;
+            // Use name + image only
+            const key = name + "|" + image;
 
 
             if (!productKeys.has(key)) {
@@ -1737,35 +1735,42 @@ if (adminResponse.ok) {
         });
 
 
-        // ================= SAVE =================
+        // =================================================
+        // 5. SAVE PRODUCTS
+        // =================================================
 
-        window.allJewelleryProducts =
-            uniqueProducts;
+        window.allJewelleryProducts = uniqueProducts;
 
+
+        // =================================================
+        // 6. DEBUG
+        // =================================================
+
+        console.log("OLD PRODUCTS:", oldProducts.length);
+
+        console.log("ADMIN PRODUCTS:", adminProducts.length);
+
+        console.log("TOTAL PRODUCTS:", uniqueProducts.length);
 
         console.log(
-            "OLD PRODUCTS:",
-            oldProducts.length
+            "PRODUCT PRICES:",
+            uniqueProducts.map(function (p) {
+
+                return {
+                    name: p.name,
+                    price: p.price,
+                    productPrice: p.productPrice,
+                    amount: p.amount
+                };
+
+            })
         );
 
-        console.log(
-            "ADMIN PRODUCTS:",
-            adminProducts.length
-        );
 
-        console.log(
-            "TOTAL PRODUCTS:",
-            uniqueProducts.length
-        );
+        // =================================================
+        // 7. DISPLAY
+        // =================================================
 
-
-        // ================= DISPLAY =================
-        console.log("PRODUCT PRICES:", uniqueProducts.map(p => ({
-    name: p.name,
-    price: p.price,
-    productPrice: p.productPrice,
-    amount: p.amount
-})));
         displayProducts(uniqueProducts);
 
 

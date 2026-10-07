@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="style.css">
 
     <!-- FONT AWESOME -->
+
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -3285,41 +3286,230 @@ document.addEventListener(
 );
 
 
-            // ================= VIEW DETAILS =================
+    // ================= VIEW DETAILS =================
 
 function viewDetails(product) {
 
     if (!product) {
-       alert("Product information not found!");
+        alert("Product information not found!");
         return;
     }
 
-    // Save selected product
     localStorage.setItem(
         "selectedProduct",
         JSON.stringify(product)
     );
 
-    // Open details page
     window.location.href = "view-details.html";
 }
 
-    </script>
+</script>
 
-<div id="cartAlert" class="cart-alert"> 
-    <div class="cart-alert-icon"> 
-        <i class="fa-solid fa-check"></i> 
-    </div> 
- 
-    <div class="cart-alert-content"> 
-        <h3>Added to Cart</h3> 
-        <p>Product added successfully!</p> 
-    </div> 
- 
-    <button onclick="closeCartAlert()"> 
-        <i class="fa-solid fa-xmark"></i> 
-    </button> 
+
+<!-- =====================================================
+     FIX ADD TO CART
+===================================================== -->
+
+<script>
+
+document.addEventListener("click", function (event) {
+
+    const cartButton = event.target.closest(
+        "#product-container .cart-btn"
+    );
+
+    if (!cartButton) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const card = cartButton.closest(".product-card");
+
+    if (!card) return;
+
+
+    /* PRODUCT NAME */
+
+    const name =
+        card.dataset.name ||
+        card.querySelector(".product-name")?.textContent?.trim() ||
+        "Jewellery";
+
+
+    /* PRODUCT PRICE */
+
+    let price =
+        card.dataset.price ||
+        card.querySelector(".price")?.textContent ||
+        "0";
+
+    price = Number(
+        String(price).replace(/[^\d.]/g, "")
+    );
+
+
+    /* CATEGORY */
+
+    const category =
+        card.dataset.category || "Jewellery";
+
+
+    /* PURITY */
+
+    const purity =
+        card.dataset.purity || "22K";
+
+
+    /* IMAGE */
+
+    const imageElement =
+        card.querySelector(".product-image-wrap img") ||
+        card.querySelector("img");
+
+    const image =
+        imageElement
+            ? imageElement.getAttribute("src")
+            : "images/logo.png";
+
+
+    /* PRODUCT OBJECT */
+
+    const product = {
+        name: name,
+        price: price,
+        image: image,
+        category: category,
+        purity: purity,
+        quantity: 1
+    };
+
+
+    /* CHECK PRICE */
+
+    if (!price || price <= 0) {
+
+        alert("Product price not found!");
+
+        console.error(
+            "Invalid product:",
+            product
+        );
+
+        return;
+    }
+
+
+    /* GET CART */
+
+    let cart =
+        JSON.parse(
+            localStorage.getItem("cart")
+        ) || [];
+
+
+    /* CHECK EXISTING PRODUCT */
+
+    const existingProduct =
+        cart.find(
+            item => item.name === product.name
+        );
+
+
+    if (existingProduct) {
+
+        existingProduct.quantity =
+            Number(existingProduct.quantity || 1) + 1;
+
+        existingProduct.price =
+            product.price;
+
+        existingProduct.image =
+            product.image;
+
+    } else {
+
+        cart.push(product);
+
+    }
+
+
+    /* SAVE */
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+
+    /* UPDATE CART COUNT */
+
+    const totalQuantity =
+        cart.reduce(
+            (total, item) =>
+                total + Number(item.quantity || 1),
+            0
+        );
+
+
+    const cartCount =
+        document.getElementById("cart-count");
+
+    if (cartCount) {
+
+        cartCount.textContent =
+            totalQuantity;
+
+    }
+
+
+    /* SUCCESS ALERT */
+
+    if (typeof showCartAlert === "function") {
+
+        showCartAlert();
+
+    } else {
+
+        alert("Product added to cart!");
+
+    }
+
+
+    console.log(
+        "Added to cart:",
+        product
+    );
+
+}, true);
+
+</script>
+
+
+<div id="cartAlert" class="cart-alert">
+
+    <div class="cart-alert-icon">
+
+        <i class="fa-solid fa-check"></i>
+
+    </div>
+
+    <div class="cart-alert-content">
+
+        <h3>Added to Cart</h3>
+
+        <p>Product added successfully!</p>
+
+    </div>
+
+    <button onclick="closeCartAlert()">
+
+        <i class="fa-solid fa-xmark"></i>
+
+    </button>
+
 </div>
+
+
 </body>
 
 </html>

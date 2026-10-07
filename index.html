@@ -1654,5 +1654,89 @@ function requireLogin(page) {
 }
 
 </script>
+<script>
+document.addEventListener("click", function (event) {
+
+    const cartButton = event.target.closest(
+        ".products .cart-btn"
+    );
+
+    if (!cartButton) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const name = cartButton.dataset.name;
+    const price = Number(cartButton.dataset.price);
+    const image = cartButton.dataset.image;
+
+    if (!name || !price) {
+        alert("Product information missing!");
+        return;
+    }
+
+    const product = {
+        name: name,
+        price: price,
+        image: image,
+        category: "Jewellery",
+        purity: "22K",
+        quantity: 1
+    };
+
+    let cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existingProduct = cart.find(
+        item => item.name === product.name
+    );
+
+    if (existingProduct) {
+
+        existingProduct.quantity =
+            Number(existingProduct.quantity || 1) + 1;
+
+        existingProduct.price = product.price;
+        existingProduct.image = product.image;
+
+    } else {
+
+        cart.push(product);
+
+    }
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    /* Update navbar cart count */
+    const cartCount =
+        document.getElementById("cart-count");
+
+    if (cartCount) {
+
+        const totalQuantity = cart.reduce(
+            (total, item) =>
+                total + Number(item.quantity || 1),
+            0
+        );
+
+        cartCount.textContent = totalQuantity;
+    }
+
+    /* Success message */
+    if (typeof showCartAlert === "function") {
+
+        showCartAlert();
+
+    } else {
+
+        alert("Product Added to Cart!");
+
+    }
+
+});
+</script>
 </body>
 </html>

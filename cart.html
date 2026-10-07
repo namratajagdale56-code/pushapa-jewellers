@@ -861,6 +861,35 @@ body.cart-page {
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
 }
+/* =====================================================
+   CART MENU CLICK FIX
+===================================================== */
+
+.nav-links li a.cart-icon {
+    position: relative !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+.nav-links li a.cart-icon i,
+.nav-links li a.cart-icon #cart-count {
+    pointer-events: none !important;
+}
+
+/* Remove active underline/effect */
+.nav-links li a.cart-icon.active {
+    color: #d4af37 !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+}
+
+.nav-links li a.cart-icon.active::before,
+.nav-links li a.cart-icon.active::after {
+    content: none !important;
+    display: none !important;
+}
     </style>
 
 </head>
@@ -958,22 +987,18 @@ body.cart-page {
 
 
         <li>
+    <a
+        href="cart.html"
+        title="Cart"
+        class="nav-icon cart-icon active"
+    >
+        <i class="fa-solid fa-cart-shopping"></i>
 
-            <a
-                href="cart.html"
-                title="Cart"
-                class="nav-icon cart-icon active"
-            >
-
-                <i class="fa-solid fa-cart-shopping"></i>
-
-                <span id="cart-count">
-                    0
-                </span>
-
-            </a>
-
-        </li>
+        <span id="cart-count">
+            0
+        </span>
+    </a>
+</li>
 
     </ul>
 

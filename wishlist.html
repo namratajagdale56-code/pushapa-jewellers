@@ -821,6 +821,30 @@
     }
 
 }
+/* =====================================================
+   WISHLIST ACTIVE - GOLD TEXT, NO YELLOW LINE
+===================================================== */
+
+.wishlist-page .nav-links a.active {
+    color: #d4af37 !important;
+}
+
+/* Remove active underline */
+.wishlist-page .nav-links a.active::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* Wishlist icon also gold */
+.wishlist-page .nav-links a.active i {
+    color: #d4af37 !important;
+}
+
+/* No border/line */
+.wishlist-page .nav-links a.active {
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
     </style>
 
 </head>
@@ -838,9 +862,7 @@
 
     <nav class="navbar">
 
-
         <!-- LOGO -->
-
         <div class="logo">
 
             <a href="index.html">
@@ -863,97 +885,81 @@
         </div>
 
 
-
         <!-- MENU BUTTON -->
-
         <div class="menu-btn">
             ☰
         </div>
 
 
-
         <!-- NAV LINKS -->
-
         <ul class="nav-links">
 
-
             <li>
-
                 <a href="index.html">
                     Home
                 </a>
-
             </li>
 
 
             <li>
-
                 <a href="login.html">
                     Login
                 </a>
-
             </li>
 
 
             <li>
-
                 <a href="product.html">
                     Product
                 </a>
-
             </li>
 
 
             <li>
-
                 <a href="about.html">
                     About
                 </a>
-
             </li>
 
 
             <li>
-
                 <a href="contact.html">
                     Contact
                 </a>
-
             </li>
 
 
             <!-- WISHLIST -->
-
             <li>
-
                 <a
                     href="wishlist.html"
                     title="Wishlist"
                     class="nav-icon active"
                 >
-
                     <i class="fa-regular fa-heart"></i>
-
                 </a>
-
             </li>
 
-<li>
-    <a href="my-orders.html" title="My Orders" class="nav-icon">
-        <i class="fa-solid fa-box-open"></i>
-    </a>
-</li>
+
+            <!-- MY ORDERS -->
+            <li>
+                <a
+                    href="my-orders.html"
+                    title="My Orders"
+                    class="nav-icon"
+                >
+                    <i class="fa-solid fa-box-open"></i>
+                </a>
+            </li>
+
 
             <!-- CART -->
-
             <li>
-
                 <a
                     href="cart.html"
                     title="Cart"
                     class="nav-icon cart-icon"
                 >
-
                     <i class="fa-solid fa-cart-shopping"></i>
 
                     <span id="cart-count">
@@ -961,18 +967,13 @@
                     </span>
 
                 </a>
-
             </li>
-
 
         </ul>
 
     </nav>
 
 </header>
-
-
-
 <!-- =====================================================
      WISHLIST SECTION
 ===================================================== -->

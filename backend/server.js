@@ -1701,6 +1701,13 @@ app.post("/api/auth/reset-password", async (req, res) => {
     }
 
 });
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "..")));
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "index.html"));
+});
 // ================= START SERVER =================
 
 app.listen(5000, ()=>{

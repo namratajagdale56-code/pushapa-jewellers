@@ -405,6 +405,289 @@ input, select{
     color:white;
 
 }
+/* =====================================================
+   FINAL MOBILE RESPONSIVE ADMIN PANEL
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    /* PAGE */
+    body {
+        display: block;
+        min-height: 100vh;
+        padding: 12px 8px;
+        overflow-x: hidden;
+    }
+
+    /* MAIN ADMIN BOX */
+    .box {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 16px 12px;
+        border-radius: 18px;
+    }
+
+    /* HEADER */
+    .admin-header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+    }
+
+    .admin-logo {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+    }
+
+    .admin-header h1 {
+        font-size: 15px;
+        line-height: 1.2;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .admin-header button {
+        width: auto !important;
+        min-width: 65px;
+        padding: 8px 11px;
+        margin: 0;
+        font-size: 12px;
+        flex-shrink: 0;
+    }
+
+
+    /* HEADINGS */
+    h2 {
+        font-size: 21px;
+        margin: 12px 0;
+    }
+
+
+    /* INPUTS / SELECT */
+    input,
+    select,
+    .box > button {
+        width: 100%;
+        max-width: 100%;
+        height: 48px;
+        margin: 7px 0;
+        font-size: 14px;
+    }
+
+    input,
+    select {
+        padding: 12px;
+    }
+
+
+    /* ADD PRODUCT BUTTONS */
+    .box > button {
+        border-radius: 25px;
+    }
+
+
+    /* MANAGE PRODUCTS HEADER */
+    .manage-title {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin-top: 18px;
+        margin-bottom: 10px;
+    }
+
+    .manage-title h2 {
+        text-align: left;
+        font-size: 20px;
+    }
+
+    #totalCount {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 9px 12px;
+        font-size: 13px;
+        border-radius: 20px;
+    }
+
+
+    /* SEARCH + FILTER */
+    #searchBox,
+    #filterCategory {
+        width: 100%;
+        margin: 6px 0;
+    }
+
+
+    /* PRODUCT LIST */
+    #product-list {
+        width: 100%;
+        margin-top: 12px;
+    }
+
+
+    /* PRODUCT CARD */
+    .product-card {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        grid-template-rows: auto auto auto;
+        column-gap: 12px;
+        row-gap: 7px;
+
+        align-items: center;
+
+        padding: 12px;
+        margin: 12px 0;
+
+        border-radius: 15px;
+    }
+
+
+    /* PRODUCT IMAGE */
+    .product-card img {
+        grid-column: 1;
+        grid-row: 1 / 4;
+
+        width: 80px !important;
+        height: 80px !important;
+
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+
+    /* PRODUCT NAME */
+    .product-card h3 {
+        grid-column: 2;
+        grid-row: 1;
+
+        width: 100%;
+        margin: 0;
+
+        font-size: 15px;
+        line-height: 1.3;
+
+        text-align: left;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+
+    /* PRICE */
+    .product-card p {
+        grid-column: 2;
+        grid-row: 2;
+
+        margin: 0;
+
+        font-size: 15px;
+        text-align: left;
+    }
+
+
+    /* BUTTON AREA */
+    .product-card button {
+        width: 100% !important;
+
+        margin: 0;
+        padding: 8px 10px;
+
+        font-size: 12px;
+        border-radius: 20px;
+    }
+
+
+    /* UPDATE BUTTON */
+    .product-card button:nth-of-type(1) {
+        grid-column: 2;
+        grid-row: 3;
+    }
+
+
+    /* DELETE BUTTON */
+    .product-card button:nth-of-type(2) {
+        grid-column: 2;
+        grid-row: 4;
+    }
+
+
+    /* MESSAGE */
+    #msg {
+        font-size: 13px;
+        text-align: center;
+        line-height: 1.4;
+        word-break: break-word;
+    }
+
+
+    /* HORIZONTAL LINES */
+    hr {
+        margin: 15px 0;
+        opacity: 0.3;
+    }
+}
+
+
+/* EXTRA SMALL MOBILE */
+@media (max-width: 380px) {
+
+    body {
+        padding: 8px 5px;
+    }
+
+    .box {
+        padding: 12px 9px;
+        border-radius: 15px;
+    }
+
+    .admin-header {
+        padding: 8px;
+        gap: 7px;
+    }
+
+    .admin-logo {
+        width: 38px;
+        height: 38px;
+    }
+
+    .admin-header h1 {
+        font-size: 13px;
+    }
+
+    .admin-header button {
+        min-width: 58px;
+        padding: 7px 8px;
+        font-size: 11px;
+    }
+
+    .product-card {
+        grid-template-columns: 68px 1fr;
+        padding: 10px;
+        column-gap: 10px;
+    }
+
+    .product-card img {
+        width: 68px !important;
+        height: 68px !important;
+    }
+
+    .product-card h3 {
+        font-size: 14px;
+    }
+
+    .product-card p {
+        font-size: 14px;
+    }
+}
     </style>
 </head>
 

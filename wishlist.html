@@ -57,7 +57,7 @@
                     rgba(0,0,0,0.90) 100%
                 ),
 
-                url("./images/hero.jpg") !important;
+                url("./images/aboutt.jpg") !important;
 
             background-size: cover !important;
 
@@ -794,57 +794,436 @@
     color: #111 !important;
 }
 
-        /* ==========================================
-   WISHLIST MOBILE NAVBAR - COMPACT
-========================================== */
+        /* =========================================================
+   WISHLIST NAVBAR - FINAL
+   DESKTOP = SYMBOLS ONLY
+   MOBILE = SYMBOL + TEXT
+========================================================= */
 
-@media (max-width: 768px) {
 
-    .wishlist-page .nav-links {
-        padding: 12px 0 !important;
-        gap: 4px !important;
+/* =========================================================
+   DESKTOP / LAPTOP
+   WISHLIST / MY ORDERS / CART = ONLY SYMBOLS
+========================================================= */
+
+@media (min-width: 769px) {
+
+    /* Hide text */
+    .wishlist-page .nav-links .nav-icon .nav-text {
+        display: none !important;
     }
 
-    .wishlist-page .nav-links li {
+
+    /* Clean icon links */
+    .wishlist-page .nav-links li a.nav-icon,
+    .wishlist-page .nav-links li a.nav-icon:hover,
+    .wishlist-page .nav-links li a.nav-icon:focus,
+    .wishlist-page .nav-links li a.nav-icon:active {
+
+        background: transparent !important;
+        background-color: transparent !important;
+
+        border: none !important;
+        border-radius: 0 !important;
+
+        box-shadow: none !important;
+
+        text-decoration: none !important;
+
+        padding: 0 !important;
+    }
+
+    /* Icons */
+    .wishlist-page .nav-links li a.nav-icon i {
+
+        display: inline-block !important;
+
+        color: #ffffff !important;
+
+        background: transparent !important;
+
+        border: none !important;
+
+        box-shadow: none !important;
+
         margin: 0 !important;
         padding: 0 !important;
     }
 
-    .wishlist-page .nav-links li a {
-        padding: 7px 20px !important;
-        font-size: 14px !important;
-        line-height: 1.2 !important;
+    /* Active Wishlist */
+    .wishlist-page .nav-links li a.nav-icon.active {
+
+        color: #d4af37 !important;
+
+        background: transparent !important;
+        background-color: transparent !important;
+
+        border: none !important;
+        border-radius: 0 !important;
+
+        box-shadow: none !important;
+
+        text-decoration: none !important;
     }
 
-    .wishlist-page .nav-icon {
-        padding: 7px 18px !important;
+    .wishlist-page .nav-links li a.nav-icon.active i {
+
+        color: #d4af37 !important;
     }
 
-}
-/* =====================================================
-   WISHLIST ACTIVE - GOLD TEXT, NO YELLOW LINE
-===================================================== */
+    /* Remove underline */
+    .wishlist-page .nav-links li a.nav-icon::before,
+    .wishlist-page .nav-links li a.nav-icon::after,
+    .wishlist-page .nav-links li a.nav-icon.active::before,
+    .wishlist-page .nav-links li a.nav-icon.active::after {
 
-.wishlist-page .nav-links a.active {
-    color: #d4af37 !important;
+        content: none !important;
+        display: none !important;
+
+        width: 0 !important;
+        height: 0 !important;
+
+        background: transparent !important;
+
+        border: none !important;
+        box-shadow: none !important;
+    }
 }
 
-/* Remove active underline */
-.wishlist-page .nav-links a.active::after {
-    display: none !important;
-    content: none !important;
+
+/* =========================================================
+   MOBILE
+   SYMBOL + TEXT
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Hamburger */
+    .wishlist-page .menu-btn {
+
+        display: block !important;
+
+        color: #ffd700 !important;
+
+        font-size: 28px !important;
+
+        cursor: pointer !important;
+
+        z-index: 1001 !important;
+    }
+
+
+    /* Closed menu */
+    .wishlist-page .nav-links {
+
+        display: none !important;
+    }
+
+
+    /* Open dropdown */
+    .wishlist-page .nav-links.active {
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: stretch !important;
+
+        position: absolute !important;
+
+        top: 100% !important;
+
+        right: 0 !important;
+
+        left: auto !important;
+
+        width: 55% !important;
+
+        min-width: 260px !important;
+
+        background: #090909 !important;
+
+        padding: 22px 20px !important;
+
+        margin: 0 !important;
+
+        border: 1px solid #5c4815 !important;
+
+        border-top: none !important;
+
+        border-radius: 0 0 20px 20px !important;
+
+        box-shadow: 0 10px 30px rgba(0,0,0,.7) !important;
+
+        z-index: 1000 !important;
+    }
+
+
+    /* Every LI */
+    .wishlist-page .nav-links.active li {
+
+        width: 100% !important;
+
+        display: block !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        border: none !important;
+
+        background: transparent !important;
+
+        text-align: left !important;
+    }
+
+
+    /* All normal links */
+    .wishlist-page .nav-links.active li > a {
+
+        display: flex !important;
+
+        align-items: center !important;
+
+        justify-content: flex-start !important;
+
+        width: 100% !important;
+
+        min-width: 0 !important;
+
+        height: auto !important;
+
+        padding: 11px 18px !important;
+
+        margin: 0 !important;
+
+        color: #ffffff !important;
+
+        background: transparent !important;
+
+        background-color: transparent !important;
+
+        border: none !important;
+
+        border-radius: 0 !important;
+
+        box-shadow: none !important;
+
+        font-size: 18px !important;
+
+        font-weight: 500 !important;
+
+        line-height: 1.4 !important;
+
+        text-decoration: none !important;
+
+        text-align: left !important;
+
+        opacity: 1 !important;
+
+        visibility: visible !important;
+
+        position: static !important;
+
+        transform: none !important;
+    }
+
+
+    /* =====================================================
+       3 ICON LINKS
+       SYMBOL + TEXT
+    ===================================================== */
+
+    .wishlist-page .nav-links.active li > a.nav-icon {
+
+        display: flex !important;
+
+        flex-direction: row !important;
+
+        align-items: center !important;
+
+        justify-content: flex-start !important;
+
+        width: 100% !important;
+
+        padding: 11px 18px !important;
+
+        margin: 0 !important;
+
+        color: #ffffff !important;
+
+        background: transparent !important;
+
+        border: none !important;
+
+        border-radius: 0 !important;
+
+        box-shadow: none !important;
+
+        text-decoration: none !important;
+    }
+
+
+    /* =====================================================
+       SYMBOLS SHOW
+    ===================================================== */
+
+    .wishlist-page .nav-links.active li > a.nav-icon i {
+
+        display: inline-flex !important;
+
+        align-items: center !important;
+
+        justify-content: center !important;
+
+        width: 28px !important;
+
+        min-width: 28px !important;
+
+        height: 24px !important;
+
+        margin: 0 10px 0 0 !important;
+
+        padding: 0 !important;
+
+        color: #ffffff !important;
+
+        background: transparent !important;
+
+        border: none !important;
+
+        box-shadow: none !important;
+
+        font-size: 20px !important;
+
+        line-height: 1 !important;
+    }
+
+
+    /* =====================================================
+       TEXT SHOW
+    ===================================================== */
+
+    .wishlist-page .nav-links.active li > a.nav-icon .nav-text {
+
+        display: inline !important;
+
+        visibility: visible !important;
+
+        opacity: 1 !important;
+
+        position: static !important;
+
+        width: auto !important;
+
+        height: auto !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        color: #ffffff !important;
+
+        background: transparent !important;
+
+        border: none !important;
+
+        box-shadow: none !important;
+
+        font-size: 18px !important;
+
+        font-weight: 500 !important;
+
+        line-height: 1.4 !important;
+
+        text-align: left !important;
+    }
+
+
+    /* =====================================================
+       ACTIVE WISHLIST
+       ONLY TEXT + SYMBOL GOLD
+    ===================================================== */
+
+    .wishlist-page .nav-links.active li > a.nav-icon.active {
+
+        color: #d4af37 !important;
+
+        background: transparent !important;
+
+        border: none !important;
+
+        box-shadow: none !important;
+    }
+
+    .wishlist-page .nav-links.active li > a.nav-icon.active i {
+
+        color: #d4af37 !important;
+    }
+
+    .wishlist-page .nav-links.active li > a.nav-icon.active .nav-text {
+
+        color: #d4af37 !important;
+    }
+
+
+    /* =====================================================
+       OTHER 2 = WHITE
+    ===================================================== */
+
+    .wishlist-page .nav-links.active li > a.nav-icon:not(.active),
+    .wishlist-page .nav-links.active li > a.nav-icon:not(.active) i,
+    .wishlist-page .nav-links.active li > a.nav-icon:not(.active) .nav-text {
+
+        color: #ffffff !important;
+    }
+
+
+    /* =====================================================
+       REMOVE YELLOW CIRCLES / PILLS / UNDERLINES
+    ===================================================== */
+
+    .wishlist-page .nav-links.active a::before,
+    .wishlist-page .nav-links.active a::after,
+    .wishlist-page .nav-links.active .nav-icon::before,
+    .wishlist-page .nav-links.active .nav-icon::after {
+
+        content: none !important;
+
+        display: none !important;
+
+        width: 0 !important;
+        height: 0 !important;
+
+        background: transparent !important;
+
+        border: none !important;
+
+        box-shadow: none !important;
+    }
+
+
+    
+
+    /* =====================================================
+       NO YELLOW HOVER BACKGROUND
+    ===================================================== */
+
+    .wishlist-page .nav-links.active li > a:hover,
+    .wishlist-page .nav-links.active li > a.nav-icon:hover {
+
+        background: transparent !important;
+
+        background-color: transparent !important;
+
+        border: none !important;
+
+        box-shadow: none !important;
+    }
 }
 
-/* Wishlist icon also gold */
-.wishlist-page .nav-links a.active i {
-    color: #d4af37 !important;
-}
 
-/* No border/line */
-.wishlist-page .nav-links a.active {
-    border-bottom: none !important;
-    box-shadow: none !important;
-}
+
     </style>
 
 </head>
@@ -928,46 +1307,27 @@
                 </a>
             </li>
 
-
-            <!-- WISHLIST -->
             <li>
-                <a
-                    href="wishlist.html"
-                    title="Wishlist"
-                    class="nav-icon active"
-                >
-                    <i class="fa-regular fa-heart"></i>
-                </a>
-            </li>
+    <a href="wishlist.html" class="nav-icon active">
+        <i class="fa-regular fa-heart"></i>
+        <span class="nav-text">Wishlist</span>
+    </a>
+</li>
 
+<li>
+    <a href="my-orders.html" class="nav-icon">
+        <i class="fa-solid fa-box-open"></i>
+        <span class="nav-text">My Orders</span>
+    </a>
+</li>
 
-            <!-- MY ORDERS -->
-            <li>
-                <a
-                    href="my-orders.html"
-                    title="My Orders"
-                    class="nav-icon"
-                >
-                    <i class="fa-solid fa-box-open"></i>
-                </a>
-            </li>
-
-
-            <!-- CART -->
-            <li>
-                <a
-                    href="cart.html"
-                    title="Cart"
-                    class="nav-icon cart-icon"
-                >
-                    <i class="fa-solid fa-cart-shopping"></i>
-
-                    <span id="cart-count">
-                        0
-                    </span>
-
-                </a>
-            </li>
+<li>
+    <a href="cart.html" class="nav-icon cart-icon">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="nav-text">Cart</span>
+        <span id="cart-count">0</span>
+    </a>
+</li>
 
         </ul>
 

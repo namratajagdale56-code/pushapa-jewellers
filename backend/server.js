@@ -199,6 +199,7 @@ let imagePath = "";
 if (req.file) {
     imagePath = req.file.path;
 }
+
         const product = new Product({
 
             name: name,
@@ -437,15 +438,8 @@ app.put("/products/:id", upload.single("image"), async (req, res) => {
         product.weight = weight || "";
 
         // If new image selected
-        if (req.file) {
-
-    product.image =
-        req.protocol +
-        "://" +
-        req.get("host") +
-        "/uploads/" +
-        req.file.filename;
-
+       if (req.file) {
+    product.image = req.file.path;
 }
 
         await product.save();
@@ -1231,9 +1225,7 @@ app.post(
                     notes:
                         notes || "",
 
-                    image:
-                        "uploads/" +
-                        req.file.filename,
+                    image: req.file.path,
 
                     status: "New"
 
@@ -1700,13 +1692,6 @@ app.post("/api/auth/reset-password", async (req, res) => {
 
     }
 
-});
-const path = require("path");
-
-app.use(express.static(path.join(__dirname, "..")));
-
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 // ================= START SERVER =================
 

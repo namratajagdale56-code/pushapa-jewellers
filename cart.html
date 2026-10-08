@@ -8,60 +8,119 @@
 
     <title>Cart | Pushapa Jewellers</title>
 
-    <!-- Google Fonts -->
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+        rel="stylesheet"
+    >
 
-    <!-- Font Awesome -->
+    <!-- FONT AWESOME -->
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 
-    <!-- Common CSS -->
+    <!-- COMMON CSS -->
     <link rel="stylesheet" href="style.css">
 
 
     <style>
 
         /* =====================================================
-           CART PAGE
+           CART PAGE BACKGROUND
         ===================================================== */
 
-        
+        body.cart-page {
 
+            min-height: 100vh;
+
+            background-image:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,0.93) 0%,
+                    rgba(0,0,0,0.76) 50%,
+                    rgba(0,0,0,0.90) 100%
+                ),
+                url("./images/aboutt.jpg") !important;
+
+            background-size: cover !important;
+            background-position: center center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+        }
+
+
+        /* =====================================================
+           CART SECTION
+        ===================================================== */
 
         .cart-section {
+
             padding: 100px 5% 60px;
+
             min-height: 100vh;
         }
 
 
         /* =====================================================
-           TITLE
+           CART TITLE
         ===================================================== */
 
         .cart-title {
+
             text-align: center;
+
             margin-bottom: 45px;
         }
 
         .cart-title h1 {
+
             font-family: "Cinzel", serif;
+
             color: #d4af37;
+
             font-size: 42px;
+
             margin: 0 0 8px;
-            letter-spacing: 2px;
+
+            letter-spacing: 4px;
+
+            text-shadow:
+                0 0 15px rgba(212,175,55,0.18);
         }
 
         .cart-title p {
-            color: #aaa;
+
+            color: #9b927d;
+
             font-family: "Poppins", sans-serif;
+
             margin: 0;
+
             font-size: 14px;
+
+            letter-spacing: 1px;
+        }
+
+        .cart-title::after {
+
+            content: "";
+
+            display: block;
+
+            width: 70px;
+
+            height: 1px;
+
+            background: #d4af37;
+
+            margin: 18px auto 0;
+
+            box-shadow:
+                0 0 10px rgba(212,175,55,0.35);
         }
 
 
@@ -70,11 +129,15 @@
         ===================================================== */
 
         .cart-grid {
+
             width: 100%;
+
             max-width: 1400px;
+
             margin: auto;
 
             display: grid;
+
             grid-template-columns:
                 repeat(4, minmax(0, 1fr));
 
@@ -84,7 +147,6 @@
 
         /* =====================================================
            PRODUCT CARD
-           SAME STYLE AS PRODUCT PAGE
         ===================================================== */
 
         .cart-grid .product-card {
@@ -99,15 +161,13 @@
 
             overflow: hidden;
 
-            box-shadow:
-                0 0 0 transparent;
+            box-shadow: 0 0 0 transparent;
 
             transition:
                 transform 0.3s ease,
                 box-shadow 0.3s ease,
                 border-color 0.3s ease;
         }
-
 
         .cart-grid .product-card:hover {
 
@@ -116,12 +176,12 @@
             border-color: #d4af37;
 
             box-shadow:
-                0 12px 35px rgba(212, 175, 55, 0.15);
+                0 12px 35px rgba(212,175,55,0.15);
         }
 
 
         /* =====================================================
-           IMAGE
+           PRODUCT IMAGE
         ===================================================== */
 
         .cart-grid .product-image-wrap {
@@ -129,6 +189,7 @@
             position: relative;
 
             width: 100%;
+
             height: 350px;
 
             overflow: hidden;
@@ -136,10 +197,10 @@
             background: #fff;
         }
 
-
         .cart-grid .product-image-wrap img {
 
             width: 100%;
+
             height: 100%;
 
             object-fit: cover;
@@ -150,7 +211,6 @@
                 transform 0.5s ease;
         }
 
-
         .cart-grid .product-card:hover
         .product-image-wrap img {
 
@@ -159,7 +219,7 @@
 
 
         /* =====================================================
-           WISHLIST
+           WISHLIST BUTTON
         ===================================================== */
 
         .cart-grid .product-wishlist-btn {
@@ -167,21 +227,25 @@
             position: absolute;
 
             top: 14px;
+
             right: 12px;
 
             width: 86px;
+
             height: 36px;
 
             border-radius: 30px;
 
-            background: #050505;
+            background: #d4af37 !important;
 
-            border: 1px solid #d4af37;
+            border: 1px solid #d4af37 !important;
 
-            color: #d4af37;
+            color: #000;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             cursor: pointer;
@@ -191,27 +255,16 @@
             transition: 0.3s ease;
         }
 
-
         .cart-grid .product-wishlist-btn i {
 
-            color: #d4af37;
+            color: #000 !important;
 
             font-size: 17px;
         }
 
+        .cart-grid .product-wishlist-btn:hover {
 
-        .cart-grid .product-wishlist-btn.active {
-
-            background: #d4af37;
-
-            border-color: #d4af37;
-        }
-
-
-        .cart-grid
-        .product-wishlist-btn.active i {
-
-            color: #000;
+            transform: scale(1.05);
         }
 
 
@@ -227,9 +280,7 @@
         }
 
 
-        /* =====================================================
-           CATEGORY
-        ===================================================== */
+        /* CATEGORY */
 
         .cart-grid .product-category {
 
@@ -247,9 +298,7 @@
         }
 
 
-        /* =====================================================
-           NAME
-        ===================================================== */
+        /* PRODUCT NAME */
 
         .cart-grid .product-name {
 
@@ -267,9 +316,7 @@
         }
 
 
-        /* =====================================================
-           RATING
-        ===================================================== */
+        /* RATING */
 
         .cart-grid .product-rating {
 
@@ -282,7 +329,6 @@
             margin-bottom: 12px;
         }
 
-
         .cart-grid .stars {
 
             color: #d4af37;
@@ -292,7 +338,6 @@
             letter-spacing: 1px;
         }
 
-
         .cart-grid .rating-number {
 
             color: #bbb;
@@ -301,9 +346,7 @@
         }
 
 
-        /* =====================================================
-           PRICE
-        ===================================================== */
+        /* PRICE */
 
         .cart-grid .price {
 
@@ -332,7 +375,6 @@
             width: 100%;
         }
 
-
         .cart-grid .product-buttons button {
 
             height: 52px;
@@ -343,15 +385,25 @@
 
             font-family: "Poppins", sans-serif;
 
-            font-size: 12px;
+            font-size: 11px;
 
             font-weight: 600;
 
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
 
             cursor: pointer;
 
             transition: 0.3s ease;
+
+            white-space: nowrap;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            line-height: 1;
         }
 
 
@@ -362,74 +414,61 @@
             background:
                 linear-gradient(
                     135deg,
-                    #ffe27a,
-                    #d4af37
-                );
+                    #B8860B,
+                    #D4AF37,
+                    #F0D77A
+                ) !important;
 
-            border: 1px solid #d4af37;
+            border: 1px solid #D4AF37 !important;
 
-            color: #080808;
+            color: #111 !important;
+
+            padding: 0 12px;
+
+            font-weight: 700;
         }
-
 
         .cart-grid .view-btn:hover {
 
             background:
                 linear-gradient(
                     135deg,
-                    #fff0a5,
-                    #e1bd4b
-                );
+                    #D4AF37,
+                    #F0D77A,
+                    #D4AF37
+                ) !important;
 
             transform: translateY(-2px);
         }
 
-/* ==========================================
-   REMOVE BUTTON - PREMIUM LUXURY
-========================================== */
 
-.cart-grid .remove-cart-btn {
-    flex: 1;
+        /* REMOVE */
 
-    height: 52px;
+        .cart-grid .remove-cart-btn {
 
-    background: transparent;
+            background: #080808 !important;
 
-    border: 1px solid #8d6f18;
+            border: 1px solid #D4AF37 !important;
 
-    border-radius: 7px;
+            color: #D4AF37 !important;
 
-    color: #d4af37;
+            padding: 0 12px;
+        }
 
-    font-family: "Poppins", sans-serif;
+        .cart-grid .remove-cart-btn:hover {
 
-    font-size: 11px;
+            background: #D4AF37 !important;
 
-    font-weight: 600;
+            border-color: #D4AF37 !important;
 
-    letter-spacing: 2px;
+            color: #111 !important;
 
-    cursor: pointer;
+            box-shadow:
+                0 5px 18px rgba(212,175,55,0.25);
 
-    transition: all 0.3s ease;
+            transform: translateY(-2px);
+        }
 
-    white-space: nowrap;
-}
-
-
-.cart-grid .remove-cart-btn:hover {
-
-    background: #d4af37;
-
-    border-color: #d4af37;
-
-    color: #050505;
-
-    box-shadow:
-        0 5px 18px rgba(212,175,55,0.25);
-
-    transform: translateY(-2px);
-}
 
         /* =====================================================
            EMPTY CART
@@ -446,7 +485,6 @@
             color: #aaa;
         }
 
-
         .empty-cart i {
 
             color: #d4af37;
@@ -455,7 +493,6 @@
 
             margin-bottom: 20px;
         }
-
 
         .empty-cart h2 {
 
@@ -468,18 +505,22 @@
             margin-bottom: 10px;
         }
 
-
         .empty-cart p {
 
             margin-bottom: 25px;
         }
 
 
+        /* =====================================================
+           SHOP BUTTON
+        ===================================================== */
+
         .shop-btn {
 
             display: inline-flex;
 
             align-items: center;
+
             justify-content: center;
 
             padding: 13px 28px;
@@ -504,22 +545,23 @@
 
 
         /* =====================================================
-           RESPONSIVE
+           TABLET
         ===================================================== */
 
         @media (max-width: 1100px) {
 
             .cart-grid {
+
                 grid-template-columns:
                     repeat(3, minmax(0, 1fr));
             }
-
         }
 
 
         @media (max-width: 800px) {
 
             .cart-grid {
+
                 grid-template-columns:
                     repeat(2, minmax(0, 1fr));
 
@@ -527,369 +569,407 @@
             }
 
             .cart-grid .product-image-wrap {
+
                 height: 280px;
             }
 
             .cart-grid .product-card-content {
+
                 padding: 14px 16px;
             }
 
             .cart-grid .product-name {
+
                 font-size: 18px;
             }
 
             .cart-grid .price {
+
                 font-size: 19px;
             }
-
         }
 
 
-        /* ==========================================
-   MOBILE CART - 2 CARDS IN ONE ROW
-========================================== */
-
-@media (max-width: 520px) {
-
-    .cart-section {
-        padding: 90px 8px 40px;
-    }
-
-    .cart-title {
-        margin-bottom: 25px;
-    }
-
-    .cart-title h1 {
-        font-size: 28px;
-        letter-spacing: 2px !important;
-    }
-
-    .cart-title p {
-        font-size: 11px;
-    }
-
-    /* 2 CARDS IN ONE ROW */
-    .cart-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 10px !important;
-        width: 100%;
-        max-width: 100%;
-    }
-
-    /* CARD */
-    .cart-grid .product-card {
-        width: 100%;
-        min-width: 0;
-        border-radius: 10px;
-    }
-
-    /* IMAGE */
-    .cart-grid .product-image-wrap {
-        height: 190px;
-    }
-
-    .cart-grid .product-image-wrap img {
-        object-fit: cover;
-    }
-
-    /* WISHLIST HEART */
-    .cart-grid .product-wishlist-btn {
-        width: 32px;
-        height: 32px;
-        top: 7px;
-        right: 7px;
-        border-radius: 50%;
-    }
-
-    .cart-grid .product-wishlist-btn i {
-        font-size: 13px;
-    }
-
-    /* CONTENT */
-    .cart-grid .product-card-content {
-        padding: 10px;
-    }
-
-    /* CATEGORY */
-    .cart-grid .product-category {
-        font-size: 8px;
-        letter-spacing: 1px;
-        margin-bottom: 5px;
-    }
-
-    /* PRODUCT NAME */
-    .cart-grid .product-name {
-        font-size: 13px;
-        line-height: 1.3;
-        margin-bottom: 7px;
-    }
-
-    /* RATING */
-    .cart-grid .product-rating {
-        gap: 4px;
-        margin-bottom: 7px;
-    }
-
-    .cart-grid .stars {
-        font-size: 10px;
-        letter-spacing: 0;
-    }
-
-    .cart-grid .rating-number {
-        font-size: 9px;
-    }
-
-    /* PRICE */
-    .cart-grid .price {
-        font-size: 14px;
-        margin-bottom: 10px;
-    }
-
-    /* BUTTONS */
-    .cart-grid .product-buttons {
-        gap: 5px;
-    }
-
-    .cart-grid .product-buttons button {
-        height: 34px;
-        font-size: 8px;
-        padding: 0 3px;
-        letter-spacing: 0;
-        border-radius: 5px;
-    }
-
-    .cart-grid .view-btn,
-    .cart-grid .remove-cart-btn {
-        font-size: 8px !important;
-        letter-spacing: 0 !important;
-        padding: 0 3px !important;
-    }
-
-}
-
-
-/* ==========================================
-   VERY SMALL PHONES
-========================================== */
-
-@media (max-width: 360px) {
-
-    .cart-section {
-        padding-left: 6px;
-        padding-right: 6px;
-    }
-
-    .cart-grid {
-        gap: 7px !important;
-    }
-
-    .cart-grid .product-image-wrap {
-        height: 165px;
-    }
-
-    .cart-grid .product-card-content {
-        padding: 8px;
-    }
-
-    .cart-grid .product-name {
-        font-size: 12px;
-    }
-
-    .cart-grid .price {
-        font-size: 13px;
-    }
-
-    .cart-grid .product-buttons button {
-        height: 32px;
-        font-size: 7px;
-    }
-
-}
         /* =====================================================
-   PREMIUM CART PAGE BACKGROUND
-===================================================== */
+           MOBILE - 2 CARDS
+        ===================================================== */
 
+        @media (max-width: 520px) {
 
-      
+            .cart-section {
 
-/* subtle luxury glow */
+                padding: 90px 8px 40px;
+            }
 
-.cart-page::before {
-    content: "";
+            .cart-title h1 {
 
-    position: fixed;
+                font-size: 28px;
+            }
 
-    inset: 0;
+            .cart-title p {
 
-    pointer-events: none;
+                font-size: 11px;
+            }
 
-    background:
-        linear-gradient(
-            115deg,
-            transparent 0%,
-            rgba(212,175,55,0.025) 45%,
-            transparent 70%
-        );
+            .cart-grid {
 
-    z-index: 0;
+                display: grid;
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr)) !important;
+
+                gap: 10px !important;
+
+                width: 100%;
+
+                max-width: 100%;
+            }
+
+            .cart-grid .product-card {
+
+                width: 100%;
+
+                min-width: 0;
+            }
+
+            .cart-grid .product-image-wrap {
+
+                height: 190px;
+            }
+
+            .cart-grid .product-card-content {
+
+                padding: 10px;
+            }
+
+            .cart-grid .product-category {
+
+                font-size: 8px;
+
+                letter-spacing: 1px;
+            }
+
+            .cart-grid .product-name {
+
+                font-size: 13px;
+
+                line-height: 1.3;
+
+                margin-bottom: 7px;
+            }
+
+            .cart-grid .product-rating {
+
+                gap: 4px;
+
+                margin-bottom: 7px;
+            }
+
+            .cart-grid .stars {
+
+                font-size: 10px;
+            }
+
+            .cart-grid .rating-number {
+
+                font-size: 9px;
+            }
+
+            .cart-grid .price {
+
+                font-size: 14px;
+
+                margin-bottom: 10px;
+            }
+
+            .cart-grid .product-buttons {
+
+                gap: 5px;
+            }
+
+            .cart-grid .product-buttons button {
+
+                height: 34px;
+
+                font-size: 8px;
+
+                padding: 0 3px;
+
+                letter-spacing: 0;
+            }
+
+            .cart-grid .product-wishlist-btn {
+
+                width: 32px;
+
+                height: 32px;
+
+                top: 7px;
+
+                right: 7px;
+            }
+        }
+/* =========================================================
+   CART PAGE - MOBILE NAVBAR FINAL FIX
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* -----------------------------
+       MENU
+    ----------------------------- */
+
+    .cart-page .nav-links.active {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    /* -----------------------------
+       ALL MENU ITEMS
+    ----------------------------- */
+
+    .cart-page .nav-links.active li {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: static !important;
+        background: transparent !important;
+    }
+
+    .cart-page .nav-links.active li a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+
+        width: 100% !important;
+
+        margin: 0 !important;
+        padding: 11px 18px !important;
+
+        position: static !important;
+        transform: none !important;
+
+        background: transparent !important;
+        background-color: transparent !important;
+
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+
+        color: #ffffff !important;
+
+        text-decoration: none !important;
+    }
+
+    /* -----------------------------
+       WISHLIST / MY ORDERS / CART
+    ----------------------------- */
+
+    .cart-page .nav-links.active li a.nav-icon,
+    .cart-page .nav-links.active li a.nav-icon:hover,
+    .cart-page .nav-links.active li a.nav-icon:focus,
+    .cart-page .nav-links.active li a.nav-icon:active {
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+
+        width: 100% !important;
+
+        background: transparent !important;
+        background-color: transparent !important;
+
+        border: none !important;
+        border-radius: 0 !important;
+
+        box-shadow: none !important;
+
+        color: #ffffff !important;
+
+        text-decoration: none !important;
+    }
+
+    /* -----------------------------
+       ICONS
+    ----------------------------- */
+
+    .cart-page .nav-links.active li a.nav-icon i {
+        display: inline-block !important;
+
+        width: 28px !important;
+        min-width: 28px !important;
+
+        margin-right: 12px !important;
+        padding: 0 !important;
+
+        color: #ffffff !important;
+
+        font-size: 20px !important;
+
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    /* -----------------------------
+       TEXT
+    ----------------------------- */
+
+    .cart-page .nav-links.active li a.nav-icon .nav-text {
+        display: inline !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        color: #ffffff !important;
+
+        font-size: 18px !important;
+        font-weight: 500 !important;
+
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+
+        position: static !important;
+    }
+
+    /* -----------------------------
+       ACTIVE CART ONLY
+    ----------------------------- */
+
+    .cart-page .nav-links.active li a.nav-icon.active {
+        background: transparent !important;
+        background-color: transparent !important;
+
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+
+        color: #d4af37 !important;
+    }
+
+    .cart-page .nav-links.active li a.nav-icon.active i {
+        color: #d4af37 !important;
+    }
+
+    .cart-page .nav-links.active li a.nav-icon.active .nav-text {
+        color: #d4af37 !important;
+    }
+
+    /* -----------------------------
+       REMOVE ALL YELLOW CIRCLE /
+       PILL / UNDERLINE EFFECTS
+    ----------------------------- */
+
+    .cart-page .nav-links.active li a.nav-icon::before,
+    .cart-page .nav-links.active li a.nav-icon::after,
+    .cart-page .nav-links.active li a.nav-icon.active::before,
+    .cart-page .nav-links.active li a.nav-icon.active::after {
+
+        content: none !important;
+
+        display: none !important;
+
+        width: 0 !important;
+        height: 0 !important;
+
+        background: transparent !important;
+
+        border: none !important;
+        border-radius: 0 !important;
+
+        box-shadow: none !important;
+    }
+
+    /* -----------------------------
+       REMOVE CART COUNT
+    ----------------------------- */
+
+    .cart-page .nav-links.active .cart-icon #cart-count,
+    .cart-page .nav-links.active #cart-count {
+
+        display: none !important;
+    }
+}
+/* =========================================================
+   DESKTOP NAVBAR - ONLY ICONS
+   WISHLIST / MY ORDERS / CART
+========================================================= */
+
+@media (min-width: 769px) {
+
+    /* Hide text on laptop */
+    .cart-page .nav-links .nav-icon .nav-text {
+        display: none !important;
+    }
+
+    
+    /* Icon links - remove all yellow background/pill */
+    .cart-page .nav-links li a.nav-icon,
+    .cart-page .nav-links li a.nav-icon:hover,
+    .cart-page .nav-links li a.nav-icon:focus,
+    .cart-page .nav-links li a.nav-icon:active {
+
+        background: transparent !important;
+        background-color: transparent !important;
+
+        border: none !important;
+        border-radius: 0 !important;
+
+        box-shadow: none !important;
+
+        text-decoration: none !important;
+
+        padding: 0 !important;
+    }
+
+    /* Icons white normally */
+    .cart-page .nav-links li a.nav-icon i {
+        color: #ffffff !important;
+
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Only active Cart icon gold */
+    .cart-page .nav-links li a.nav-icon.active {
+        background: transparent !important;
+        background-color: transparent !important;
+
+        border: none !important;
+        border-radius: 0 !important;
+
+        box-shadow: none !important;
+    }
+
+    .cart-page .nav-links li a.nav-icon.active i {
+        color: #d4af37 !important;
+    }
+
+    /* Remove underline / pseudo effects */
+    .cart-page .nav-links li a.nav-icon::before,
+    .cart-page .nav-links li a.nav-icon::after,
+    .cart-page .nav-links li a.nav-icon.active::before,
+    .cart-page .nav-links li a.nav-icon.active::after {
+
+        content: none !important;
+        display: none !important;
+
+        width: 0 !important;
+        height: 0 !important;
+
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
 }
 
-
-/* keep content above background */
-
-.cart-page header,
-.cart-page .cart-section {
-    position: relative;
-
-    z-index: 1;
-}
-
-
-/* =====================================================
-   CART TITLE
-===================================================== */
-
-.cart-title h1 {
-    text-shadow:
-        0 0 15px rgba(212,175,55,0.18);
-
-    letter-spacing: 4px !important;
-}
-
-
-.cart-title p {
-    color: #9b927d !important;
-
-    letter-spacing: 1px;
-}
-
-
-/* gold decorative line */
-
-.cart-title::after {
-    content: "";
-
-    display: block;
-
-    width: 70px;
-
-    height: 1px;
-
-    background: #d4af37;
-
-    margin: 18px auto 0;
-
-    box-shadow:
-        0 0 10px rgba(212,175,55,0.35);
-}
-
-
-/* =====================================================
-   VIEW DETAILS - ONE LINE
-===================================================== */
-
-.cart-grid .view-btn {
-
-    white-space: nowrap !important;
-
-    word-break: keep-all !important;
-
-    overflow: hidden !important;
-
-    text-overflow: clip !important;
-
-    font-size: 11px !important;
-
-    letter-spacing: 1px !important;
-
-    padding: 0 12px !important;
-
-    display: flex !important;
-
-    align-items: center !important;
-
-    justify-content: center !important;
-
-    line-height: 1 !important;
-}
-
-
-/* =====================================================
-   REMOVE - ONE LINE
-===================================================== */
-
-.cart-grid .remove-cart-btn {
-
-    white-space: nowrap !important;
-
-    word-break: keep-all !important;
-
-    font-size: 11px !important;
-
-    letter-spacing: 1px !important;
-
-    padding: 0 12px !important;
-
-    display: flex !important;
-
-    align-items: center !important;
-
-    justify-content: center !important;
-
-    line-height: 1 !important;
-}
-
-/* =====================================================
-   CART PAGE BACKGROUND
-===================================================== */
-
-body.cart-page {
-    min-height: 100vh !important;
-
-    background-image:
-        linear-gradient(
-            90deg,
-            rgba(0, 0, 0, 0.92) 0%,
-            rgba(0, 0, 0, 0.72) 50%,
-            rgba(0, 0, 0, 0.88) 100%
-        ),
-        url("./images/aboutt.jpg") !important;
-
-    background-size: cover !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
-}
-/* =====================================================
-   CART MENU CLICK FIX
-===================================================== */
-
-.nav-links li a.cart-icon {
-    position: relative !important;
-    z-index: 9999 !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-}
-
-.nav-links li a.cart-icon i,
-.nav-links li a.cart-icon #cart-count {
-    pointer-events: none !important;
-}
-
-/* Remove active underline/effect */
-.nav-links li a.cart-icon.active {
-    color: #d4af37 !important;
-    border-bottom: none !important;
-    box-shadow: none !important;
-    text-decoration: none !important;
-}
-
-.nav-links li a.cart-icon.active::before,
-.nav-links li a.cart-icon.active::after {
-    content: none !important;
-    display: none !important;
-}
     </style>
 
 </head>
@@ -904,115 +984,153 @@ body.cart-page {
 
 <header>
 
-<nav class="navbar">
+    <nav class="navbar">
 
-    <div class="logo">
+        <!-- LOGO -->
 
-        <a href="index.html">
+        <div class="logo">
 
-            <div class="logo">
+            <a href="index.html">
 
-                <img
-                    src="images/logo.png"
-                    alt="Pushapa Jewellers"
+                <div class="logo">
+
+                    <img
+                        src="images/logo.png"
+                        alt="Pushapa Jewellers"
+                    >
+
+                    <span>
+                        Pushapa Jewellers
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <!-- MENU BUTTON -->
+
+        <div class="menu-btn">
+            ☰
+        </div>
+
+
+        <!-- NAV LINKS -->
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="login.html">
+                    Login
+                </a>
+            </li>
+
+            <li>
+                <a href="product.html">
+                    Product
+                </a>
+            </li>
+
+            <li>
+                <a href="about.html">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="contact.html">
+                    Contact
+                </a>
+            </li>
+
+
+            <!-- WISHLIST -->
+
+            <li>
+
+                <a
+                    href="wishlist.html"
+                    class="nav-icon"
                 >
 
-                <span>
-                    Pushapa Jewellers
-                </span>
+                    <i class="fa-regular fa-heart"></i>
 
-            </div>
+                    <span class="nav-text">
+                        Wishlist
+                    </span>
 
-        </a>
+                </a>
 
-    </div>
-
-
-    <div class="menu-btn">
-        ☰
-    </div>
+            </li>
 
 
-    <ul class="nav-links">
+            <!-- MY ORDERS -->
 
-        <li>
-            <a href="index.html">
-                Home
-            </a>
-        </li>
+            <li>
 
-        <li>
-            <a href="login.html">
-                Login
-            </a>
-        </li>
+                <a
+                    href="my-orders.html"
+                    class="nav-icon"
+                >
 
-        <li>
-            <a href="product.html">
-                Product
-            </a>
-        </li>
+                    <i class="fa-solid fa-box-open"></i>
 
-        <li>
-            <a href="about.html">
-                About
-            </a>
-        </li>
+                    <span class="nav-text">
+                        My Orders
+                    </span>
 
-        <li>
-            <a href="contact.html">
-                Contact
-            </a>
-        </li>
+                </a>
+
+            </li>
 
 
-        <li>
+            <!-- CART -->
 
-            <a
-                href="wishlist.html"
-                title="Wishlist"
-                class="nav-icon"
-            >
+            <li>
 
-                <i class="fa-regular fa-heart"></i>
+                <a
+                    href="cart.html"
+                    class="nav-icon cart-icon active"
+                >
 
-            </a>
+                    <i class="fa-solid fa-cart-shopping"></i>
 
-        </li>
-<li>
-    <a href="my-orders.html" title="My Orders" class="nav-icon">
-        <i class="fa-solid fa-box-open"></i>
-    </a>
-</li>
+                    <span class="nav-text">
+                        Cart
+                    </span>
 
+                    <span id="cart-count">
+                        0
+                    </span>
 
-        <li>
-    <a
-        href="cart.html"
-        title="Cart"
-        class="nav-icon cart-icon active"
-    >
-        <i class="fa-solid fa-cart-shopping"></i>
+                </a>
 
-        <span id="cart-count">
-            0
-        </span>
-    </a>
-</li>
+            </li>
 
-    </ul>
+        </ul>
 
-</nav>
+    </nav>
 
 </header>
 
 
+
 <!-- =====================================================
-     CART
+     CART SECTION
 ===================================================== -->
 
 <section class="cart-section">
 
+
+    <!-- TITLE -->
 
     <div class="cart-title">
 
@@ -1027,12 +1145,16 @@ body.cart-page {
     </div>
 
 
+    <!-- CART PRODUCTS -->
+
     <div
         class="cart-grid"
         id="cartContainer"
     >
     </div>
 
+
+    <!-- EMPTY CART -->
 
     <div
         class="empty-cart"
@@ -1062,20 +1184,22 @@ body.cart-page {
 </section>
 
 
-<!-- =====================================================
-     SCRIPT
-===================================================== -->
+
+<!-- COMMON SCRIPT -->
 
 <script src="script.js"></script>
 
 
+
+<!-- =====================================================
+     CART SCRIPT
+===================================================== -->
+
 <script>
 
-
-
-// =====================================================
-// GET CART
-// =====================================================
+/* =====================================================
+   GET CART
+===================================================== */
 
 function getCartProducts() {
 
@@ -1097,27 +1221,11 @@ function getCartProducts() {
 
 
 
-// =====================================================
-// SAVE CART
-// =====================================================
-
-function saveCartProducts(cart) {
-
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
-
-}
-
-
-
-// =====================================================
-// LOAD CART
-// =====================================================
+/* =====================================================
+   LOAD CART
+===================================================== */
 
 function loadCart() {
-
 
     const cart =
         getCartProducts();
@@ -1138,13 +1246,14 @@ function loadCart() {
     container.innerHTML = "";
 
 
-    // =================================================
-    // EMPTY
-    // =================================================
+    /* =================================================
+       EMPTY CART
+    ================================================= */
 
     if (cart.length === 0) {
 
         empty.style.display = "block";
+
 
         if (
             typeof updateCartCount ===
@@ -1163,12 +1272,12 @@ function loadCart() {
     empty.style.display = "none";
 
 
-    // =================================================
-    // PRODUCTS
-    // =================================================
+    /* =================================================
+       PRODUCTS
+    ================================================= */
 
     cart.forEach(
-        function (product, index) {
+        function(product, index) {
 
 
             const card =
@@ -1178,36 +1287,59 @@ function loadCart() {
             card.className =
                 "product-card";
 
-const originalProductName =
-    product.name ||
-    product.title ||
-    "JEWELLERY";
 
-const productName =
-    String(originalProductName)
-        .replace(/\s*\d+\s*$/, "")
-        .trim()
-        .toUpperCase();
+            /* =========================================
+               ORIGINAL NAME
+            ========================================= */
+
+            const originalProductName =
+                product.name ||
+                product.title ||
+                "JEWELLERY";
+
+
+            /* =========================================
+               CLEAN NAME
+            ========================================= */
+
+            const productName =
+                String(originalProductName)
+                    .replace(/\s*\d+\s*$/, "")
+                    .trim()
+                    .toUpperCase();
+
+
+            /* =========================================
+               CATEGORY
+            ========================================= */
+
             const category =
                 product.category ||
                 product.type ||
                 "JEWELLERY";
 
 
-            const price =
-                Number(
-                    product.price
-                ) || 0;
+            /* =========================================
+               PRICE
+            ========================================= */
 
+            const price =
+                Number(product.price) || 0;
+
+
+            /* =========================================
+               IMAGE
+            ========================================= */
 
             const image =
                 product.image || "";
 
 
+            /* =========================================
+               CARD HTML
+            ========================================= */
+
             card.innerHTML = `
-
-
-                <!-- IMAGE -->
 
                 <div class="product-image-wrap">
 
@@ -1218,11 +1350,10 @@ const productName =
                     >
 
 
-                    <!-- WISHLIST -->
-
                     <button
                         class="product-wishlist-btn"
                         type="button"
+                        title="Add to Wishlist"
                     >
 
                         <i class="fa-regular fa-heart"></i>
@@ -1232,11 +1363,7 @@ const productName =
                 </div>
 
 
-
-                <!-- CONTENT -->
-
                 <div class="product-card-content">
-
 
                     <div class="product-category">
 
@@ -1255,15 +1382,11 @@ const productName =
                     <div class="product-rating">
 
                         <span class="stars">
-
                             ★★★★★
-
                         </span>
 
                         <span class="rating-number">
-
                             5.0
-
                         </span>
 
                     </div>
@@ -1278,30 +1401,20 @@ const productName =
 
                     <div class="product-buttons">
 
-
-                        <!-- VIEW DETAILS -->
-
                         <button
                             class="view-btn"
                             type="button"
                         >
-
                             VIEW DETAILS
-
                         </button>
 
-
-                        <!-- REMOVE -->
 
                         <button
                             class="remove-cart-btn"
                             type="button"
                         >
-
-                            REMOVE 
-
+                            REMOVE
                         </button>
-
 
                     </div>
 
@@ -1310,9 +1423,9 @@ const productName =
             `;
 
 
-            // =================================================
-            // VIEW DETAILS
-            // =================================================
+            /* =================================================
+               VIEW DETAILS
+            ================================================= */
 
             const viewButton =
                 card.querySelector(
@@ -1322,8 +1435,7 @@ const productName =
 
             viewButton.addEventListener(
                 "click",
-                function () {
-
+                function() {
 
                     localStorage.setItem(
 
@@ -1350,15 +1462,14 @@ const productName =
                     window.location.href =
                         "view-details.html";
 
-
                 }
             );
 
 
 
-            // =================================================
-            // REMOVE FROM CART
-            // =================================================
+            /* =================================================
+               REMOVE FROM CART
+            ================================================= */
 
             const removeButton =
                 card.querySelector(
@@ -1368,7 +1479,7 @@ const productName =
 
             removeButton.addEventListener(
                 "click",
-                function () {
+                function() {
 
 
                     let currentCart =
@@ -1381,12 +1492,15 @@ const productName =
                     );
 
 
-                    saveCartProducts(
-                        currentCart
+                    localStorage.setItem(
+
+                        "cart",
+
+                        JSON.stringify(
+                            currentCart
+                        )
+
                     );
-
-
-                    loadCart();
 
 
                     if (
@@ -1398,14 +1512,30 @@ const productName =
 
                     }
 
+
+                    if (
+                        typeof showPremiumAlert ===
+                        "function"
+                    ) {
+
+                        showPremiumAlert(
+                            "Product removed from cart!",
+                            "cart"
+                        );
+
+                    }
+
+
+                    loadCart();
+
                 }
             );
 
 
 
-            // =================================================
-            // WISHLIST
-            // =================================================
+            /* =================================================
+               ADD TO WISHLIST
+            ================================================= */
 
             const wishlistButton =
                 card.querySelector(
@@ -1413,229 +1543,158 @@ const productName =
                 );
 
 
-            const wishlistIcon =
-                wishlistButton.querySelector(
-                    "i"
-                );
-
-
-            let wishlist = [];
-
-            try {
-
-                wishlist =
-                    JSON.parse(
-                        localStorage.getItem(
-                            "wishlist"
-                        )
-                    ) || [];
-
-            }
-
-            catch (error) {
-
-                wishlist = [];
-
-            }
-
-
-            const alreadyInWishlist =
-                wishlist.some(
-                    item =>
-                        item.name ===
-                        productName
-                );
-
-
-            if (
-                alreadyInWishlist
-            ) {
-
-                wishlistButton.classList.add(
-                    "active"
-                );
-
-                wishlistIcon.classList.remove(
-                    "fa-regular"
-                );
-
-                wishlistIcon.classList.add(
-                    "fa-solid"
-                );
-
-            }
-
-
             wishlistButton.addEventListener(
                 "click",
-                function (event) {
-
+                function(event) {
 
                     event.preventDefault();
 
                     event.stopPropagation();
 
 
-                    let currentWishlist =
-                        JSON.parse(
-                            localStorage.getItem(
-                                "wishlist"
-                            )
-                        ) || [];
+                    let wishlist = [];
 
 
-                    const existingIndex =
-                        currentWishlist.findIndex(
-                            item =>
-                                item.name ===
-                                productName
-                        );
+                    try {
 
+                        wishlist =
+                            JSON.parse(
+                                localStorage.getItem(
+                                    "wishlist"
+                                )
+                            ) || [];
 
-                    // REMOVE WISHLIST
+                    }
 
-                    if (
-                        existingIndex !== -1
-                    ) {
+                    catch(error) {
 
-                        currentWishlist.splice(
-                            existingIndex,
-                            1
-                        );
-
-
-                        wishlistButton.style.setProperty(
-                            "background",
-                            "#050505",
-                            "important"
-                        );
-
-
-                        wishlistButton.style.setProperty(
-                            "border-color",
-                            "#d4af37",
-                            "important"
-                        );
-
-
-                        wishlistIcon.classList.remove(
-                            "fa-solid"
-                        );
-
-
-                        wishlistIcon.classList.add(
-                            "fa-regular"
-                        );
-
-
-                        wishlistIcon.style.setProperty(
-                            "color",
-                            "#d4af37",
-                            "important"
-                        );
-
-
-                        wishlistButton.classList.remove(
-                            "active"
-                        );
+                        wishlist = [];
 
                     }
 
 
-                    // ADD WISHLIST
+                    /* =========================================
+                       CHECK EXISTING
+                    ========================================= */
 
-                    else {
+                    const alreadyExists =
+                        wishlist.some(
+                            item =>
+                                item.name ===
+                                originalProductName
+                        );
 
-                        currentWishlist.push({
+
+                    /* =========================================
+                       ADD TO WISHLIST
+                    ========================================= */
+
+                    if (!alreadyExists) {
+
+                        wishlist.push({
 
                             name:
-                                productName,
+                                originalProductName,
 
                             image:
                                 image,
 
                             price:
-                                price
+                                price,
+
+                            category:
+                                category
 
                         });
 
 
-                        wishlistButton.style.setProperty(
-                            "background",
-                            "#d4af37",
-                            "important"
+                        localStorage.setItem(
+
+                            "wishlist",
+
+                            JSON.stringify(
+                                wishlist
+                            )
+
                         );
 
 
-                        wishlistButton.style.setProperty(
-                            "border-color",
-                            "#d4af37",
-                            "important"
-                        );
+                        wishlistButton.innerHTML =
+                            `<i class="fa-solid fa-heart"></i>`;
 
 
-                        wishlistIcon.classList.remove(
-                            "fa-regular"
-                        );
+                        wishlistButton.title =
+                            "Added to Wishlist";
 
 
-                        wishlistIcon.classList.add(
-                            "fa-solid"
-                        );
+                        if (
+                            typeof showPremiumAlert ===
+                            "function"
+                        ) {
 
+                            showPremiumAlert(
+                                "Product added to wishlist!",
+                                "wishlist"
+                            );
 
-                        wishlistIcon.style.setProperty(
-                            "color",
-                            "#000000",
-                            "important"
-                        );
-
-
-                        wishlistButton.classList.add(
-                            "active"
-                        );
+                        }
 
                     }
 
+                    else {
 
-                    localStorage.setItem(
-                        "wishlist",
-                        JSON.stringify(
-                            currentWishlist
-                        )
-                    );
+                        if (
+                            typeof showPremiumAlert ===
+                            "function"
+                        ) {
 
+                            showPremiumAlert(
+                                "Product is already in wishlist!",
+                                "wishlist"
+                            );
+
+                        }
+
+                    }
 
                 }
             );
 
+
+            /* =================================================
+               ADD CARD
+            ================================================= */
 
             container.appendChild(card);
 
         }
     );
 
-
-    if (
-        typeof updateCartCount ===
-        "function"
-    ) {
-
-        updateCartCount();
-
-    }
-
 }
 
 
 
-// =====================================================
-// PAGE LOAD
-// =====================================================
+/* =====================================================
+   PAGE LOAD
+===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
-    loadCart
+    function() {
+
+        loadCart();
+
+
+        if (
+            typeof updateCartCount ===
+            "function"
+        ) {
+
+            updateCartCount();
+
+        }
+
+    }
 );
 
 </script>
